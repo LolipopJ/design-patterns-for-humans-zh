@@ -9,7 +9,7 @@
 设计模式的话题经常害得我们心神不宁。在这里，我将试着用尽可能简单的方式来解释它们，让它们深深地刻在您的脑海里。
 </p>
 <p>
-本项目基于 <a href="https://github.com/kamranahmedse/design-patterns-for-humans">Design patterns for humans</a>，案例的 JavaScript 代码来自 <a href="https://github.com/sohamkamani/javascript-design-patterns-for-humans">Design patterns for humans - JavaScript Edition</a>，翻译借鉴参考了原作者的<a href="https://github.com/Leon0X/design-patterns-for-humans-cn">中文翻译项目</a>。
+本项目基于 <a href="https://github.com/kamranahmedse/design-patterns-for-humans">Design patterns for humans</a>，案例的 JavaScript 代码来自 <a href="https://github.com/sohamkamani/javascript-design-patterns-for-humans">Design patterns for humans - JavaScript Edition</a>，翻译借鉴参考了 <a href="https://github.com/Leon0X">Leon0X</a> 前辈的<a href="https://github.com/Leon0X/design-patterns-for-humans-cn">中文翻译项目</a>。
 </p>
 </div>
 
@@ -1931,4 +1931,4 @@ And that about wraps it up. I will continue to improve this, so you might want t
 
 MIT © [LolipopJ](https://github.com/LolipopJ)
 
-本项目基于 [Design patterns for humans](https://github.com/kamranahmedse/design-patterns-for-humans)，案例的 JavaScript 代码来自 [Design patterns for humans - JavaScript Edition](https://github.com/sohamkamani/javascript-design-patterns-for-humans)，翻译借鉴参考了原作者的[中文翻译项目](https://github.com/Leon0X/design-patterns-for-humans-cn)。
+本项目基于 [Design patterns for humans](https://github.com/kamranahmedse/design-patterns-for-humans)，案例的 JavaScript 代码来自 [Design patterns for humans - JavaScript Edition](https://github.com/sohamkamani/javascript-design-patterns-for-humans)，翻译借鉴参考了 [Leon0X](https://github.com/Leon0X/design-patterns-for-humans-cn) 前辈的[中文翻译项目](https://github.com/Leon0X/design-patterns-for-humans-cn)。
