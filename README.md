@@ -27,25 +27,25 @@
 
 ## 🚀 介绍 / Introduction
 
-Design patterns are solutions to recurring problems **guidelines on how to tackle certain problems**. They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations.
+设计模式是为**解决某些普遍存在的问题**提出的**方案与指导原则**。它们不是类，程序包或库文件，没法直接放到您的应用程序里然后等待神奇的事情发生。确切地说，它们是一种指导原则，旨在告诉您可以选用某种方法，来解决某些问题。
 
-> Design patterns solutions to recurring problems guidelines on how to tackle certain problems
+> 设计模式是为解决某些普遍存在的问题提出的方案与指导原则。
 
-Wikipedia describes them as
+维基百科这样描述它们：
 
-> In software engineering, a software design pattern is a general reusable solution to a commonly occurring problem within a given context in software design. It is not a finished design that can be transformed directly into source or machine code. It is a description or template for how to solve a problem that can be used in many different situations.
+> 在软件工程领域，软件设计模式是为软件设计过程中，对给定上下文普遍存在的问题，所提出的通用、可重用的解决方案。它不是完整的设计实现，无法直接转译为源代码或机器码。正相反，它是面向如何解决问题的描述或模板，并可以在很多不同的情况下使用。
 
 ### ⚠️ 请注意 / Be Careful
 
-- Design patterns are not a silver bullet to all your problems.
-- Do not try to force them; bad things are supposed to happen, if done so. 
-- Keep in mind that design patterns are solutions **to** problems, not solutions **finding** problems; so don't overthink.
-- If used in a correct place in a correct manner, they can prove to be a savior or else they can result in a horrible mess of a code.
+- 设计模式并不是解决您所有问题的万全之策。
+- 不要强迫去使用它们；否则很可能发生不好的事情。
+- 请记住，设计模式是一种指导方案，用来**解决**问题，而不是**找到**问题；所以不要想太多。
+- 如果在正确的地方以正确的方式使用设计模式，它们或许能成为您的得力帮手；否则可能导致您的代码混乱不堪。
 
 ### 🐢 在开始之前 / Before you start
 
-- All design patterns have been implemented in [ES6](https://github.com/lukehoban/es6features), the new version of javascript.
-- Since javascript does not have any implementation of interfaces, the examples here use implied interfaces, which means that as long as a class has attributes and methods that a particular interface is supposed to have, it is considered to implement that interface. To make it easier to tell the interface we are using, its information can be found in the comments of every example.
+- 所有的设计模式示例都基于 JavaScript 的 [ES6](https://github.com/lukehoban/es6features) 规范实现。
+- 由于 JavaScript 中没有任何接口的实现，因此示例使用了隐含接口的方式，这意味着只有一个类具有一个接口应当有的属性和方法，这个类就被认为实现了这个接口。为了让您更容易分辨当前正在使用的接口，我们在每个示例中都添加了注释信息，供您查阅。
 
 ### 🛎️ 设计模式的类型 / Types of Design Patterns
 
@@ -1996,13 +1996,13 @@ iosBuilder.build()
 
 ## 🚦 尾声 / Wrap Up Folks
 
-And that about wraps it up. I will continue to improve this, so you might want to watch/star this repository to revisit. Also, I have plans on writing the same about the architectural patterns, stay tuned for it.
+到这里教程的内容就结束了。我会持续改进这篇教程，您也许想要重新访问这个仓库来查看最新的内容，不妨点一个关注或是星标。对了，我计划撰写同样的教程，探讨软件体系架构模式的内容，希望您继续关注。
 
 ## 👬 参与贡献 / Contribution
 
-- Report issues
-- Open pull request with improvements
-- Spread the word
+- 反馈问题 / Report issues
+- 拉取请求，改进文档 / Open pull request with improvements
+- 宣传此仓库 / Spread the word
 
 ## 🔑 项目许可 / License
 
