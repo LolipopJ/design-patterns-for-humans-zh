@@ -1,4 +1,4 @@
-![献给中文读者的设计模式教程 / Design Patterns for Humans CN - JavaScript Edition](./cover.png)
+![献给中文读者的设计模式教程 / Design Patterns for Humans CN](./cover.png)
 
 ***
 <div align="center">
@@ -9,7 +9,7 @@
 设计模式的话题经常害得我们心神不宁。在这里，我将试着用尽可能简单的方式来解释它们，让它们深深地刻在您的脑海里。
 </p>
 <p>
-本项目基于 <a href="https://github.com/kamranahmedse/design-patterns-for-humans">Design patterns for humans</a>，案例的 JavaScript 代码来自 <a href="https://github.com/sohamkamani/javascript-design-patterns-for-humans">Design patterns for humans - JavaScript Edition</a>，翻译借鉴参考了 <a href="https://github.com/Leon0X">Leon0X</a> 前辈的<a href="https://github.com/Leon0X/design-patterns-for-humans-cn">中文翻译项目</a>。
+本项目基于 <a href="https://github.com/kamranahmedse/design-patterns-for-humans">Design Patterns for Humans</a>，案例的 JavaScript 代码来自 <a href="https://github.com/sohamkamani/javascript-design-patterns-for-humans">JavaScript Design Patterns for Humans</a>，翻译借鉴参考了 <a href="https://github.com/guanguans">guanguans</a> 前辈的<a href="https://github.com/Leon0X/design-patterns-for-humans-cn">中文翻译项目</a>。
 </p>
 </div>
 
@@ -19,7 +19,7 @@
 
 如果您喜欢这篇教程，不妨看看项目的原作者的[博客](http://sohamkamani.com)，或是在 [Twitter](https://twitter.com/sohamkamani) 上跟他打声招呼。
 
-# 献给中文读者的设计模式教程 / Design Patterns for Humans CN - JavaScript Edition
+# 献给中文读者的设计模式教程 / Design Patterns for Humans CN
 
 ## 🔖 目录 / Catalogue
 
@@ -2008,4 +2008,4 @@ iosBuilder.build()
 
 MIT © [LolipopJ](https://github.com/LolipopJ)
 
-本项目基于 [Design patterns for humans](https://github.com/kamranahmedse/design-patterns-for-humans)，案例的 JavaScript 代码来自 [Design patterns for humans - JavaScript Edition](https://github.com/sohamkamani/javascript-design-patterns-for-humans)，翻译借鉴参考了 [Leon0X](https://github.com/Leon0X/design-patterns-for-humans-cn) 前辈的[中文翻译项目](https://github.com/Leon0X/design-patterns-for-humans-cn)。
+本项目基于 [Design Patterns for Humans](https://github.com/kamranahmedse/design-patterns-for-humans)，案例的 JavaScript 代码来自 [JavaScript Design Patterns for Humans](https://github.com/sohamkamani/javascript-design-patterns-for-humans)，翻译借鉴参考了 [guanguans](https://github.com/guanguans) 前辈的[中文翻译项目](https://github.com/Leon0X/design-patterns-for-humans-cn)。
