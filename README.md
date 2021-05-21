@@ -1,4 +1,4 @@
-![献给中文读者的设计模式教程 / Design Patterns for Humans CN - JavaScript Version](./cover.png)
+![献给中文读者的设计模式教程 / Design Patterns for Humans CN - JavaScript Edition](./cover.png)
 
 ***
 <div align="center">
@@ -15,11 +15,11 @@
 
 ***
 
-译者在学习设计模式的过程中，想要使用自己的语言风格来翻译这篇实用的设计模式教程。奈何才疏学浅，如有谬误，敬请斧正。
+译者在学习的过程中，想要使用自己的语言风格来翻译这篇“给人类写的”设计模式教程。奈何才疏学浅，如有谬误，敬请斧正。
 
 如果您喜欢这篇教程，不妨看看项目的原作者的[博客](http://sohamkamani.com)，或是在 [Twitter](https://twitter.com/sohamkamani) 上跟他打声招呼。
 
-# 献给中文读者的设计模式教程 / Design Patterns for Humans CN - JavaScript Version
+# 献给中文读者的设计模式教程 / Design Patterns for Humans CN - JavaScript Edition
 
 ## 🔖 目录 / Catalogue
 
@@ -46,13 +46,13 @@ Wikipedia describes them as
 - All design patterns have been implemented in [ES6](https://github.com/lukehoban/es6features), the new version of javascript.
 - Since javascript does not have any implementation of interfaces, the examples here use implied interfaces, which means that as long as a class has attributes and methods that a particular interface is supposed to have, it is considered to implement that interface. To make it easier to tell the interface we are using, its information can be found in the comments of every example.
 
-### 🛎️ Types of Design Patterns
+### 🛎️ 设计模式的类型 / Types of Design Patterns
 
-* [Creational](#creational-design-patterns)
-* [Structural](#structural-design-patterns)
-* [Behavioral](#behavioral-design-patterns)
+* [创建型 / Creational](#creational-design-patterns)
+* [结构型 / Structural](#structural-design-patterns)
+* [行为型 / Behavioral](#behavioral-design-patterns)
 
-## Creational Design Patterns
+## 创建型设计模式 / Creational Design Patterns
 
 In plain words
 > Creational patterns are focused towards how to instantiate an object or group of related objects.
@@ -67,7 +67,7 @@ Wikipedia says
 * [Prototype](#-prototype)
 * [Singleton](#-singleton)
 
-### 🏠 Simple Factory
+### 🏠 简单工厂模式 / Simple Factory
 
 Real world example
 > Consider, you are building a house and you need doors. It would be a mess if every time you need a door, you put on your carpenter clothes and start making a door in your house. Instead you get it made from a factory.
@@ -127,7 +127,7 @@ console.log('Height:', door.getHeight())
 
 When creating an object is not just a few assignments and involves some logic, it makes sense to put it in a dedicated factory instead of repeating the same code everywhere.
 
-### 🏭 Factory Method
+### 🏭 工厂方法模式 / Factory Method
 
 Real world example
 > Consider the case of a hiring manager. It is impossible for one person to interview for each of the positions. Based on the job opening, she has to decide and delegate the interview steps to different people.
@@ -204,7 +204,7 @@ marketingManager.takeInterview() // Output: Asking about community buildng.
 
 Useful when there is some generic processing in a class but the required sub-class is dynamically decided at runtime. Or putting it in other words, when the client doesn't know what exact sub-class it might need.
 
-### 🔨 Abstract Factory
+### 🔨 抽象工厂模式 / Abstract Factory
 
 Real world example
 > Extending our door example from Simple Factory. Based on your needs you might get a wooden door from a wooden door shop, iron door from an iron shop or a PVC door from the relevant shop. Plus you might need a guy with different kind of specialities to fit the door, for example a carpenter for wooden door, welder for iron door etc. As you can see there is a dependency between the doors now, wooden door needs carpenter, iron door needs a welder etc.
@@ -321,7 +321,9 @@ As you can see the wooden door factory has encapsulated the `carpenter` and the 
 
 When there are interrelated dependencies with not-that-simple creation logic involved
 
-### 👷 Builder
+### 👷 生成器模式 / Builder
+
+译注：又名**建造模式**。
 
 Real world example
 > Imagine you are at Hardee's and you order a specific deal, lets say, "Big Hardee" and they hand it over to you without *any questions* this is the example of simple factory. But there are cases when the creation logic might involve more steps. For example you want a customized Subway deal, you have several options in how your burger is made e.g what bread do you want? what types of sauces would you like? What cheese would you want? etc. In such cases builder pattern comes to the rescue.
@@ -430,7 +432,76 @@ const burger = new Burger(14, true, false, true, true)
 
 When there could be several flavors of an object and to avoid the constructor telescoping. The key difference from the factory pattern is that factory pattern is to be used when the creation is a one step process while builder pattern is to be used when the creation is a multi step process.
 
-### 💍 Singleton
+### 🐑 原型模式 / Prototype
+
+Real world example
+> Remember dolly? The sheep that was cloned! Lets not get into the details but the key point here is that it is all about cloning
+
+In plain words
+> Create object based on an existing object through cloning.
+
+Wikipedia says
+> The prototype pattern is a creational design pattern in software development. It is used when the type of objects to create is determined by a prototypical instance, which is cloned to produce new objects.
+
+In short, it allows you to create a copy of an existing object and modify it to your needs, instead of going through the trouble of creating an object from scratch and setting it up.
+
+**Programmatic Example**
+
+In PHP, it can be easily done using `clone`
+
+```php
+class Sheep
+{
+    protected $name;
+    protected $category;
+
+    public function __construct(string $name, string $category = 'Mountain Sheep')
+    {
+        $this->name = $name;
+        $this->category = $category;
+    }
+
+    public function setName(string $name)
+    {
+        $this->name = $name;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setCategory(string $category)
+    {
+        $this->category = $category;
+    }
+
+    public function getCategory()
+    {
+        return $this->category;
+    }
+}
+```
+Then it can be cloned like below
+```php
+$original = new Sheep('Jolly');
+echo $original->getName(); // Jolly
+echo $original->getCategory(); // Mountain Sheep
+
+// Clone and modify what is required
+$cloned = clone $original;
+$cloned->setName('Dolly');
+echo $cloned->getName(); // Dolly
+echo $cloned->getCategory(); // Mountain sheep
+```
+
+Also you could use the magic method `__clone` to modify the cloning behavior.
+
+**When to use?**
+
+When an object is required that is similar to existing object or when the creation would be expensive as compared to cloning.
+
+### 💍 单例模式 / Singleton
 
 Real world example
 > There can only be one president of a country at a time. The same president has to be brought to action, whenever duty calls. President here is singleton.
@@ -469,7 +540,7 @@ president.name // Outputs undefined
 president.presidentsPrivateInformation // Outputs undefined
 ```
 
-## Structural Design Patterns
+## 结构型设计模式 / Structural Design Patterns
 
 In plain words
 > Structural patterns are mostly concerned with object composition or in other words how the entities can use each other. Or yet another explanation would be, they help in answering "How to build a software component?"
@@ -485,7 +556,7 @@ Wikipedia says
 * [Flyweight](#-flyweight)
 * [Proxy](#-proxy)
 
-### 🔌 Adapter
+### 🔌 适配器模式 / Adapter
 
 Real world example
 > Consider that you have some pictures in your memory card and you need to transfer them to your computer. In order to transfer them you need some kind of adapter that is compatible with your computer ports so that you can attach memory card to your computer. In this case card reader is an adapter.
@@ -564,7 +635,7 @@ hunter = new Hunter()
 hunter.hunt(wildDogAdapter)
 ```
 
-### 🚡 Bridge
+### 🚡 桥接模式 / Bridge
 
 Real world example
 > Consider you have a website with different pages and you are supposed to allow the user to change the theme. What would you do? Create multiple copies of each of the pages for each of the themes or would you just create separate theme and load them based on the user's preferences? Bridge pattern allows you to do the second i.e.
@@ -648,7 +719,7 @@ console.log(about.getContent() )// "About page in Dark Black"
 console.log(careers.getContent() )// "Careers page in Dark Black"
 ```
 
-### 🌿 Composite
+### 🌿 组合模式 / Composite
 
 Real world example
 > Every organization is composed of employees. Each of the employees has same features i.e. has a salary, has some responsibilities, may or may not report to someone, may or may not have some subordinates etc.
@@ -770,7 +841,7 @@ organization.addEmployee(jane)
 console.log("Net salaries: " , organization.getNetSalaries()) // Net Salaries: 22000
 ```
 
-### ☕ Decorator
+### ☕ 装饰器模式 / Decorator
 
 Real world example
 
@@ -878,7 +949,9 @@ console.log(someCoffee.getCost())// 20
 console.log(someCoffee.getDescription())// Simple Coffee, milk, whip, vanilla
 ```
 
-### 📦 Facade
+### 📦 门面模式 / Facade
+
+译注：也常被译为**外观模式**。
 
 Real world example
 > How do you turn on the computer? "Hit the power button" you say! That is what you believe because you are using a simple interface that computer provides on the outside, internally it has to do a lot of stuff to make it happen. This simple interface to the complex subsystem is a facade.
@@ -957,7 +1030,7 @@ computer.turnOn() // Ouch! Beep beep! Loading.. Ready to be used!
 computer.turnOff() // Bup bup buzzz! Haah! Zzzzz
 ```
 
-### 🍃 Flyweight
+### 🍃 享元模式 / Flyweight
 
 Real world example
 > Did you ever have fresh tea from some stall? They often make more than one cup that you demanded and save the rest for any other customer so to save the resources e.g. gas etc. Flyweight pattern is all about that i.e. sharing.
@@ -1027,7 +1100,7 @@ shop.serve()
 // Serving tea to table# 5
 ```
 
-### 🎱 Proxy
+### 🎱 代理模式 / Proxy
 
 Real world example
 > Have you ever used an access card to go through a door? There are multiple options to open that door i.e. it can be opened either using access card or by pressing a button that bypasses the security. The door's main functionality is to open but there is a proxy added on top of it to add some functionality. Let me better explain it using the code example below.
@@ -1096,7 +1169,7 @@ door.open('ecr@t') // Opening lab door
 door.close() // Closing lab door
 ```
 
-## Behavioral Design Patterns
+## 行为型设计模式 / Behavioral Design Patterns
 
 In plain words
 > It is concerned with assignment of responsibilities between the objects. What makes them different from structural patterns is they don't just specify the structure but also outline the patterns for message passing/communication between them. Or in other words, they assist in answering "How to run a behavior in software component?"
@@ -1115,7 +1188,7 @@ Wikipedia says
 * [State](#-state)
 * [Template Method](#-template-method)
 
-### 🔗 Chain of Responsibility
+### 🔗 责任链模式 / Chain of Responsibility
 
 Real world example
 > For example, you have three payment methods (`A`, `B` and `C`) setup in your account each having a different amount in it. `A` has 100 USD, `B` has 300 USD and `C` having 1000 USD and the preference for payments is chosen as `A` then `B` then `C`. You try to purchase something that is worth 210 USD. Using Chain of Responsibility, first of all account `A` will be checked if it can make the purchase, if yes purchase will be made and the chain will be broken. If not, request will move forward to account `B` checking for amount if yes chain will be broken otherwise the request will keep forwarding till it finds the suitable handler. Here `A`, `B` and `C` are links of the chain and the whole phenomenon is Chain of Responsibility.
@@ -1205,7 +1278,7 @@ bank.pay(259)
 // Paid 259 using Bitcoin!
 ```
 
-### 👮 Command
+### 👮 命令模式 / Command
 
 Real world example
 > A generic example would be you ordering a food at restaurant. You (i.e. `Client`) ask the waiter (i.e. `Invoker`) to bring some food (i.e. `Command`) and waiter simply forwards the request to Chef (i.e. `Receiver`) who has the knowledge of what and how to cook. 
@@ -1309,7 +1382,7 @@ remote.submit(turnOff) // Darkness!
 
 Command pattern can also be used to implement a transaction based system. Where you keep maintaining the history of commands as soon as you execute them. If the final command is successfully executed, all good otherwise just iterate through the history and keep executing the `undo` on all the executed commands.
 
-### ➿ Iterator
+### ➿ 迭代器模式 / Iterator
 
 Real world example
 > An old radio set will be a good example of iterator, where user could start at some channel and then use next or previous buttons to go through the respective channels. Or take an example of MP3 player or a TV set where you could press the next and previous buttons to go through the consecutive channels or in other words they all provide an interface to iterate through the respective channels, songs or radio stations.  
@@ -1371,7 +1444,7 @@ stationList.stations.forEach(station => console.log(station.getFrequency()))
 stationList.removeStation(new RadioStation(89)) // Will remove station 89
 ```
 
-### 👽 Mediator
+### 👽 中介者模式 / Mediator
 
 Real world example
 > A general example would be when you talk to someone on your mobile phone, there is a network provider sitting between you and them and your conversation goes through it instead of being directly sent. In this case network provider is mediator. 
@@ -1435,7 +1508,7 @@ jane.send('Hey!')
 // Feb 14, 10:58 [Jane]: Hey!
 ```
 
-### 💾 Memento
+### 💾 备忘录模式 / Memento
 
 Real world example
 > Take the example of calculator (i.e. originator), where whenever you perform some calculation the last calculation is saved in memory (i.e. memento) so that you can get back to it and maybe get it restored using some action buttons (i.e. caretaker). 
@@ -1516,7 +1589,7 @@ editor.restore(saved)
 console.log(editor.getContent()) // This is the first sentence. This is second.
 ```
 
-### 😎 Observer
+### 😎 观察者模式 / Observer
 
 (Otherwise known as _"pub-sub"_)
 
@@ -1590,7 +1663,7 @@ jobBoard.addJob(JobPost('Software Engineer'))
 // Jane Doe has been notified of a new posting : Software Engineer
 ```
 
-### 🏃 Visitor
+### 🏃 访问者模式 / Visitor
 
 Real world example
 > Consider someone visiting Dubai. They just need a way (i.e. visa) to enter Dubai. After arrival, they can come and visit any place in Dubai on their own without having to ask for permission or to do some leg work in order to visit any place here just let them know of a place and they can visit it. Visitor pattern let's you do just that, it helps you add places to visit so that they can visit as much as they can without having to do any legwork.
@@ -1696,7 +1769,7 @@ dolphin.accept(speak)  // Tuut tutt tuutt!
 dolphin.accept(jump)   // Walked on water a little and disappeared
 ```
 
-### 💡 Strategy
+### 💡 策略模式 / Strategy
 
 Real world example
 > Consider the example of sorting, we implemented bubble sort but the data started to grow and bubble sort started getting very slow. In order to tackle this we implemented Quick sort. But now although the quick sort algorithm was doing better for large datasets, it was very slow for smaller datasets. In order to handle this we implemented a strategy where for small datasets, bubble sort will be used and for larger, quick sort.
@@ -1752,7 +1825,7 @@ sorter1(longDataSet) // Output : Sorting with quick sort
 sorter2(shortDataSet) // Output : Sorting with bubble sort
 ```
 
-### 💢 State
+### 💢 状态模式 / State
 
 Real world example
 > Imagine you are using some drawing application, you choose the paint brush to draw. Now the brush changes it's behavior based on the selected color i.e. if you have chosen red color it will draw in red, if blue then it will be in blue etc.  
@@ -1819,7 +1892,7 @@ editor.type('Fifth line')
 // fifth line
 ```
 
-### 📒 Template Method
+### 📒 模板方法模式 / Template Method
 
 Real world example
 > Suppose we are getting some house built. The steps for building might look like
@@ -1917,17 +1990,17 @@ iosBuilder.build()
 // Deploying ios build to server
 ```
 
-## 🚦 Wrap Up Folks
+## 🚦 尾声 / Wrap Up Folks
 
 And that about wraps it up. I will continue to improve this, so you might want to watch/star this repository to revisit. Also, I have plans on writing the same about the architectural patterns, stay tuned for it.
 
-## 👬 Contribution
+## 👬 参与贡献 / Contribution
 
 - Report issues
 - Open pull request with improvements
 - Spread the word
 
-## 🔑 License
+## 🔑 项目许可 / License
 
 MIT © [LolipopJ](https://github.com/LolipopJ)
 
