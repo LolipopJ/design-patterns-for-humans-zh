@@ -14,12 +14,20 @@ yarn install
 
 ## 开始开发
 
+启动本地服务。
+
 ```bash
 yarn dev
 ```
 
+修改代码将自动触发热重载。
+
 ## 构建代码
+
+生成静态代码文件。
 
 ```baah
 yarn build
 ```
+
+默认存放路径为 `./docs/.vuepress/dist`。
