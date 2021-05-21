@@ -1,4 +1,4 @@
-![献给中文读者的设计模式教程 / Design Patterns for Humans CN](./cover/cover.png)
+<img :src="$withBase('/cover.png')" alt="献给中文读者的设计模式教程 / Design Patterns for Humans CN">
 
 ***
 <div align="center">
@@ -20,10 +20,6 @@
 如果您喜欢这篇教程，不妨看看项目的原作者的[博客](http://sohamkamani.com)，或是在 [Twitter](https://twitter.com/sohamkamani) 上跟他打声招呼。
 
 # 献给中文读者的设计模式教程 / Design Patterns for Humans CN
-
-## 🔖 目录 / Catalogue
-
-[toc]
 
 ## 🚀 介绍 / Introduction
 
@@ -47,12 +43,6 @@
 - 所有的设计模式示例都基于 JavaScript 的 [ES6](https://github.com/lukehoban/es6features) 规范实现。
 - 由于 JavaScript 中不存在实现接口的说法，因此我们在示例里使用了隐式接口的方式，这意味着只有一个类具有一个接口应当有的属性和方法，这个类就被认为实现了这个接口。为了让您更容易分辨当前正在使用的接口，我们在每个示例中都添加了注释信息。
 
-### 🛎️ 设计模式的类型 / Types of Design Patterns
-
-* [创建型 / Creational](#creational-design-patterns)
-* [结构型 / Structural](#structural-design-patterns)
-* [行为型 / Behavioral](#behavioral-design-patterns)
-
 ## 🏗️ 创建型设计模式 / Creational Design Patterns
 
 In plain words
@@ -60,13 +50,6 @@ In plain words
 
 Wikipedia says
 > In software engineering, creational design patterns are design patterns that deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or added complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
-
-* [Simple Factory](#-simple-factory)
-* [Factory Method](#-factory-method)
-* [Abstract Factory](#-abstract-factory)
-* [Builder](#-builder)
-* [Prototype](#-prototype)
-* [Singleton](#-singleton)
 
 ### 🏠 简单工厂模式 / Simple Factory
 
@@ -551,14 +534,6 @@ In plain words
 
 Wikipedia says
 > In software engineering, structural design patterns are design patterns that ease the design by identifying a simple way to realize relationships between entities.
-  
-* [Adapter](#-adapter)
-* [Bridge](#-bridge)
-* [Composite](#-composite)
-* [Decorator](#-decorator)
-* [Facade](#-facade)
-* [Flyweight](#-flyweight)
-* [Proxy](#-proxy)
 
 ### 🔌 适配器模式 / Adapter
 
@@ -1180,17 +1155,6 @@ In plain words
 
 Wikipedia says
 > In software engineering, behavioral design patterns are design patterns that identify common communication patterns between objects and realize these patterns. By doing so, these patterns increase flexibility in carrying out this communication.
-
-* [Chain of Responsibility](#-chain-of-responsibility)
-* [Command](#-command)
-* [Iterator](#-iterator)
-* [Mediator](#-mediator)
-* [Memento](#-memento)
-* [Observer](#-observer)
-* [Visitor](#-visitor)
-* [Strategy](#-strategy)
-* [State](#-state)
-* [Template Method](#-template-method)
 
 ### 🔗 责任链模式 / Chain of Responsibility
 

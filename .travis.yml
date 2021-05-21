@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - lts/*
+branches:
+  only:
+    - master
+install:
+  - cd vuepress
+  - yarn install
+script:
+  - yarn build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: docs/.vuepress/dist
+  github_token: $CI_DEPLOY_TOKEN
+  keep_history: true
+  on:
+    branch: master
