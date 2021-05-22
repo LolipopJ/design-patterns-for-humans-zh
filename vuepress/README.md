@@ -1,6 +1,6 @@
 # Design Patterns for Humans ZH - VuePress
 
-通过 VuePress 部署静态网页。
+通过 VuePress 部署本项目。
 
 ## 安装依赖
 
@@ -31,3 +31,10 @@ yarn build
 ```
 
 默认存放路径为 `./docs/.vuepress/dist`。
+
+## 待完成清单
+
+- [ ] 添加多编程语言支持。
+  - [ ] PHP
+  - [ ] Python
+  - [ ] ...
