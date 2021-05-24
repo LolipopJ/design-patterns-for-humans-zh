@@ -55,11 +55,13 @@
 
 ## 🏗️ 创建型设计模式 / Creational Design Patterns
 
-In plain words
-> Creational patterns are focused towards how to instantiate an object or group of related objects.
+简单来说
 
-Wikipedia says
-> In software engineering, creational design patterns are design patterns that deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or added complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
+> 创建型设计模式关注如何实例化一个对象，或一组相关的对象。
+
+维基百科这样描述
+
+> 在软件工程领域，创建型设计模式是处理对象创建机制的设计模式，试图以符合要求的方式来创建对象。创建对象的基础方式可能导致设计问题或增加设计复杂度。创建型设计模式通过以某种方式控制对象创建的过程，来解决这个问题。
 
 * [简单工厂模式](#-简单工厂模式--simple-factory)
 * [工厂方法模式](#-工厂方法模式--factory-method)
@@ -70,18 +72,21 @@ Wikipedia says
 
 ### 🏠 简单工厂模式 / Simple Factory
 
-Real world example
-> Consider, you are building a house and you need doors. You can either put on your carpenter clothes, bring some wood, glue, nails and all the tools required to build the door and start building it in your house or you can simply call the factory and get the built door delivered to you so that you don't need to learn anything about the door making or to deal with the mess that comes with making it.
+现实生活中的例子
 
-In plain words
-> Simple factory simply generates an instance for client without exposing any instantiation logic to the client
+> 想象，您正在修建一栋房子，但是您需要门。您可以穿上木匠的衣服，拿上木头、胶水、钉子以及所有需要的工具，在您的房子里亲自制作这个门；或者，您只需要打个电话给工厂，让他们把制造好的门送到您身边，这样您不必了解任何关于制作门的知识，也不必处理制作门所带来的麻烦。
 
-Wikipedia says
-> In object-oriented programming (OOP), a factory is an object for creating other objects – formally a factory is a function or method that returns objects of a varying prototype or class from some method call, which is assumed to be "new".
+简单来说
 
-**Programmatic Example**
+> 简单工厂只是为客户端生成一个实例，而不向客户端暴露任何实例化操作的逻辑。
 
-First of all we have a door interface and the implementation
+维基百科这样描述
+
+> 在面向对象编程（OOP）中，工厂是用于创建其它对象的对象——更准确地说，工厂是一个函数或方法，通过调用它的某个方法（假设为 "new"）可以返回拥有不同原型或类的对象。
+
+**编程示例**
+
+首先，我们定义了门的接口和并实现了它
 
 ```js
 /**
@@ -106,7 +111,7 @@ class WoodenDoor {
 }
 ```
 
-Then we have our door factory that makes the door and returns it
+接下来，我们有了制造并返回门的工厂
 
 ```js
 const DoorFactory = {
@@ -114,22 +119,22 @@ const DoorFactory = {
 }
 ```
 
-And then it can be used as
+最后，可以这样使用工厂
 
 ```js
-// Make me a door of 100x200
+// 给我制造一个 100x200 的门
 const door = DoorFactory.makeDoor(100, 200)
 
 console.log('Width:', door.getWidth())
 console.log('Height:', door.getHeight())
 
-// Make me a door of 50x100
+// 给我制造一个 50x100 的门
 const door = DoorFactory.makeDoor(50, 100)
 ```
 
-**When to Use?**
+**什么时候使用？**
 
-When creating an object is not just a few assignments and involves some logic, it makes sense to put it in a dedicated factory instead of repeating the same code everywhere.
+当创建一个对象不仅仅是赋值操作，而是会涉及到一些逻辑过程时，把它放到一个专用工厂中（而不是在每个地方编写重复的代码）是很有意义的。
 
 ### 🏭 工厂方法模式 / Factory Method
 
