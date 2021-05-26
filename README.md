@@ -111,7 +111,7 @@ class WoodenDoor {
 }
 ```
 
-接下来，我们有了制造并返回门的工厂
+接下来，我们创建了制造并返回门的工厂
 
 ```js
 const DoorFactory = {
@@ -134,48 +134,50 @@ const door = DoorFactory.makeDoor(50, 100)
 
 **什么时候使用？**
 
-当创建一个对象不仅仅是赋值操作，而是会涉及到一些逻辑过程时，把它放到一个专用工厂中（而不是在每个地方编写重复的代码）是很有意义的。
+当创建一个对象不仅仅是赋值操作，而是会涉及到一些逻辑过程时，把它放到一个专用的工厂中（而不是在每个地方编写重复的代码）是很有意义的。
 
 ### 🏭 工厂方法模式 / Factory Method
 
-Real world example
-> Consider the case of a hiring manager. It is impossible for one person to interview for each of the positions. Based on the job opening, she has to decide and delegate the interview steps to different people.
+现实生活中的例子
 
-In plain words
-> It provides a way to delegate the instantiation logic to child classes.
+> 以招聘经理为例。一个人不可能对每一个职位都进行面试。根据职位空缺情况，她必须决定面试的步骤，并将其委派给不同的人。
 
-Wikipedia says
-> In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
+简单来说
 
-**Programmatic Example**
+> 工厂方法模式提供了一种将实例化的逻辑分派给子类的方法。
 
-Taking our hiring manager example above. First of all we have an interviewer interface and some implementations for it
+维基百科这样描述
+
+> 在基于类的编程中，工厂方法模式是一种创建型模式，它使用工厂方法来处理创建对象的问题，而不必指定将要创建的对象所基于的具体类。这是通过调用工厂方法来创建对象所实现的——要么在接口中指定并由子类实现，要么在基类中实现并可选地由派生类覆盖——而不是通过调用构造函数实现。
+
+**编程示例**
+
+以上面的招聘经理为例。首先我们定义一个面试官接口和它的一些实现
 
 ```js
-/*
-Interviewer interface
-
-askQuestions()
-*/
+/**
+ * Interviewer interface
+ *
+ * askQuestions()
+ */
 
 class Developer {
   askQuestions() {
-    console.log('Asking about design patterns!')
+    console.log('提出设计模式问题！')
   }
 }
 
 class CommunityExecutive {
   askQuestions() {
-    console.log('Asking about community building')
+    console.log('提出社区建设问题！')
   }
 }
 ```
 
-Now let us create our `HiringManager`
+现在让我们编写我们的 `HiringManager`（招聘经理）
 
 ```js
 class HiringManager {
-        
     takeInterview() {
         const interviewer = this.makeInterviewer()
         interviewer.askQuestions()
@@ -183,7 +185,7 @@ class HiringManager {
 }
 ```
 
-Now any child can extend it and provide the required interviewer
+现在所有的子类都可以继承它并提供需要的面试官
 
 ```js
 class DevelopmentManager extends HiringManager {
@@ -199,19 +201,19 @@ class MarketingManager extends HiringManager {
 }
 ```
 
-and then it can be used as
+最后，我们可以这样使用它
 
 ```js
 const devManager = new DevelopmentManager()
-devManager.takeInterview() // Output: Asking about design patterns
+devManager.takeInterview() // 输出：提出设计模式问题！
 
 const marketingManager = new MarketingManager()
-marketingManager.takeInterview() // Output: Asking about community buildng.
+marketingManager.takeInterview() // 输出：提出社区建设问题！
 ```
 
-**When to use?**
+**什么时候使用？**
 
-Useful when there is some generic processing in a class but the required sub-class is dynamically decided at runtime. Or putting it in other words, when the client doesn't know what exact sub-class it might need.
+当类中存在一些通用的处理过程，但需要的子类在运行时动态决定时，工厂方法模式非常有用。换句话说，当客户端不知道它可能需要什么具体的子类时。
 
 ### 🔨 抽象工厂模式 / Abstract Factory
 
