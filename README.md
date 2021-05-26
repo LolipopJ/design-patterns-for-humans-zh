@@ -217,72 +217,75 @@ marketingManager.takeInterview() // 输出：提出社区建设问题！
 
 ### 🔨 抽象工厂模式 / Abstract Factory
 
-Real world example
-> Extending our door example from Simple Factory. Based on your needs you might get a wooden door from a wooden door shop, iron door from an iron shop or a PVC door from the relevant shop. Plus you might need a guy with different kind of specialities to fit the door, for example a carpenter for wooden door, welder for iron door etc. As you can see there is a dependency between the doors now, wooden door needs carpenter, iron door needs a welder etc.
+现实生活中的例子
 
-In plain words
-> A factory of factories a factory that groups the individual but related/dependent factories together without specifying their concrete classes.
-  
-Wikipedia says
-> The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes
+> 现在让我们拓展简单工厂模式里门的例子。根据您的需要，您可能会从木门店买到木门，从铁门店买到铁门，或是从相应的商店买到塑料门。此外，您可能需要有着不同专业能力的师傅来安装这些门，比如让木匠安装木门，让焊工安装铁门等等。正如您所看到的，现在门（与人）之间有一种依赖关系，木门需要木匠，铁门需要焊工等等。
 
-**Programmatic Example**
+简单来说
 
-Translating the door example above. First of all we have our `Door` interface and some implementation for it
+> 工厂的工厂；一个工厂，它将独立但是相关（或互相依赖）的工厂组成一组，而不用指定这些工厂的具体类。
+
+维基百科这样描述
+
+> 抽象工厂模式提供了一种封装一组具有共同主题的独立工厂的方法，而不必指定它们的具体类。
+
+**编程示例**
+
+根据上面门的例子。首先，我们定义了 `Door`（门）接口和它的一些实现
 
 ```js
-/*
-Door interface :
-
-getDescription()
-*/
+/**
+ * Door interface :
+ *
+ * getDescription()
+ */
 
 class WoodenDoor {
     getDescription() {
-        console.log('I am a wooden door')
+        console.log('我是一个木门')
     }
 }
 
 class IronDoor {
     getDescription() {
-        console.log('I am an iron door')
+        console.log('我是一个铁门')
     }
 }
 ```
 
-Then we have some fitting experts for each door type
+接着我们为每一种类型的门定义了安装师傅
 
 ```js
-/*
-DoorFittingExpert interface :
-
-getDescription()
-*/
+/**
+ * DoorFittingExpert interface :
+ *
+ * getDescription()
+ */
 
 class Welder {
     getDescription() {
-        console.log('I can only fit iron doors')
+        console.log('我只能安装木门')
     }
 }
 
 class Carpenter {
     getDescription() {
-        console.log('I can only fit wooden doors')
+        console.log('我只能安装铁门')
     }
 }
 ```
 
-Now we have our abstract factory that would let us make family of related objects i.e. wooden door factory would create a wooden door and wooden door fitting expert and iron door factory would create an iron door and iron door fitting expert
+现在我们有了抽象工厂，它允许我们创建一系列相关联的对象。比如，木门工厂能够制造木门和提供木门安装师傅，铁门工厂能够制造铁门和提供铁门安装师傅。
 
 ```js
-/*
-DoorFactory interface :
+/**
+ * DoorFactory interface :
+ *
+ * makeDoor()
+ * makeFittingExpert()
+ */
 
-makeDoor()
-makeFittingExpert()
-*/
-
-// Wooden factory to return carpenter and wooden door
+// 返回木匠和木门的木门工厂
 class WoodenDoorFactory {
     makeDoor(){
         return new WoodenDoor()
@@ -293,7 +296,7 @@ class WoodenDoorFactory {
     }
 }
 
-// Iron door factory to get iron door and the relevant fitting expert
+// 获得铁门和相应安装师傅的铁门工厂
 class IronDoorFactory {
     makeDoor(){
         return new IronDoor()
@@ -305,7 +308,7 @@ class IronDoorFactory {
 }
 ```
 
-And then it can be used as
+最后我们可以这样使用它
 
 ```js
 woodenFactory = new WoodenDoorFactory()
@@ -313,24 +316,24 @@ woodenFactory = new WoodenDoorFactory()
 door = woodenFactory.makeDoor()
 expert = woodenFactory.makeFittingExpert()
 
-door.getDescription()  // Output: I am a wooden door
-expert.getDescription() // Output: I can only fit wooden doors
+door.getDescription()  // 输出：我是一个木门
+expert.getDescription() // 输出：我只能安装木门
 
-// Same for Iron Factory
+// 铁门工厂和上面一样
 ironFactory = new IronDoorFactory()
 
 door = ironFactory.makeDoor()
 expert = ironFactory.makeFittingExpert()
 
-door.getDescription()  // Output: I am an iron door
-expert.getDescription() // Output: I can only fit iron doors
+door.getDescription()  // 输出：我是一个铁门
+expert.getDescription() // 输出：我只能安装铁门
 ```
 
-As you can see the wooden door factory has encapsulated the `carpenter` and the `wooden door` also iron door factory has encapsulated the `iron door` and `welder`. And thus it had helped us make sure that for each of the created door, we do not get a wrong fitting expert.
+正如您看到的，木门工厂已经封装了 `carpenter`（木匠）和 `wooden door`（木门），铁门工厂已经封装了 `iron door`（铁门）和 `welder`（焊工）。因此，它确保了对于每一个制造出来的门，我们都能得到正确的安装师傅。
 
-**When to use?**
+**什么时候使用？**
 
-When there are interrelated dependencies with not-that-simple creation logic involved
+当对象之间存在相互依赖的关系，涉及的创建逻辑并不那么简单时。
 
 ### 👷 生成器模式 / Builder
 
