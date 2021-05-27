@@ -9,7 +9,7 @@
 设计模式的话题经常害得我们心神不宁。在这里，我将试着用尽可能简单的方式来解释它们，让它们深深地刻在您（还有我）的脑海里。
 </p>
 <p>
-本项目基于 <a href="https://github.com/kamranahmedse/design-patterns-for-humans">Design Patterns for Humans</a>，案例的 JavaScript 代码来自 <a href="https://github.com/sohamkamani/javascript-design-patterns-for-humans">JavaScript Design Patterns for Humans</a>，翻译借鉴参考了 <a href="https://github.com/guanguans">guanguans</a> 前辈的<a href="https://github.com/Leon0X/design-patterns-for-humans-cn">中文翻译项目</a>。
+本项目基于 <a href="https://github.com/kamranahmedse/design-patterns-for-humans">Design Patterns for Humans</a>，案例的 JavaScript 代码来自 <a href="https://github.com/sohamkamani/javascript-design-patterns-for-humans">JavaScript Design Patterns for Humans</a>。
 </p>
 </div>
 
@@ -339,16 +339,19 @@ expert.getDescription() // 输出：我只能安装铁门
 
 译注：又名**建造模式**。
 
-Real world example
-> Imagine you are at Hardee's and you order a specific deal, lets say, "Big Hardee" and they hand it over to you without *any questions* this is the example of simple factory. But there are cases when the creation logic might involve more steps. For example you want a customized Subway deal, you have several options in how your burger is made e.g what bread do you want? what types of sauces would you like? What cheese would you want? etc. In such cases builder pattern comes to the rescue.
+现实生活中的例子
 
-In plain words
-> Allows you to create different flavors of an object while avoiding constructor pollution. Useful when there could be several flavors of an object. Or when there are a lot of steps involved in creation of an object.
+> 想象您在哈帝斯汉堡店里，点了一份“大哈迪汉堡”，接着店员就把汉堡递给你，*毫无疑问* 这是一个简单工厂的例子。但是在一些情况下汉堡的制作可能会包括更多的步骤逻辑。举个例子，您想要一份定制的汉堡，关于汉堡的制作您有很多选项：想要什么面包？喜欢哪款酱汁？想吃哪种奶酪？诸如此类。在这种情况下，就需要用到生成器模式了。
 
-Wikipedia says
-> The builder pattern is an object creation software design pattern with the intentions of finding a solution to the telescoping constructor anti-pattern.
+简单来说
 
-Having said that let me add a bit about what telescoping constructor anti-pattern is. At one point or the other we have all seen a constructor like below:
+> 生成器模式允许您创建不同风格的对象，同时避免污染构造函数。当一个对象可能存在多种风格时，或者当一个对象的创建过程包含很多步骤时，生成器模式非常有用。
+
+维基百科这样描述
+
+> 生成器模式是一种创建型软件设计模式，旨在找出重叠构造函数反模式（telescopic constructor anti-pattern）的一个解决方案。
+
+既然已经提到，那么请允许我补充一下什么是重叠构造函数反模式。在某一时刻我们都看到了这样一个构造函数：
 
 ```js
 constructor(size, cheese = true, pepperoni = true, tomato = false, lettuce = true) {
@@ -356,11 +359,11 @@ constructor(size, cheese = true, pepperoni = true, tomato = false, lettuce = tru
 }
 ```
 
-As you can see the number of constructor parameters can quickly get out of hand and it might become difficult to understand the arrangement of parameters. Plus this parameter list could keep on growing if you would want to add more options in future. This is called telescoping constructor anti-pattern.
+正如您所看见的，构造函数的参数数量很快就会失控，理解参数的含义也可能因此变得困难。此外，如果在以后您还想添加更多的构造选项，它的参数列表还会继续增长。这就被称作重叠构造函数反模式。
 
-**Programmatic Example**
+**编程示例**
 
-The sane alternative is to use the builder pattern. First of all we have our burger that we want to make
+明智的选择是使用生成器模式。首先我们定义我们想要制作的汉堡
 
 ```js
 class Burger {
@@ -374,11 +377,10 @@ class Burger {
 }
 ```
 
-And then we have the builder
+接着我们编写了生成器
 
 ```js
 class BurgerBuilder {
-
     constructor(size) {
         this.size = size
     }
@@ -409,7 +411,7 @@ class BurgerBuilder {
 }
 ```
 
-And then it can be used as:
+最后可以这样使用它
 
 ```js
 const burger = (new BurgerBuilder(14))
@@ -419,12 +421,12 @@ const burger = (new BurgerBuilder(14))
     .build()
 ```
 
-__Javascript specific tip__ : When you find that the number of arguments to a function or method are too many (normally any more than 2 arguments is considered too much), use a single object argument instead of multiple arguments. This serves two purposes :
+**JavaScript 版本特别提示**：当您发现一个函数或方法的参数太多（一般超过 2 个参数都被认为是太多）时，应当使用一个对象参数，来取代多个参数。理由有二：
 
-1. It makes your code look less cluttered, since there is only one argument.
-2. You don't have to worry about the order of arguments since arguments are now passed as named properties of the object.
+1. 它可以让您的代码看上去更整洁，因为只有一个参数。
+2. 您不需要担心参数的顺序，因为参数将根据对象的命名属性传递。
 
-For example :
+举个例子，应当使用：
 
 ```js
 const burger = new Burger({
@@ -436,15 +438,15 @@ const burger = new Burger({
 })
 ```
 
-instead of :
+来取代：
 
 ```js
 const burger = new Burger(14, true, false, true, true)
 ```
 
-**When to use?**
+**什么时候使用？**
 
-When there could be several flavors of an object and to avoid the constructor telescoping. The key difference from the factory pattern is that factory pattern is to be used when the creation is a one step process while builder pattern is to be used when the creation is a multi step process.
+当一个对象可能有多种风格，并想要避免重叠构造函数时。与工厂模式的关键区别是，当对象创建只有一个流程步骤时，应使用工厂模式；当对象创建存在多个流程步骤时，应使用生成器模式。
 
 ### 🐑 原型模式 / Prototype
 
@@ -2020,4 +2022,4 @@ iosBuilder.build()
 
 MIT © [LolipopJ](https://github.com/LolipopJ)
 
-本项目基于 [Design Patterns for Humans](https://github.com/kamranahmedse/design-patterns-for-humans)，案例的 JavaScript 代码来自 [JavaScript Design Patterns for Humans](https://github.com/sohamkamani/javascript-design-patterns-for-humans)，翻译借鉴参考了 [guanguans](https://github.com/guanguans) 前辈的[中文翻译项目](https://github.com/Leon0X/design-patterns-for-humans-cn)。
+本项目基于 [Design Patterns for Humans](https://github.com/kamranahmedse/design-patterns-for-humans)，案例的 JavaScript 代码来自 [JavaScript Design Patterns for Humans](https://github.com/sohamkamani/javascript-design-patterns-for-humans)。
