@@ -446,78 +446,81 @@ const burger = new Burger(14, true, false, true, true)
 
 **什么时候使用？**
 
-当一个对象可能有多种风格，并想要避免重叠构造函数时。与工厂模式的关键区别是，当对象创建只有一个流程步骤时，应使用工厂模式；当对象创建存在多个流程步骤时，应使用生成器模式。
+当一个对象可能有多种风格，并想要避免重叠构造函数时。与工厂模式的关键区别是，当创建对象过程只有一个步骤时，应使用工厂模式；当创建对象过程存在多个步骤时，应使用生成器模式。
 
 ### 🐑 原型模式 / Prototype
 
-Real world example
-> Remember dolly? The sheep that was cloned! Lets not get into the details but the key point here is that it is all about cloning
+现实生活中的例子
 
-In plain words
-> Create object based on an existing object through cloning.
+> 还记得多莉吗？那只被克隆的羊！让我们聊聊克隆这件事儿，当然，不谈细节，只谈它的关键点所在。
 
-Wikipedia says
-> The prototype pattern is a creational design pattern in software development. It is used when the type of objects to create is determined by a prototypical instance, which is cloned to produce new objects.
+简单来说
 
-In short, it allows you to create a copy of an existing object and modify it to your needs, instead of going through the trouble of creating an object from scratch and setting it up.
+> 基于已存在的对象，通过克隆创建新的对象。
 
-**Programmatic Example**
+维基百科这样描述
 
-In PHP, it can be easily done using `clone`
+> 在软件开发领域，原型模式是一种创建型设计模式。当创建的对象类型由一个原型实例确定时，使用原型模式，这个原型实例将被克隆来生成新的对象。
 
-```php
-class Sheep
-{
-    protected $name;
-    protected $category;
+简而言之，原型模式允许您创建已存在对象的副本，并根据您的需要修改这个副本，而不用经历从头开始创建新的对象并配置整个对象的麻烦。
 
-    public function __construct(string $name, string $category = 'Mountain Sheep')
-    {
-        $this->name = $name;
-        $this->category = $category;
+**编程示例**
+
+首先我们定义了我们想要克隆的羊
+
+```js
+class Sheep {
+    constructor(name, category = "山羊") {
+        this.name = name;
+        this.category = category;
     }
-
-    public function setName(string $name)
-    {
-        $this->name = $name;
+    setName(name) {
+        this.name = name;
     }
-
-    public function getName()
-    {
-        return $this->name;
+    getName() {
+        console.log(this.name);
     }
-
-    public function setCategory(string $category)
-    {
-        $this->category = $category;
+    setCategory(category) {
+        this.category = category;
     }
-
-    public function getCategory()
-    {
-        return $this->category;
+    getCategory() {
+        console.log(this.category);
     }
 }
 ```
 
-Then it can be cloned like below
+现在我们有了一个羊原型（SheepPrototype）的类，它将克隆给定了原型的对象。它的构造函数接受类型为羊的原型
 
-```php
-$original = new Sheep('Jolly');
-echo $original->getName(); // Jolly
-echo $original->getCategory(); // Mountain Sheep
-
-// Clone and modify what is required
-$cloned = clone $original;
-$cloned->setName('Dolly');
-echo $cloned->getName(); // Dolly
-echo $cloned->getCategory(); // Mountain sheep
+```js
+class SheepPrototype {
+    constructor(proto) {
+        this.proto = proto;
+    }
+    clone() {
+        return new Sheep(this.proto.name, this.proto.category);
+    }
+}
 ```
 
-Also you could use the magic method `__clone` to modify the cloning behavior.
+最后我们可以这样使用它
 
-**When to use?**
+```js
+const originalSheep = new Sheep("Jolly");
+originalSheep.getName(); // Jolly
+originalSheep.getCategory(); // 山羊
+// 克隆并根据需要修改
+const prototype = new SheepPrototype(originalSheep);
+const clonedSheep = prototype.clone();
+clonedSheep.setName("Dolly");
+clonedSheep.getName(); // Dolly
+clonedSheep.getCategory(); // 山羊
+```
 
-When an object is required that is similar to existing object or when the creation would be expensive as compared to cloning.
+**JavaScript 版本特别提示**：此编程示例是原型模式的经典实现，但是 JavaScript 能够使用[内建原型工具](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Object_prototypes)更有效地实现原型模式。
+
+**什么时候使用？**
+
+当需要的对象与现有的对象很相似时；或与克隆的方式相比，直接创建对象的成本更高时。
 
 ### 💍 单例模式 / Singleton
 
