@@ -524,18 +524,21 @@ clonedSheep.getCategory(); // 山羊
 
 ### 💍 单例模式 / Singleton
 
-Real world example
+现实生活中的例子
+ 
 > There can only be one president of a country at a time. The same president has to be brought to action, whenever duty calls. President here is singleton.
 
-In plain words
+简单来说
+
 > Ensures that only one object of a particular class is ever created.
 
-Wikipedia says
+维基百科这样描述
+
 > In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one object. This is useful when exactly one object is needed to coordinate actions across the system.
 
 Singleton pattern is actually considered an anti-pattern and overuse of it should be avoided. It is not necessarily bad and could have some valid use-cases but should be used with caution because it introduces a global state in your application and change to it in one place could affect in the other areas and it could become pretty difficult to debug. The other bad thing about them is it makes your code tightly coupled plus it mocking the singleton could be difficult.
 
-**Programmatic Example**
+**编程示例**
 
 In javascript, singletons can be implemented using the module pattern. Private variables and functions are hidden in a function closure, and public methods are selectively exposed.
 
@@ -563,10 +566,12 @@ president.presidentsPrivateInformation // Outputs undefined
 
 ## 🔩 结构型设计模式 / Structural Design Patterns
 
-In plain words
+简单来说
+
 > Structural patterns are mostly concerned with object composition or in other words how the entities can use each other. Or yet another explanation would be, they help in answering "How to build a software component?"
 
-Wikipedia says
+维基百科这样描述
+
 > In software engineering, structural design patterns are design patterns that ease the design by identifying a simple way to realize relationships between entities.
   
 * [适配器模式](#-适配器模式--adapter)
@@ -579,18 +584,21 @@ Wikipedia says
 
 ### 🔌 适配器模式 / Adapter
 
-Real world example
+现实生活中的例子
+
 > Consider that you have some pictures in your memory card and you need to transfer them to your computer. In order to transfer them you need some kind of adapter that is compatible with your computer ports so that you can attach memory card to your computer. In this case card reader is an adapter.
 > Another example would be the famous power adapter a three legged plug can't be connected to a two pronged outlet, it needs to use a power adapter that makes it compatible with the two pronged outlet.
 > Yet another example would be a translator translating words spoken by one person to another
 
-In plain words
+简单来说
+
 > Adapter pattern lets you wrap an otherwise incompatible object in an adapter to make it compatible with another class.
 
-Wikipedia says
+维基百科这样描述
+
 > In software engineering, the adapter pattern is a software design pattern that allows the interface of an existing class to be used as another interface. It is often used to make existing classes work with others without modifying their source code.
 
-**Programmatic Example**
+**编程示例**
 
 Consider a game where there is a hunter and he hunts lions.
 
@@ -658,18 +666,21 @@ hunter.hunt(wildDogAdapter)
 
 ### 🚡 桥接模式 / Bridge
 
-Real world example
+现实生活中的例子
+
 > Consider you have a website with different pages and you are supposed to allow the user to change the theme. What would you do? Create multiple copies of each of the pages for each of the themes or would you just create separate theme and load them based on the user's preferences? Bridge pattern allows you to do the second i.e.
 
 ![With and without the bridge pattern](https://cloud.githubusercontent.com/assets/11269635/23065293/33b7aea0-f515-11e6-983f-98823c9845ee.png)
 
-In Plain Words
+简单来说
+
 > Bridge pattern is about preferring composition over inheritance. Implementation details are pushed from a hierarchy to another object with a separate hierarchy.
 
-Wikipedia says
+维基百科这样描述
+
 > The bridge pattern is a design pattern used in software engineering that is meant to "decouple an abstraction from its implementation so that the two can vary independently"
 
-**Programmatic Example**
+**编程示例**
 
 Translating our WebPage example from above. Here we have the `WebPage` hierarchy
 
@@ -742,16 +753,19 @@ console.log(careers.getContent() )// "Careers page in Dark Black"
 
 ### 🌿 组合模式 / Composite
 
-Real world example
+现实生活中的例子
+
 > Every organization is composed of employees. Each of the employees has same features i.e. has a salary, has some responsibilities, may or may not report to someone, may or may not have some subordinates etc.
 
-In plain words
+简单来说
+
 > Composite pattern lets clients to treat the individual objects in a uniform manner.
 
-Wikipedia says
+维基百科这样描述
+
 > In software engineering, the composite pattern is a partitioning design pattern. The composite pattern describes that a group of objects is to be treated in the same way as a single instance of an object. The intent of a composite is to "compose" objects into tree structures to represent part-whole hierarchies. Implementing the composite pattern lets clients treat individual objects and compositions uniformly.
 
-**Programmatic Example**
+**编程示例**
 
 Taking our employees example from above. Here we have different employee types
 
@@ -864,17 +878,19 @@ console.log("Net salaries: " , organization.getNetSalaries()) // Net Salaries: 2
 
 ### ☕ 装饰器模式 / Decorator
 
-Real world example
+现实生活中的例子
 
 > Imagine you run a car service shop offering multiple services. Now how do you calculate the bill to be charged? You pick one service and dynamically keep adding to it the prices for the provided services till you get the final cost. Here each type of service is a decorator.
 
-In plain words
+简单来说
+
 > Decorator pattern lets you dynamically change the behavior of an object at run time by wrapping them in an object of a decorator class.
 
-Wikipedia says
+维基百科这样描述
+
 > In object-oriented programming, the decorator pattern is a design pattern that allows behavior to be added to an individual object, either statically or dynamically, without affecting the behavior of other objects from the same class. The decorator pattern is often useful for adhering to the Single Responsibility Principle, as it allows functionality to be divided between classes with unique areas of concern.
 
-**Programmatic Example**
+**编程示例**
 
 Lets take coffee for example. First of all we have a simple coffee implementing the coffee interface
 
@@ -974,16 +990,19 @@ console.log(someCoffee.getDescription())// Simple Coffee, milk, whip, vanilla
 
 译注：也常被译为**外观模式**。
 
-Real world example
+现实生活中的例子
+
 > How do you turn on the computer? "Hit the power button" you say! That is what you believe because you are using a simple interface that computer provides on the outside, internally it has to do a lot of stuff to make it happen. This simple interface to the complex subsystem is a facade.
 
-In plain words
+简单来说
+
 > Facade pattern provides a simplified interface to a complex subsystem.
 
-Wikipedia says
+维基百科这样描述
+
 > A facade is an object that provides a simplified interface to a larger body of code, such as a class library.
 
-**Programmatic Example**
+**编程示例**
 Taking our computer example from above. Here we have the computer class
 
 ```js
@@ -1053,16 +1072,20 @@ computer.turnOff() // Bup bup buzzz! Haah! Zzzzz
 
 ### 🍃 享元模式 / Flyweight
 
-Real world example
+现实生活中的例子
+
 > Did you ever have fresh tea from some stall? They often make more than one cup that you demanded and save the rest for any other customer so to save the resources e.g. gas etc. Flyweight pattern is all about that i.e. sharing.
 
-In plain words
+简单来说
+
 > It is used to minimize memory usage or computational expenses by sharing as much as possible with similar objects.
 
-Wikipedia says
+维基百科这样描述
+
 > In computer programming, flyweight is a software design pattern. A flyweight is an object that minimizes memory use by sharing as much data as possible with other similar objects it is a way to use objects in large numbers when a simple repeated representation would use an unacceptable amount of memory.
 
-**Programmatic example**
+**编程示例**
+
 Translating our tea example from above. First of all we have tea types and tea maker
 
 ```js
@@ -1123,16 +1146,20 @@ shop.serve()
 
 ### 🎱 代理模式 / Proxy
 
-Real world example
+现实生活中的例子
+
 > Have you ever used an access card to go through a door? There are multiple options to open that door i.e. it can be opened either using access card or by pressing a button that bypasses the security. The door's main functionality is to open but there is a proxy added on top of it to add some functionality. Let me better explain it using the code example below.
 
-In plain words
+简单来说
+
 > Using the proxy pattern, a class represents the functionality of another class.
 
-Wikipedia says
+维基百科这样描述
+
 > A proxy, in its most general form, is a class functioning as an interface to something else. A proxy is a wrapper or agent object that is being called by the client to access the real serving object behind the scenes. Use of the proxy can simply be forwarding to the real object, or can provide additional logic. In the proxy extra functionality can be provided, for example caching when operations on the real object are resource intensive, or checking preconditions before operations on the real object are invoked.
 
-**Programmatic Example**
+**编程示例**
+
 Taking our security door example from above. Firstly we have the door interface and an implementation of door
 
 ```js
@@ -1192,10 +1219,12 @@ door.close() // Closing lab door
 
 ## 🤹 行为型设计模式 / Behavioral Design Patterns
 
-In plain words
+简单来说
+
 > It is concerned with assignment of responsibilities between the objects. What makes them different from structural patterns is they don't just specify the structure but also outline the patterns for message passing/communication between them. Or in other words, they assist in answering "How to run a behavior in software component?"
 
-Wikipedia says
+维基百科这样描述
+
 > In software engineering, behavioral design patterns are design patterns that identify common communication patterns between objects and realize these patterns. By doing so, these patterns increase flexibility in carrying out this communication.
 
 * [责任链模式](#-责任链模式--chain-of-responsibility)
@@ -1211,16 +1240,19 @@ Wikipedia says
 
 ### 🔗 责任链模式 / Chain of Responsibility
 
-Real world example
+现实生活中的例子
+
 > For example, you have three payment methods (`A`, `B` and `C`) setup in your account each having a different amount in it. `A` has 100 USD, `B` has 300 USD and `C` having 1000 USD and the preference for payments is chosen as `A` then `B` then `C`. You try to purchase something that is worth 210 USD. Using Chain of Responsibility, first of all account `A` will be checked if it can make the purchase, if yes purchase will be made and the chain will be broken. If not, request will move forward to account `B` checking for amount if yes chain will be broken otherwise the request will keep forwarding till it finds the suitable handler. Here `A`, `B` and `C` are links of the chain and the whole phenomenon is Chain of Responsibility.
 
-In plain words
+简单来说
+
 > It helps building a chain of objects. Request enters from one end and keeps going from object to object till it finds the suitable handler.
 
-Wikipedia says
+维基百科这样描述
+
 > In object-oriented design, the chain-of-responsibility pattern is a design pattern consisting of a source of command objects and a series of processing objects. Each processing object contains logic that defines the types of command objects that it can handle the rest are passed to the next processing object in the chain.
 
-**Programmatic Example**
+**编程示例**
 
 Translating our account example above. First of all we have a base account having the logic for chaining the accounts together and some accounts
 
@@ -1301,17 +1333,20 @@ bank.pay(259)
 
 ### 👮 命令模式 / Command
 
-Real world example
+现实生活中的例子
+
 > A generic example would be you ordering a food at restaurant. You (i.e. `Client`) ask the waiter (i.e. `Invoker`) to bring some food (i.e. `Command`) and waiter simply forwards the request to Chef (i.e. `Receiver`) who has the knowledge of what and how to cook. 
 > Another example would be you (i.e. `Client`) switching on (i.e. `Command`) the television (i.e. `Receiver`) using a remote control (`Invoker`).
 
-In plain words
+简单来说
+
 > Allows you to encapsulate actions in objects. The key idea behind this pattern is to provide the means to decouple client from receiver.
 
-Wikipedia says
+维基百科这样描述
+
 > In object-oriented programming, the command pattern is a behavioral design pattern in which an object is used to encapsulate all information needed to perform an action or trigger an event at a later time. This information includes the method name, the object that owns the method and values for the method parameters.
 
-**Programmatic Example**
+**编程示例**
 
 First of all we have the receiver that has the implementation of every action that could be performed
 
@@ -1405,17 +1440,21 @@ Command pattern can also be used to implement a transaction based system. Where 
 
 ### ➿ 迭代器模式 / Iterator
 
-Real world example
+现实生活中的例子
+
 > An old radio set will be a good example of iterator, where user could start at some channel and then use next or previous buttons to go through the respective channels. Or take an example of MP3 player or a TV set where you could press the next and previous buttons to go through the consecutive channels or in other words they all provide an interface to iterate through the respective channels, songs or radio stations.  
 
-In plain words
+简单来说
+
 > It presents a way to access the elements of an object without exposing the underlying presentation.
 
-Wikipedia says
+维基百科这样描述
+
 > In object-oriented programming, the iterator pattern is a design pattern in which an iterator is used to traverse a container and access the container's elements. The iterator pattern decouples algorithms from containers in some cases, algorithms are necessarily container-specific and thus cannot be decoupled.
 
-**Programmatic example**
- Translating our radio stations example from above. First of all we have `RadioStation`
+**编程示例**
+
+Translating our radio stations example from above. First of all we have `RadioStation`
 
 ```js
 class RadioStation {
@@ -1467,16 +1506,19 @@ stationList.removeStation(new RadioStation(89)) // Will remove station 89
 
 ### 👽 中介者模式 / Mediator
 
-Real world example
+现实生活中的例子
+
 > A general example would be when you talk to someone on your mobile phone, there is a network provider sitting between you and them and your conversation goes through it instead of being directly sent. In this case network provider is mediator.
 
-In plain words
+简单来说
+
 > Mediator pattern adds a third party object (called mediator) to control the interaction between two objects (called colleagues). It helps reduce the coupling between the classes communicating with each other. Because now they don't need to have the knowledge of each other's implementation.
 
-Wikipedia says
+维基百科这样描述
+
 > In software engineering, the mediator pattern defines an object that encapsulates how a set of objects interact. This pattern is considered to be a behavioral pattern due to the way it can alter the program's running behavior.
 
-**Programmatic Example**
+**编程示例**
 
 Here is the simplest example of a chat room (i.e. mediator) with users (i.e. colleagues) sending messages to each other.
 
@@ -1531,18 +1573,21 @@ jane.send('Hey!')
 
 ### 💾 备忘录模式 / Memento
 
-Real world example
+现实生活中的例子
+
 > Take the example of calculator (i.e. originator), where whenever you perform some calculation the last calculation is saved in memory (i.e. memento) so that you can get back to it and maybe get it restored using some action buttons (i.e. caretaker).
 
-In plain words
+简单来说
+
 > Memento pattern is about capturing and storing the current state of an object in a manner that it can be restored later on in a smooth manner.
 
-Wikipedia says
+维基百科这样描述
+
 > The memento pattern is a software design pattern that provides the ability to restore an object to its previous state (undo via rollback).
 
 Usually useful when you need to provide some sort of undo functionality.
 
-**Programmatic Example**
+**编程示例**
 
 Lets take an example of text editor which keeps saving the state from time to time and that you can restore if you want.
 
@@ -1614,16 +1659,19 @@ console.log(editor.getContent()) // This is the first sentence. This is second.
 
 (Otherwise known as _"pub-sub"_)
 
-Real world example
+现实生活中的例子
+
 > A good example would be the job seekers where they subscribe to some job posting site and they are notified whenever there is a matching job opportunity.
 
-In plain words
+简单来说
+
 > Defines a dependency between objects so that whenever an object changes its state, all its dependents are notified.
 
-Wikipedia says
+维基百科这样描述
+
 > The observer pattern is a software design pattern in which an object, called the subject, maintains a list of its dependents, called observers, and notifies them automatically of any state changes, usually by calling one of their methods.
 
-**Programmatic example**
+**编程示例**
 
 Translating our example from above. First of all we have job seekers that need to be notified for a job posting
 
@@ -1686,16 +1734,19 @@ jobBoard.addJob(JobPost('Software Engineer'))
 
 ### 🏃 访问者模式 / Visitor
 
-Real world example
+现实生活中的例子
+
 > Consider someone visiting Dubai. They just need a way (i.e. visa) to enter Dubai. After arrival, they can come and visit any place in Dubai on their own without having to ask for permission or to do some leg work in order to visit any place here just let them know of a place and they can visit it. Visitor pattern let's you do just that, it helps you add places to visit so that they can visit as much as they can without having to do any legwork.
 
-In plain words
+简单来说
+
 > Visitor pattern let's you add further operations to objects without having to modify them.
 
-Wikipedia says
+维基百科这样描述
+
 > In object-oriented programming and software engineering, the visitor design pattern is a way of separating an algorithm from an object structure on which it operates. A practical result of this separation is the ability to add new operations to existing object structures without modifying those structures. It is one way to follow the open/closed principle.
 
-**Programmatic example**
+**编程示例**
 
 Let's take an example of a zoo simulation where we have several different kinds of animals and we have to make them Sound. Let's translate this using visitor pattern
 
@@ -1792,16 +1843,19 @@ dolphin.accept(jump)   // Walked on water a little and disappeared
 
 ### 💡 策略模式 / Strategy
 
-Real world example
+现实生活中的例子
+
 > Consider the example of sorting, we implemented bubble sort but the data started to grow and bubble sort started getting very slow. In order to tackle this we implemented Quick sort. But now although the quick sort algorithm was doing better for large datasets, it was very slow for smaller datasets. In order to handle this we implemented a strategy where for small datasets, bubble sort will be used and for larger, quick sort.
 
-In plain words
+简单来说
+
 > Strategy pattern allows you to switch the algorithm or strategy based upon the situation.
 
-Wikipedia says
+维基百科这样描述
+
 > In computer programming, the strategy pattern (also known as the policy pattern) is a behavioural software design pattern that enables an algorithm's behavior to be selected at runtime.
 
-**Programmatic example**
+**编程示例**
 
 Translating our example from above, we can easily implement this strategy in javascript using its feature of first class functions.
 
@@ -1848,17 +1902,20 @@ sorter2(shortDataSet) // Output : Sorting with bubble sort
 
 ### 💢 状态模式 / State
 
-Real world example
+现实生活中的例子
+
 > Imagine you are using some drawing application, you choose the paint brush to draw. Now the brush changes it's behavior based on the selected color i.e. if you have chosen red color it will draw in red, if blue then it will be in blue etc.  
 
-In plain words
+简单来说
+
 > It lets you change the behavior of a class when the state changes.
 
-Wikipedia says
+维基百科这样描述
+
 > The state pattern is a behavioral software design pattern that implements a state machine in an object-oriented way. With the state pattern, a state machine is implemented by implementing each individual state as a derived class of the state pattern interface, and implementing state transitions by invoking methods defined by the pattern's superclass.
 > The state pattern can be interpreted as a strategy pattern which is able to switch the current strategy through invocations of methods defined in the pattern's interface
 
-**Programmatic example**
+**编程示例**
 
 Let's take an example of text editor, it let's you change the state of text that is typed i.e. if you have selected bold, it starts writing in bold, if italic then in italics etc.
 
@@ -1915,7 +1972,8 @@ editor.type('Fifth line')
 
 ### 📒 模板方法模式 / Template Method
 
-Real world example
+现实生活中的例子
+
 > Suppose we are getting some house built. The steps for building might look like
 >
 > - Prepare the base of house
@@ -1925,13 +1983,15 @@ Real world example
 >
 > The order of these steps could never be changed i.e. you can't build the roof before building the walls etc but each of the steps could be modified for example walls can be made of wood or polyester or stone.
   
-In plain words
+简单来说
+
 > Template method defines the skeleton of how certain algorithm could be performed but defers the implementation of those steps to the children classes.
 
-Wikipedia says
+维基百科这样描述
+
 > In software engineering, the template method pattern is a behavioral design pattern that defines the program skeleton of an algorithm in an operation, deferring some steps to subclasses. It lets one redefine certain steps of an algorithm without changing the algorithm's structure.
 
-**Programmatic Example**
+**编程示例**
 
 Imagine we have a build tool that helps us test, lint, build, generate build reports (i.e. code coverage reports, linting report etc) and deploy our app on the test server.
 
