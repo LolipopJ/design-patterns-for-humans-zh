@@ -34,7 +34,7 @@ module.exports = {
     prevLinks: false,
     repo: 'LolipopJ/design-patterns-for-humans-zh',
     docsDir: 'vuepress/docs',
-    smoothScroll: true
+    smoothScroll: false
   },
   markdown: {
     lineNumbers: true

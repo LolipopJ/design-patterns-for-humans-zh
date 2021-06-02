@@ -9,7 +9,7 @@
 设计模式的话题经常害得我们心神不宁。在这里，我将试着用尽可能简单的方式来解释它们，让它们深深地刻在您（还有我）的脑海里。
 </p>
 <p>
-本项目基于 <a href="https://github.com/kamranahmedse/design-patterns-for-humans">Design Patterns for Humans</a>，案例的 JavaScript 代码来自 <a href="https://github.com/sohamkamani/javascript-design-patterns-for-humans">JavaScript Design Patterns for Humans</a>，翻译借鉴参考了 <a href="https://github.com/guanguans">guanguans</a> 前辈的<a href="https://github.com/Leon0X/design-patterns-for-humans-cn">中文翻译项目</a>。
+本项目基于 <a href="https://github.com/kamranahmedse/design-patterns-for-humans">Design Patterns for Humans</a>，案例的 JavaScript 代码来自 <a href="https://github.com/sohamkamani/javascript-design-patterns-for-humans">JavaScript Design Patterns for Humans</a>。
 </p>
 </div>
 
@@ -45,26 +45,31 @@
 
 ## 🏗️ 创建型设计模式 / Creational Design Patterns
 
-In plain words
-> Creational patterns are focused towards how to instantiate an object or group of related objects.
+简单来说
 
-Wikipedia says
-> In software engineering, creational design patterns are design patterns that deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or added complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
+> 创建型设计模式关注如何实例化一个对象，或一组相关的对象。
+
+维基百科这样描述
+
+> 在软件工程领域，创建型设计模式是处理对象创建机制的设计模式，试图以符合要求的方式来创建对象。创建对象的基础方式可能导致设计问题或增加设计复杂度。创建型设计模式通过以某种方式控制对象创建的过程，来解决这个问题。
 
 ### 🏠 简单工厂模式 / Simple Factory
 
-Real world example
-> Consider, you are building a house and you need doors. You can either put on your carpenter clothes, bring some wood, glue, nails and all the tools required to build the door and start building it in your house or you can simply call the factory and get the built door delivered to you so that you don't need to learn anything about the door making or to deal with the mess that comes with making it.
+现实生活中的例子
 
-In plain words
-> Simple factory simply generates an instance for client without exposing any instantiation logic to the client
+> 想象，您正在修建一栋房子，但是您需要门。您可以穿上木匠的衣服，拿上木头、胶水、钉子以及所有需要的工具，在您的房子里亲自制作这个门；或者，您只需要打个电话给工厂，让他们把制造好的门送到您身边，这样您不必了解任何关于制作门的知识，也不必处理制作门所带来的麻烦。
 
-Wikipedia says
-> In object-oriented programming (OOP), a factory is an object for creating other objects – formally a factory is a function or method that returns objects of a varying prototype or class from some method call, which is assumed to be "new".
+简单来说
 
-**Programmatic Example**
+> 简单工厂只是为客户端生成一个实例，而不向客户端暴露任何实例化操作的逻辑。
 
-First of all we have a door interface and the implementation
+维基百科这样描述
+
+> 在面向对象编程（OOP）中，工厂是用于创建其它对象的对象——更准确地说，工厂是一个函数或方法，通过调用它的某个方法（假设为 "new"）可以返回拥有不同原型或类的对象。
+
+**编程示例**
+
+首先，我们定义了门的接口和并实现了它
 
 ```js
 /**
@@ -89,7 +94,7 @@ class WoodenDoor {
 }
 ```
 
-Then we have our door factory that makes the door and returns it
+接下来，我们创建了制造并返回门的工厂
 
 ```js
 const DoorFactory = {
@@ -97,59 +102,62 @@ const DoorFactory = {
 }
 ```
 
-And then it can be used as
+最后，可以这样使用工厂
 
 ```js
-// Make me a door of 100x200
+// 给我制造一个 100x200 的门
 const door = DoorFactory.makeDoor(100, 200)
 
 console.log('Width:', door.getWidth())
 console.log('Height:', door.getHeight())
 
-// Make me a door of 50x100
+// 给我制造一个 50x100 的门
 const door = DoorFactory.makeDoor(50, 100)
 ```
 
-**When to Use?**
+**什么时候使用？**
 
-When creating an object is not just a few assignments and involves some logic, it makes sense to put it in a dedicated factory instead of repeating the same code everywhere.
+当创建一个对象不仅仅是赋值操作，而是会涉及到一些逻辑过程时，把它放到一个专用的工厂中（而不是在每个地方编写重复的代码）是很有意义的。
 
 ### 🏭 工厂方法模式 / Factory Method
 
-Real world example
-> Consider the case of a hiring manager. It is impossible for one person to interview for each of the positions. Based on the job opening, she has to decide and delegate the interview steps to different people.
+现实生活中的例子
 
-In plain words
-> It provides a way to delegate the instantiation logic to child classes.
+> 以招聘经理为例。一个人不可能对每一个职位都进行面试。根据职位空缺情况，她必须决定面试的步骤，并将其委派给不同的人。
 
-Wikipedia says
-> In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
+简单来说
 
-**Programmatic Example**
+> 工厂方法模式提供了一种将实例化的逻辑分派给子类的方法。
 
-Taking our hiring manager example above. First of all we have an interviewer interface and some implementations for it
+维基百科这样描述
+
+> 在基于类的编程中，工厂方法模式是一种创建型模式，它使用工厂方法来处理创建对象的问题，而不必指定将要创建的对象所基于的具体类。这是通过调用工厂方法来创建对象所实现的——要么在接口中指定并由子类实现，要么在基类中实现并可选地由派生类覆盖——而不是通过调用构造函数实现。
+
+**编程示例**
+
+以上面的招聘经理为例。首先我们定义一个面试官接口和它的一些实现
 
 ```js
-/*
-Interviewer interface
-
-askQuestions()
-*/
+/**
+ * Interviewer interface
+ *
+ * askQuestions()
+ */
 
 class Developer {
   askQuestions() {
-    console.log('Asking about design patterns!')
+    console.log('提出设计模式问题！')
   }
 }
 
 class CommunityExecutive {
   askQuestions() {
-    console.log('Asking about community building')
+    console.log('提出社区建设问题！')
   }
 }
 ```
 
-Now let us create our `HiringManager`
+现在让我们编写我们的 `HiringManager`（招聘经理）
 
 ```js
 class HiringManager {
@@ -161,7 +169,7 @@ class HiringManager {
 }
 ```
 
-Now any child can extend it and provide the required interviewer
+现在所有的子类都可以继承它并提供需要的面试官
 
 ```js
 class DevelopmentManager extends HiringManager {
@@ -177,88 +185,91 @@ class MarketingManager extends HiringManager {
 }
 ```
 
-and then it can be used as
+最后，我们可以这样使用它
 
 ```js
 const devManager = new DevelopmentManager()
-devManager.takeInterview() // Output: Asking about design patterns
+devManager.takeInterview() // 输出：提出设计模式问题！
 
 const marketingManager = new MarketingManager()
-marketingManager.takeInterview() // Output: Asking about community buildng.
+marketingManager.takeInterview() // 输出：提出社区建设问题！
 ```
 
-**When to use?**
+**什么时候使用？**
 
-Useful when there is some generic processing in a class but the required sub-class is dynamically decided at runtime. Or putting it in other words, when the client doesn't know what exact sub-class it might need.
+当类中存在一些通用的处理过程，但需要的子类在运行时动态决定时，工厂方法模式非常有用。换句话说，当客户端不知道它可能需要什么具体的子类时。
 
 ### 🔨 抽象工厂模式 / Abstract Factory
 
-Real world example
-> Extending our door example from Simple Factory. Based on your needs you might get a wooden door from a wooden door shop, iron door from an iron shop or a PVC door from the relevant shop. Plus you might need a guy with different kind of specialities to fit the door, for example a carpenter for wooden door, welder for iron door etc. As you can see there is a dependency between the doors now, wooden door needs carpenter, iron door needs a welder etc.
+现实生活中的例子
 
-In plain words
-> A factory of factories a factory that groups the individual but related/dependent factories together without specifying their concrete classes.
-  
-Wikipedia says
-> The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes
+> 现在让我们拓展简单工厂模式里门的例子。根据您的需要，您可能会从木门店买到木门，从铁门店买到铁门，或是从相应的商店买到塑料门。此外，您可能需要有着不同专业能力的师傅来安装这些门，比如让木匠安装木门，让焊工安装铁门等等。正如您所看到的，现在门（与人）之间有一种依赖关系，木门需要木匠，铁门需要焊工等等。
 
-**Programmatic Example**
+简单来说
 
-Translating the door example above. First of all we have our `Door` interface and some implementation for it
+> 工厂的工厂；一个工厂，它将独立但是相关（或互相依赖）的工厂组成一组，而不用指定这些工厂的具体类。
+
+维基百科这样描述
+
+> 抽象工厂模式提供了一种封装一组具有共同主题的独立工厂的方法，而不必指定它们的具体类。
+
+**编程示例**
+
+根据上面门的例子。首先，我们定义了 `Door`（门）接口和它的一些实现
 
 ```js
-/*
-Door interface :
-
-getDescription()
-*/
+/**
+ * Door interface :
+ *
+ * getDescription()
+ */
 
 class WoodenDoor {
     getDescription() {
-        console.log('I am a wooden door')
+        console.log('我是一个木门')
     }
 }
 
 class IronDoor {
     getDescription() {
-        console.log('I am an iron door')
+        console.log('我是一个铁门')
     }
 }
 ```
 
-Then we have some fitting experts for each door type
+接着我们为每一种类型的门定义了安装师傅
 
 ```js
-/*
-DoorFittingExpert interface :
-
-getDescription()
-*/
+/**
+ * DoorFittingExpert interface :
+ *
+ * getDescription()
+ */
 
 class Welder {
     getDescription() {
-        console.log('I can only fit iron doors')
+        console.log('我只能安装木门')
     }
 }
 
 class Carpenter {
     getDescription() {
-        console.log('I can only fit wooden doors')
+        console.log('我只能安装铁门')
     }
 }
 ```
 
-Now we have our abstract factory that would let us make family of related objects i.e. wooden door factory would create a wooden door and wooden door fitting expert and iron door factory would create an iron door and iron door fitting expert
+现在我们有了抽象工厂，它允许我们创建一系列相关联的对象。比如，木门工厂能够制造木门和提供木门安装师傅，铁门工厂能够制造铁门和提供铁门安装师傅。
 
 ```js
-/*
-DoorFactory interface :
+/**
+ * DoorFactory interface :
+ *
+ * makeDoor()
+ * makeFittingExpert()
+ */
 
-makeDoor()
-makeFittingExpert()
-*/
-
-// Wooden factory to return carpenter and wooden door
+// 返回木匠和木门的木门工厂
 class WoodenDoorFactory {
     makeDoor(){
         return new WoodenDoor()
@@ -269,7 +280,7 @@ class WoodenDoorFactory {
     }
 }
 
-// Iron door factory to get iron door and the relevant fitting expert
+// 获得铁门和相应安装师傅的铁门工厂
 class IronDoorFactory {
     makeDoor(){
         return new IronDoor()
@@ -281,7 +292,7 @@ class IronDoorFactory {
 }
 ```
 
-And then it can be used as
+最后我们可以这样使用它
 
 ```js
 woodenFactory = new WoodenDoorFactory()
@@ -289,39 +300,42 @@ woodenFactory = new WoodenDoorFactory()
 door = woodenFactory.makeDoor()
 expert = woodenFactory.makeFittingExpert()
 
-door.getDescription()  // Output: I am a wooden door
-expert.getDescription() // Output: I can only fit wooden doors
+door.getDescription()  // 输出：我是一个木门
+expert.getDescription() // 输出：我只能安装木门
 
-// Same for Iron Factory
+// 铁门工厂和上面一样
 ironFactory = new IronDoorFactory()
 
 door = ironFactory.makeDoor()
 expert = ironFactory.makeFittingExpert()
 
-door.getDescription()  // Output: I am an iron door
-expert.getDescription() // Output: I can only fit iron doors
+door.getDescription()  // 输出：我是一个铁门
+expert.getDescription() // 输出：我只能安装铁门
 ```
 
-As you can see the wooden door factory has encapsulated the `carpenter` and the `wooden door` also iron door factory has encapsulated the `iron door` and `welder`. And thus it had helped us make sure that for each of the created door, we do not get a wrong fitting expert.
+正如您看到的，木门工厂已经封装了 `carpenter`（木匠）和 `wooden door`（木门），铁门工厂已经封装了 `iron door`（铁门）和 `welder`（焊工）。因此，它确保了对于每一个制造出来的门，我们都能得到正确的安装师傅。
 
-**When to use?**
+**什么时候使用？**
 
-When there are interrelated dependencies with not-that-simple creation logic involved
+当对象之间存在相互依赖的关系，涉及的创建逻辑并不那么简单时。
 
 ### 👷 生成器模式 / Builder
 
 译注：又名**建造模式**。
 
-Real world example
-> Imagine you are at Hardee's and you order a specific deal, lets say, "Big Hardee" and they hand it over to you without *any questions* this is the example of simple factory. But there are cases when the creation logic might involve more steps. For example you want a customized Subway deal, you have several options in how your burger is made e.g what bread do you want? what types of sauces would you like? What cheese would you want? etc. In such cases builder pattern comes to the rescue.
+现实生活中的例子
 
-In plain words
-> Allows you to create different flavors of an object while avoiding constructor pollution. Useful when there could be several flavors of an object. Or when there are a lot of steps involved in creation of an object.
+> 想象您在哈帝斯汉堡店里，点了一份“大哈迪汉堡”，接着店员就把汉堡递给你，*毫无疑问* 这是一个简单工厂的例子。但是在一些情况下汉堡的制作可能会包括更多的步骤逻辑。举个例子，您想要一份定制的汉堡，关于汉堡的制作您有很多选项：想要什么面包？喜欢哪款酱汁？想吃哪种奶酪？诸如此类。在这种情况下，就需要用到生成器模式了。
 
-Wikipedia says
-> The builder pattern is an object creation software design pattern with the intentions of finding a solution to the telescoping constructor anti-pattern.
+简单来说
 
-Having said that let me add a bit about what telescoping constructor anti-pattern is. At one point or the other we have all seen a constructor like below:
+> 生成器模式允许您创建不同风格的对象，同时避免污染构造函数。当一个对象可能存在多种风格时，或者当一个对象的创建过程包含很多步骤时，生成器模式非常有用。
+
+维基百科这样描述
+
+> 生成器模式是一种创建型软件设计模式，旨在找出重叠构造函数反面模式（Telescopic Constructor Anti-pattern）的一个解决方案。
+
+既然已经提到，那么请允许我补充一下什么是重叠构造函数反面模式。在某一时刻我们都看到了这样一个构造函数：
 
 ```js
 constructor(size, cheese = true, pepperoni = true, tomato = false, lettuce = true) {
@@ -329,11 +343,11 @@ constructor(size, cheese = true, pepperoni = true, tomato = false, lettuce = tru
 }
 ```
 
-As you can see the number of constructor parameters can quickly get out of hand and it might become difficult to understand the arrangement of parameters. Plus this parameter list could keep on growing if you would want to add more options in future. This is called telescoping constructor anti-pattern.
+正如您所看见的，构造函数的参数数量很快就会失控，理解参数的含义也可能因此变得困难。此外，如果在以后您还想添加更多的构造选项，它的参数列表还会继续增长。这就被称作重叠构造函数反面模式。
 
-**Programmatic Example**
+**编程示例**
 
-The sane alternative is to use the builder pattern. First of all we have our burger that we want to make
+明智的选择是使用生成器模式。首先我们定义我们想要制作的汉堡
 
 ```js
 class Burger {
@@ -347,11 +361,10 @@ class Burger {
 }
 ```
 
-And then we have the builder
+接着我们编写了生成器
 
 ```js
 class BurgerBuilder {
-
     constructor(size) {
         this.size = size
     }
@@ -382,7 +395,7 @@ class BurgerBuilder {
 }
 ```
 
-And then it can be used as:
+最后可以这样使用它
 
 ```js
 const burger = (new BurgerBuilder(14))
@@ -392,12 +405,12 @@ const burger = (new BurgerBuilder(14))
     .build()
 ```
 
-__Javascript specific tip__ : When you find that the number of arguments to a function or method are too many (normally any more than 2 arguments is considered too much), use a single object argument instead of multiple arguments. This serves two purposes :
+**JavaScript 版本特别提示**：当您发现一个函数或方法的参数太多（一般超过 2 个参数都被认为是太多）时，应当使用一个对象参数，来取代多个参数。理由有二：
 
-1. It makes your code look less cluttered, since there is only one argument.
-2. You don't have to worry about the order of arguments since arguments are now passed as named properties of the object.
+1. 它可以让您的代码看上去更整洁，因为只有一个参数。
+2. 您不需要担心参数的顺序，因为参数将根据对象的命名属性传递。
 
-For example :
+举个例子，应当使用：
 
 ```js
 const burger = new Burger({
@@ -409,101 +422,109 @@ const burger = new Burger({
 })
 ```
 
-instead of :
+来取代：
 
 ```js
 const burger = new Burger(14, true, false, true, true)
 ```
 
-**When to use?**
+**什么时候使用？**
 
-When there could be several flavors of an object and to avoid the constructor telescoping. The key difference from the factory pattern is that factory pattern is to be used when the creation is a one step process while builder pattern is to be used when the creation is a multi step process.
+当一个对象可能有多种风格，并想要避免重叠构造函数时。与工厂模式的关键区别是，当创建对象过程只有一个步骤时，应使用工厂模式；当创建对象过程存在多个步骤时，应使用生成器模式。
 
 ### 🐑 原型模式 / Prototype
 
-Real world example
-> Remember dolly? The sheep that was cloned! Lets not get into the details but the key point here is that it is all about cloning
+现实生活中的例子
 
-In plain words
-> Create object based on an existing object through cloning.
+> 还记得多莉吗？那只被克隆的羊！让我们聊聊克隆这件事儿，当然，不谈细节，只谈它的关键点所在。
 
-Wikipedia says
-> The prototype pattern is a creational design pattern in software development. It is used when the type of objects to create is determined by a prototypical instance, which is cloned to produce new objects.
+简单来说
 
-In short, it allows you to create a copy of an existing object and modify it to your needs, instead of going through the trouble of creating an object from scratch and setting it up.
+> 基于已存在的对象，通过克隆创建新的对象。
 
-**Programmatic Example**
+维基百科这样描述
 
-In PHP, it can be easily done using `clone`
+> 在软件开发领域，原型模式是一种创建型设计模式。当创建的对象类型由一个原型实例确定时，使用原型模式，这个原型实例将被克隆来生成新的对象。
 
-```php
-class Sheep
-{
-    protected $name;
-    protected $category;
+简而言之，原型模式允许您创建已存在对象的副本，并根据您的需要修改这个副本，而不用经历从头开始创建新的对象并配置整个对象的麻烦。
 
-    public function __construct(string $name, string $category = 'Mountain Sheep')
-    {
-        $this->name = $name;
-        $this->category = $category;
+**编程示例**
+
+首先我们定义了我们想要克隆的羊
+
+```js
+class Sheep {
+    constructor(name, category = "山羊") {
+        this.name = name;
+        this.category = category;
     }
-
-    public function setName(string $name)
-    {
-        $this->name = $name;
+    setName(name) {
+        this.name = name;
     }
-
-    public function getName()
-    {
-        return $this->name;
+    getName() {
+        console.log(this.name);
     }
-
-    public function setCategory(string $category)
-    {
-        $this->category = $category;
+    setCategory(category) {
+        this.category = category;
     }
-
-    public function getCategory()
-    {
-        return $this->category;
+    getCategory() {
+        console.log(this.category);
     }
 }
 ```
-Then it can be cloned like below
-```php
-$original = new Sheep('Jolly');
-echo $original->getName(); // Jolly
-echo $original->getCategory(); // Mountain Sheep
 
-// Clone and modify what is required
-$cloned = clone $original;
-$cloned->setName('Dolly');
-echo $cloned->getName(); // Dolly
-echo $cloned->getCategory(); // Mountain sheep
+现在我们有了一个羊原型（SheepPrototype）的类，它将克隆给定了原型的对象。它的构造函数接受类型为羊的原型
+
+```js
+class SheepPrototype {
+    constructor(proto) {
+        this.proto = proto;
+    }
+    clone() {
+        return new Sheep(this.proto.name, this.proto.category);
+    }
+}
 ```
 
-Also you could use the magic method `__clone` to modify the cloning behavior.
+最后我们可以这样使用它
 
-**When to use?**
+```js
+const originalSheep = new Sheep("Jolly");
+originalSheep.getName(); // Jolly
+originalSheep.getCategory(); // 山羊
+// 克隆并根据需要修改
+const prototype = new SheepPrototype(originalSheep);
+const clonedSheep = prototype.clone();
+clonedSheep.setName("Dolly");
+clonedSheep.getName(); // Dolly
+clonedSheep.getCategory(); // 山羊
+```
 
-When an object is required that is similar to existing object or when the creation would be expensive as compared to cloning.
+**JavaScript 版本特别提示**：此编程示例是原型模式的经典实现，但是 JavaScript 能够使用[内建原型工具](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Object_prototypes)更有效地实现原型模式。
+
+**什么时候使用？**
+
+当需要的对象与现有的对象很相似时；或与克隆的方式相比，直接创建对象的成本更高时。
 
 ### 💍 单例模式 / Singleton
 
-Real world example
-> There can only be one president of a country at a time. The same president has to be brought to action, whenever duty calls. President here is singleton.
+现实生活中的例子
 
-In plain words
-> Ensures that only one object of a particular class is ever created.
+> 在一个国家里同时只能有一位总统。当职责需要时，这位总统就必须采取行动。这里的总统即是单例。
 
-Wikipedia says
-> In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one object. This is useful when exactly one object is needed to coordinate actions across the system.
+简单来说
 
-Singleton pattern is actually considered an anti-pattern and overuse of it should be avoided. It is not necessarily bad and could have some valid use-cases but should be used with caution because it introduces a global state in your application and change to it in one place could affect in the other areas and it could become pretty difficult to debug. The other bad thing about them is it makes your code tightly coupled plus it mocking the singleton could be difficult.
+> 确保只创建了特定类的唯一对象。
 
-**Programmatic Example**
+维基百科这样描述
 
-In javascript, singletons can be implemented using the module pattern. Private variables and functions are hidden in a function closure, and public methods are selectively exposed.
+> 在软件工程领域，单例模式是一种软件设计模式，它将类的实例化限制为一个对象。当只需要一个对象来协助整个系统的运行时，单例模式很有帮助。
+
+实际上，单例模式被认为是一种反面模式（Anti-pattern），应当避免过度使用它。单例模式不一定总是不好的，也能够有一些有效的用例，但仍应当谨慎使用它，因为它会在您的应用中引入全局状态，在一个地方对它的修改可能会影响到其它地方，并且调试起来可能会变得非常困难。使用单例模式的另一个坏处是，它会使您的代码紧密耦合，此外模拟（Mock，译者注：在单元测试中，常用 Mock 的方法来模拟构造一些复杂或不容易获取的对象）单例可能会很困难。
+
+**编程示例**
+
+在 JavaScript 中，单例可以使用模块模式实现。私有变量和方法隐藏在函数闭包中，而公有方法选择地暴露出去。
 
 ```js
 const president = (function(){
@@ -519,12 +540,12 @@ const president = (function(){
 }())
 ```
 
-Here, `presidentsPrivateInformation` and `name` are kept private. However, `name` can be accessed with the exposed `president.getName` method.
+在这里，`presidentsPrivateInformation` 和 `name` 为私有变量。但是，`name` 可以通过对外暴露的 `president.getName` 方法访问到。
 
 ```js
-president.getName() // Outputs 'Turd Sandwich'
-president.name // Outputs undefined
-president.presidentsPrivateInformation // Outputs undefined
+president.getName() // 输出：'Turd Sandwich'
+president.name // 输出：undefined
+president.presidentsPrivateInformation // 输出：undefined
 ```
 
 ## 🔩 结构型设计模式 / Structural Design Patterns

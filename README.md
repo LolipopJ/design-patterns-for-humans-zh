@@ -49,9 +49,9 @@
 
 ### 🛎️ 设计模式的类型 / Types of Design Patterns
 
-* [创建型](#%EF%B8%8F-创建型设计模式--creational-design-patterns)
-* [结构型](#-结构型设计模式--structural-design-patterns)
-* [行为型](#-行为型设计模式--behavioral-design-patterns)
+- [创建型](#%EF%B8%8F-创建型设计模式--creational-design-patterns)
+- [结构型](#-结构型设计模式--structural-design-patterns)
+- [行为型](#-行为型设计模式--behavioral-design-patterns)
 
 ## 🏗️ 创建型设计模式 / Creational Design Patterns
 
@@ -63,12 +63,12 @@
 
 > 在软件工程领域，创建型设计模式是处理对象创建机制的设计模式，试图以符合要求的方式来创建对象。创建对象的基础方式可能导致设计问题或增加设计复杂度。创建型设计模式通过以某种方式控制对象创建的过程，来解决这个问题。
 
-* [简单工厂模式](#-简单工厂模式--simple-factory)
-* [工厂方法模式](#-工厂方法模式--factory-method)
-* [抽象工厂模式](#-抽象工厂模式--abstract-factory)
-* [生成器模式](#-生成器模式--builder)
-* [原型模式](#-原型模式--prototype)
-* [单例模式](#-单例模式--singleton)
+- [简单工厂模式](#-简单工厂模式--simple-factory)
+- [工厂方法模式](#-工厂方法模式--factory-method)
+- [抽象工厂模式](#-抽象工厂模式--abstract-factory)
+- [生成器模式](#-生成器模式--builder)
+- [原型模式](#-原型模式--prototype)
+- [单例模式](#-单例模式--singleton)
 
 ### 🏠 简单工厂模式 / Simple Factory
 
@@ -349,9 +349,9 @@ expert.getDescription() // 输出：我只能安装铁门
 
 维基百科这样描述
 
-> 生成器模式是一种创建型软件设计模式，旨在找出重叠构造函数反模式（telescopic constructor anti-pattern）的一个解决方案。
+> 生成器模式是一种创建型软件设计模式，旨在找出重叠构造函数反面模式（Telescopic Constructor Anti-pattern）的一个解决方案。
 
-既然已经提到，那么请允许我补充一下什么是重叠构造函数反模式。在某一时刻我们都看到了这样一个构造函数：
+既然已经提到，那么请允许我补充一下什么是重叠构造函数反面模式。在某一时刻我们都看到了这样一个构造函数：
 
 ```js
 constructor(size, cheese = true, pepperoni = true, tomato = false, lettuce = true) {
@@ -359,7 +359,7 @@ constructor(size, cheese = true, pepperoni = true, tomato = false, lettuce = tru
 }
 ```
 
-正如您所看见的，构造函数的参数数量很快就会失控，理解参数的含义也可能因此变得困难。此外，如果在以后您还想添加更多的构造选项，它的参数列表还会继续增长。这就被称作重叠构造函数反模式。
+正如您所看见的，构造函数的参数数量很快就会失控，理解参数的含义也可能因此变得困难。此外，如果在以后您还想添加更多的构造选项，它的参数列表还会继续增长。这就被称作重叠构造函数反面模式。
 
 **编程示例**
 
@@ -525,22 +525,22 @@ clonedSheep.getCategory(); // 山羊
 ### 💍 单例模式 / Singleton
 
 现实生活中的例子
- 
-> There can only be one president of a country at a time. The same president has to be brought to action, whenever duty calls. President here is singleton.
+
+> 在一个国家里同时只能有一位总统。当职责需要时，这位总统就必须采取行动。这里的总统即是单例。
 
 简单来说
 
-> Ensures that only one object of a particular class is ever created.
+> 确保只创建了特定类的唯一对象。
 
 维基百科这样描述
 
-> In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one object. This is useful when exactly one object is needed to coordinate actions across the system.
+> 在软件工程领域，单例模式是一种软件设计模式，它将类的实例化限制为一个对象。当只需要一个对象来协助整个系统的运行时，单例模式很有帮助。
 
-Singleton pattern is actually considered an anti-pattern and overuse of it should be avoided. It is not necessarily bad and could have some valid use-cases but should be used with caution because it introduces a global state in your application and change to it in one place could affect in the other areas and it could become pretty difficult to debug. The other bad thing about them is it makes your code tightly coupled plus it mocking the singleton could be difficult.
+实际上，单例模式被认为是一种反面模式（Anti-pattern），应当避免过度使用它。单例模式不一定总是不好的，也能够有一些有效的用例，但仍应当谨慎使用它，因为它会在您的应用中引入全局状态，在一个地方对它的修改可能会影响到其它地方，并且调试起来可能会变得非常困难。使用单例模式的另一个坏处是，它会使您的代码紧密耦合，此外模拟（Mock，译者注：在单元测试中，常用 Mock 的方法来模拟构造一些复杂或不容易获取的对象）单例可能会很困难。
 
 **编程示例**
 
-In javascript, singletons can be implemented using the module pattern. Private variables and functions are hidden in a function closure, and public methods are selectively exposed.
+在 JavaScript 中，单例可以使用模块模式实现。私有变量和方法隐藏在函数闭包中，而公有方法选择地暴露出去。
 
 ```js
 const president = (function(){
@@ -556,12 +556,12 @@ const president = (function(){
 }())
 ```
 
-Here, `presidentsPrivateInformation` and `name` are kept private. However, `name` can be accessed with the exposed `president.getName` method.
+在这里，`presidentsPrivateInformation` 和 `name` 为私有变量。但是，`name` 可以通过对外暴露的 `president.getName` 方法访问到。
 
 ```js
-president.getName() // Outputs 'Turd Sandwich'
-president.name // Outputs undefined
-president.presidentsPrivateInformation // Outputs undefined
+president.getName() // 输出：'Turd Sandwich'
+president.name // 输出：undefined
+president.presidentsPrivateInformation // 输出：undefined
 ```
 
 ## 🔩 结构型设计模式 / Structural Design Patterns
@@ -574,13 +574,13 @@ president.presidentsPrivateInformation // Outputs undefined
 
 > In software engineering, structural design patterns are design patterns that ease the design by identifying a simple way to realize relationships between entities.
   
-* [适配器模式](#-适配器模式--adapter)
-* [桥接模式](#-桥接模式--bridge)
-* [组合模式](#-组合模式--composite)
-* [装饰器模式](#-装饰器模式--decorator)
-* [门面模式](#-门面模式--facade)
-* [享元模式](#-享元模式--flyweight)
-* [代理模式](#-代理模式--proxy)
+- [适配器模式](#-适配器模式--adapter)
+- [桥接模式](#-桥接模式--bridge)
+- [组合模式](#-组合模式--composite)
+- [装饰器模式](#-装饰器模式--decorator)
+- [门面模式](#-门面模式--facade)
+- [享元模式](#-享元模式--flyweight)
+- [代理模式](#-代理模式--proxy)
 
 ### 🔌 适配器模式 / Adapter
 
@@ -1227,16 +1227,16 @@ door.close() // Closing lab door
 
 > In software engineering, behavioral design patterns are design patterns that identify common communication patterns between objects and realize these patterns. By doing so, these patterns increase flexibility in carrying out this communication.
 
-* [责任链模式](#-责任链模式--chain-of-responsibility)
-* [命令模式](#-命令模式--command)
-* [迭代器模式](#-迭代器模式--iterator)
-* [中介者模式](#-中介者模式--mediator)
-* [备忘录模式](#-备忘录模式--memento)
-* [观察者模式](#-观察者模式--observer)
-* [访问者模式](#-访问者模式--visitor)
-* [策略模式](#-策略模式--strategy)
-* [状态模式](#-状态模式--state)
-* [模板方法模式](#-模板方法模式--template-method)
+- [责任链模式](#-责任链模式--chain-of-responsibility)
+- [命令模式](#-命令模式--command)
+- [迭代器模式](#-迭代器模式--iterator)
+- [中介者模式](#-中介者模式--mediator)
+- [备忘录模式](#-备忘录模式--memento)
+- [观察者模式](#-观察者模式--observer)
+- [访问者模式](#-访问者模式--visitor)
+- [策略模式](#-策略模式--strategy)
+- [状态模式](#-状态模式--state)
+- [模板方法模式](#-模板方法模式--template-method)
 
 ### 🔗 责任链模式 / Chain of Responsibility
 
@@ -1335,7 +1335,7 @@ bank.pay(259)
 
 现实生活中的例子
 
-> A generic example would be you ordering a food at restaurant. You (i.e. `Client`) ask the waiter (i.e. `Invoker`) to bring some food (i.e. `Command`) and waiter simply forwards the request to Chef (i.e. `Receiver`) who has the knowledge of what and how to cook. 
+> A generic example would be you ordering a food at restaurant. You (i.e. `Client`) ask the waiter (i.e. `Invoker`) to bring some food (i.e. `Command`) and waiter simply forwards the request to Chef (i.e. `Receiver`) who has the knowledge of what and how to cook.
 > Another example would be you (i.e. `Client`) switching on (i.e. `Command`) the television (i.e. `Receiver`) using a remote control (`Invoker`).
 
 简单来说
@@ -1522,7 +1522,7 @@ stationList.removeStation(new RadioStation(89)) // Will remove station 89
 
 Here is the simplest example of a chat room (i.e. mediator) with users (i.e. colleagues) sending messages to each other.
 
-First of all, we have the mediator i.e. the chat room 
+First of all, we have the mediator i.e. the chat room
 
 ```js
 // Mediator
