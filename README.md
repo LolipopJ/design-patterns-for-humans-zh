@@ -1,4 +1,4 @@
-![献给中文读者的设计模式教程 / Design Patterns for Humans CN](./cover/cover.png)
+![献给中文读者的设计模式教程 / Design Patterns for Humans ZH](./cover/cover.png)
 
 ***
 <div align="center">
@@ -19,7 +19,7 @@
 
 如果您喜欢这篇教程，不妨看看项目的原作者的[博客](http://sohamkamani.com)，或是在 [Twitter](https://twitter.com/sohamkamani) 上跟他打声招呼。
 
-# 献给中文读者的设计模式教程 / Design Patterns for Humans CN
+# 献给中文读者的设计模式教程 / Design Patterns for Humans ZH
 
 ## 🔖 目录 / Catalogue
 

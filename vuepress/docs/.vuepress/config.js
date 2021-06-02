@@ -12,6 +12,12 @@ const themeConfigLocalesSettings = {
 module.exports = {
   title: '献给中文读者的设计模式教程',
   description: '对设计模式的超简单解读！的另一个中文译本。',
+  head: [
+    ['link', { rel: "apple-touch-icon", sizes: "180x180", href: "/favicon-180.png"}],
+    ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32.png"}],
+    ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16.png"}],
+    ['link', { rel: "shortcut icon", href: "/favicon.ico"}],
+  ],
   base: '/design-patterns-for-humans-zh/',
   themeConfig: {
     nav: [
@@ -30,10 +36,14 @@ module.exports = {
     ],
     sidebar: 'auto',
     displayAllHeaders: true,
+    lastUpdated: '上次更新：',
     nextLinks: false,
     prevLinks: false,
     repo: 'LolipopJ/design-patterns-for-humans-zh',
     docsDir: 'vuepress/docs',
+    docsBranch: 'main',
+    editLinks: true,
+    editLinkText: '帮助本教程的翻译！',
     smoothScroll: false
   },
   markdown: {

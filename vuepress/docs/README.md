@@ -1,4 +1,4 @@
-<img :src="$withBase('/cover.png')" alt="献给中文读者的设计模式教程 / Design Patterns for Humans CN">
+<img :src="$withBase('/cover.png')" alt="献给中文读者的设计模式教程 / Design Patterns for Humans ZH" />
 
 ***
 <div align="center">
@@ -19,7 +19,7 @@
 
 如果您喜欢这篇教程，不妨看看项目的原作者的[博客](http://sohamkamani.com)，或是在 [Twitter](https://twitter.com/sohamkamani) 上跟他打声招呼。
 
-# 献给中文读者的设计模式教程 / Design Patterns for Humans CN
+# 献给中文读者的设计模式教程 / Design Patterns for Humans ZH
 
 ## 🚀 介绍 / Introduction
 
@@ -1993,4 +1993,4 @@ iosBuilder.build()
 
 MIT © [LolipopJ](https://github.com/LolipopJ)
 
-本项目基于 [Design Patterns for Humans](https://github.com/kamranahmedse/design-patterns-for-humans)，案例的 JavaScript 代码来自 [JavaScript Design Patterns for Humans](https://github.com/sohamkamani/javascript-design-patterns-for-humans)，翻译借鉴参考了 [guanguans](https://github.com/guanguans) 前辈的[中文翻译项目](https://github.com/Leon0X/design-patterns-for-humans-cn)。
+本项目基于 [Design Patterns for Humans](https://github.com/kamranahmedse/design-patterns-for-humans)，案例的 JavaScript 代码来自 [JavaScript Design Patterns for Humans](https://github.com/sohamkamani/javascript-design-patterns-for-humans)。
