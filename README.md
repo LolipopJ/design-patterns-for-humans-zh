@@ -122,13 +122,13 @@ const DoorFactory = {
 最后，可以这样使用工厂
 
 ```js
-// 给我制造一个 100x200 的门
+// 制造一个 100x200 的门给我
 const door = DoorFactory.makeDoor(100, 200)
 
 console.log('Width:', door.getWidth())
 console.log('Height:', door.getHeight())
 
-// 给我制造一个 50x100 的门
+// 制造一个 50x100 的门给我
 const door = DoorFactory.makeDoor(50, 100)
 ```
 
@@ -582,34 +582,52 @@ president.presidentsPrivateInformation // 输出：undefined
 - [享元模式](#-享元模式--flyweight)
 - [代理模式](#-代理模式--proxy)
 
+## 🔩 结构型设计模式 / Structural Design Patterns
+
+简单来说
+
+> 结构型设计模式主要关注对象的组成，或者换句话说，关注实体之间如何相互使用。再或者另一种解释是，它有助于回答“如何构建软件的组件”这个问题。
+
+维基百科这样描述
+
+> 在软件工程领域，结构型设计模式是通过识别一个简单的方法，这个方法可以实现实体之间的关系，来简化设计的设计模式。
+  
+- [适配器模式](#-适配器模式--adapter)
+- [桥接模式](#-桥接模式--bridge)
+- [组合模式](#-组合模式--composite)
+- [装饰器模式](#-装饰器模式--decorator)
+- [门面模式](#-门面模式--facade)
+- [享元模式](#-享元模式--flyweight)
+- [代理模式](#-代理模式--proxy)
+
 ### 🔌 适配器模式 / Adapter
 
 现实生活中的例子
 
-> Consider that you have some pictures in your memory card and you need to transfer them to your computer. In order to transfer them you need some kind of adapter that is compatible with your computer ports so that you can attach memory card to your computer. In this case card reader is an adapter.
-> Another example would be the famous power adapter a three legged plug can't be connected to a two pronged outlet, it needs to use a power adapter that makes it compatible with the two pronged outlet.
-> Yet another example would be a translator translating words spoken by one person to another
+> 为了传输图片，您需要某种与电脑端口兼容的适配器，这样您就可以将存储卡连接到您的电脑了。在这种情况下，读卡器就是一个适配器。
+> 另一个例子是著名的电源适配器，一个三脚插头无法插入到两脚插座中，它需要用到电源适配器使其与两脚插座兼容。
+> 再举个例子，一位翻译者将一个人说的话翻译给另一个人（译注：这里的翻译者就是适配器）。
 
 简单来说
 
-> Adapter pattern lets you wrap an otherwise incompatible object in an adapter to make it compatible with another class.
+> 适配器模式允许您将与其它不兼容的对象包装到一个适配器中，让这个对象与另一个类兼容。
 
 维基百科这样描述
 
-> In software engineering, the adapter pattern is a software design pattern that allows the interface of an existing class to be used as another interface. It is often used to make existing classes work with others without modifying their source code.
+> 在软件工程领域，适配器模式是一种设计模式，它允许一个现有类的接口用作另一个接口。适配器模式常用于使现有的类与其它的类一起工作，而无需修改它们的源码。
 
 **编程示例**
 
-Consider a game where there is a hunter and he hunts lions.
+想象一个游戏，我们有一个猎人，他要狩猎狮子。
 
-First we have an interface `Lion` that all types of lions have to implement
+首先我们定义了 `Lion`（狮子）接口，所有类型的狮子都需要实现这个接口
 
 ```js
-/*
-Lion interface :
-
-roar()
-*/
+/**
+ * Lion interface :
+ *
+ * roar()
+ */
 
 class AfricanLion  {
     roar() {}
@@ -620,28 +638,27 @@ class AsianLion  {
 }
 ```
 
-And hunter expects any implementation of `Lion` interface to hunt.
+而猎人需要 `Lion` 的任意实现来狩猎。
 
 ```js
 class Hunter {
     hunt(lion) {
-        // ... some code before
+        // ... 前面的一些代码
         lion.roar()
-        //... some code after
+        // ... 后面的一些代码
     }
 }
 ```
 
-Now let's say we have to add a `WildDog` in our game so that hunter can hunt that also. But we can't do that directly because dog has a different interface. To make it compatible for our hunter, we will have to create an adapter that is compatible
+现在假设我们在我们的游戏里添加了一只 `WildDog`（野狗），猎人也可以狩猎它。但是我们无法直接添加野狗，因为它有着不同的接口。为了让它与我们的猎人兼容，我们必须创建一个兼容的适配器
 
 ```js
-// This needs to be added to the game
+// 需要添加到游戏中
 class WildDog {
-    bark() {
-    }
+    bark() {}
 }
 
-// Adapter around wild dog to make it compatible with our game
+// 与野狗相关的适配器，让它与我们的游戏兼容
 class WildDogAdapter {
 
     constructor(dog) {
@@ -654,7 +671,7 @@ class WildDogAdapter {
 }
 ```
 
-And now the `WildDog` can be used in our game using `WildDogAdapter`.
+于是，通过 `WildDogAdapter`，在我们的游戏中就可以使用 `WildDog` 了。
 
 ```js
 wildDog = new WildDog()

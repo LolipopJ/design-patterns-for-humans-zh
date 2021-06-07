@@ -43,7 +43,7 @@ module.exports = {
     docsDir: 'vuepress/docs',
     docsBranch: 'main',
     editLinks: true,
-    editLinkText: '帮助本教程的翻译！',
+    editLinkText: '帮助改善本教程的翻译！',
     smoothScroll: false
   },
   markdown: {
