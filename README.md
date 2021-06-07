@@ -568,24 +568,6 @@ president.presidentsPrivateInformation // 输出：undefined
 
 简单来说
 
-> Structural patterns are mostly concerned with object composition or in other words how the entities can use each other. Or yet another explanation would be, they help in answering "How to build a software component?"
-
-维基百科这样描述
-
-> In software engineering, structural design patterns are design patterns that ease the design by identifying a simple way to realize relationships between entities.
-  
-- [适配器模式](#-适配器模式--adapter)
-- [桥接模式](#-桥接模式--bridge)
-- [组合模式](#-组合模式--composite)
-- [装饰器模式](#-装饰器模式--decorator)
-- [门面模式](#-门面模式--facade)
-- [享元模式](#-享元模式--flyweight)
-- [代理模式](#-代理模式--proxy)
-
-## 🔩 结构型设计模式 / Structural Design Patterns
-
-简单来说
-
 > 结构型设计模式主要关注对象的组成，或者换句话说，关注实体之间如何相互使用。再或者另一种解释是，它有助于回答“如何构建软件的组件”这个问题。
 
 维基百科这样描述
@@ -687,7 +669,7 @@ hunter.hunt(wildDogAdapter)
 
 > Consider you have a website with different pages and you are supposed to allow the user to change the theme. What would you do? Create multiple copies of each of the pages for each of the themes or would you just create separate theme and load them based on the user's preferences? Bridge pattern allows you to do the second i.e.
 
-![With and without the bridge pattern](https://cloud.githubusercontent.com/assets/11269635/23065293/33b7aea0-f515-11e6-983f-98823c9845ee.png)
+![With and without the bridge pattern](static/With-and-without-the-bridge-pattern.png)
 
 简单来说
 
