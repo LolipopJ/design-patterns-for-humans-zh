@@ -1,3 +1,7 @@
+::: warning
+[本项目](https://github.com/LolipopJ/design-patterns-for-humans-zh)仍在翻译过程中，当前仅作参考使用
+:::
+
 <img :src="$withBase('/cover.png')" alt="献给中文读者的设计模式教程 / Design Patterns for Humans ZH" />
 
 ***

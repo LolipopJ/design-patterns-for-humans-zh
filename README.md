@@ -572,7 +572,7 @@ president.presidentsPrivateInformation // 输出：undefined
 
 维基百科这样描述
 
-> 在软件工程领域，结构型设计模式是通过识别一个简单的方法，这个方法可以实现实体之间的关系，来简化设计的设计模式。
+> 在软件工程领域，结构型设计模式是通过识别一个简单的方法，这个方法实现了实体之间的关系，来简化设计的设计模式。
   
 - [适配器模式](#-适配器模式--adapter)
 - [桥接模式](#-桥接模式--bridge)
@@ -667,35 +667,35 @@ hunter.hunt(wildDogAdapter)
 
 现实生活中的例子
 
-> Consider you have a website with different pages and you are supposed to allow the user to change the theme. What would you do? Create multiple copies of each of the pages for each of the themes or would you just create separate theme and load them based on the user's preferences? Bridge pattern allows you to do the second i.e.
+> 想象您有一个包括很多页面的网站，现在您计划让用户修改网站的主题。您会怎么做？为每个页面的每个主题创建一份副本，或是创建单独的主题并根据用户的偏好加载它们？桥接模式允许您实现后者，如下图所示。
 
 ![With and without the bridge pattern](static/With-and-without-the-bridge-pattern.png)
 
 简单来说
 
-> Bridge pattern is about preferring composition over inheritance. Implementation details are pushed from a hierarchy to another object with a separate hierarchy.
+> 桥接模式是偏好于使用组合的模式，而不是继承。实现的细节从一个模组层次推送给另一个具有单独模组层次的对象。
 
 维基百科这样描述
 
-> The bridge pattern is a design pattern used in software engineering that is meant to "decouple an abstraction from its implementation so that the two can vary independently"
+> 桥接模式是一种用在软件工程领域的设计模式，旨在“将抽象与其实现解耦，使得两者可以独立改变”。
 
 **编程示例**
 
-Translating our WebPage example from above. Here we have the `WebPage` hierarchy
+翻译一下刚刚关于我们网站的例子。现在我们定义了 `WebPage`（网站）模组层次
 
 ```js
-/*
-Webpage interface :
+/**
+ * Webpage interface :
+ *
+ * constructor(theme)
+ * getContent()
+ */
 
-constructor(theme)
-getContent()
-*/
-
-class About{ 
+class About{
     constructor(theme) {
         this.theme = theme
     }
-    
+
     getContent() {
         return "About page in " + this.theme.getColor()
     }
@@ -705,21 +705,21 @@ class Careers{
    constructor(theme) {
        this.theme = theme
    }
-   
+
    getContent() {
        return "Careers page in " + this.theme.getColor()
-   } 
+   }
 }
 ```
 
-And the separate theme hierarchy
+以及单独的主题模组层次
 
 ```js
-/*
-Theme interface :
-
-getColor()
-*/
+/**
+ * Theme interface :
+ *
+ * getColor()
+ */
 
 class DarkTheme{
     getColor() {
@@ -738,7 +738,7 @@ class AquaTheme{
 }
 ```
 
-And both the hierarchies
+最后，结合两个模组层次使用
 
 ```js
 const darkTheme = new DarkTheme()
@@ -746,41 +746,40 @@ const darkTheme = new DarkTheme()
 const about = new About(darkTheme)
 const careers = new Careers(darkTheme)
 
-console.log(about.getContent() )// "About page in Dark Black"
-console.log(careers.getContent() )// "Careers page in Dark Black"
+console.log(about.getContent()) // "About page in Dark Black"
+console.log(careers.getContent()) // "Careers page in Dark Black"
 ```
 
 ### 🌿 组合模式 / Composite
 
 现实生活中的例子
 
-> Every organization is composed of employees. Each of the employees has same features i.e. has a salary, has some responsibilities, may or may not report to someone, may or may not have some subordinates etc.
+> 每个组织都由雇员组成。每个雇员都有相同的特点，例如有薪水酬劳，有任务职责，可能会向某人报告，可能会有下属等等。
 
 简单来说
 
-> Composite pattern lets clients to treat the individual objects in a uniform manner.
+> 组合模式使得客户端以统一的方式处理不同的对象。
 
 维基百科这样描述
 
-> In software engineering, the composite pattern is a partitioning design pattern. The composite pattern describes that a group of objects is to be treated in the same way as a single instance of an object. The intent of a composite is to "compose" objects into tree structures to represent part-whole hierarchies. Implementing the composite pattern lets clients treat individual objects and compositions uniformly.
+> 在软件工程领域，组合模式是一种分离设计模式。组合模式描述了一组对象的处理，与对一个对象的单个实例的处理相同。组合模式的目的是将对象“组合”进树结构中，来表示部分整体的层次结构。实现组合模式使得客户端使用统一的方式处理不同的对象和组合体。
 
 **编程示例**
 
-Taking our employees example from above. Here we have different employee types
+以前面我们雇员的例子为例。现在我们有几种不同的雇员类型
 
 ```js
-/*
-Employee interface :
-
-constructor(name, salary)
-getName()
-setSalary()
-getSalary()
-getRoles()
-*/
+/**
+ * Employee interface :
+ *
+ * constructor(name, salary)
+ * getName()
+ * setSalary()
+ * getSalary()
+ * getRoles()
+ */
 
 class Developer {
-
     constructor(name, salary) {
         this.name = name
         this.salary = salary
@@ -808,7 +807,6 @@ class Developer {
 }
 
 class Designer {
-
     constructor(name, salary) {
         this.name = name
         this.salary = salary
@@ -836,7 +834,7 @@ class Designer {
 }
 ```
 
-Then we have an organization which consists of several different types of employees
+接着我们定义了一个组织类，它包括了这几种不同类型的雇员
 
 ```js
 class Organization {
@@ -860,19 +858,19 @@ class Organization {
 }
 ```
 
-And then it can be used as
+最后我们可以这样使用它
 
 ```js
-// Prepare the employees
+// 定义新的雇员
 const john = new Developer('John Doe', 12000)
 const jane = new Designer('Jane', 10000)
 
-// Add them to organization
+// 添加雇员到组织中
 const organization = new Organization()
 organization.addEmployee(john)
 organization.addEmployee(jane)
 
-console.log("Net salaries: " , organization.getNetSalaries()) // Net Salaries: 22000
+console.log("薪金净额：" , organization.getNetSalaries()) // 薪金净额：22000
 ```
 
 ### ☕ 装饰器模式 / Decorator
