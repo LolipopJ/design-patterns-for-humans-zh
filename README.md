@@ -877,44 +877,43 @@ console.log("薪金净额：" , organization.getNetSalaries()) // 薪金净额�
 
 现实生活中的例子
 
-> Imagine you run a car service shop offering multiple services. Now how do you calculate the bill to be charged? You pick one service and dynamically keep adding to it the prices for the provided services till you get the final cost. Here each type of service is a decorator.
+> 想象您经营了一家提供多种服务的汽修厂。现在您要如何计算应该收取的账单金额？您可以选择一种服务，动态地将提供服务的价格累计到账单上，直到您得到了最终的消费金额。在这个例子中，每一种类型的服务都是一个装饰器。
 
 简单来说
 
-> Decorator pattern lets you dynamically change the behavior of an object at run time by wrapping them in an object of a decorator class.
+> 装饰器模式允许您将对象放入一个装饰器类的对象中，动态地改变这个对象在运行时的行为。
 
 维基百科这样描述
 
-> In object-oriented programming, the decorator pattern is a design pattern that allows behavior to be added to an individual object, either statically or dynamically, without affecting the behavior of other objects from the same class. The decorator pattern is often useful for adhering to the Single Responsibility Principle, as it allows functionality to be divided between classes with unique areas of concern.
+> 在面向对象编程中，装饰器模式是一种设计模式，它允许静态或动态地向单个对象中添加行为，而不会影响同一个类的其它对象的行为。装饰器模式通常有助于遵循单一责任原则，这是因为它允许在具有独特关注领域的类之间，划分出各自的功能。
 
 **编程示例**
 
-Lets take coffee for example. First of all we have a simple coffee implementing the coffee interface
+不妨以咖啡为例。首先，我们编写一个普通咖啡的类来实现咖啡接口
 
 ```js
-/*
-Coffee interface:
-getCost()
-getDescription()
-*/
+/**
+ * Coffee interface:
+ * getCost()
+ * getDescription()
+ */
 
-class SimpleCoffee{
+class SimpleCoffee {
 
     getCost() {
         return 10
     }
 
     getDescription() {
-        return 'Simple coffee'
+        return '普通咖啡'
     }
 }
 ```
 
-We want to make the code extensible to allow options to modify it if required. Lets make some add-ons (decorators)
+我们想要让代码具有可扩展性，当需要的时候可以有选项去修改它。让我们来编写一些额外选项（装饰器）
 
 ```js
 class MilkCoffee {
-
 
     constructor(coffee) {
         this.coffee = coffee
@@ -925,7 +924,7 @@ class MilkCoffee {
     }
 
     getDescription() {
-        return this.coffee.getDescription() + ', milk'
+        return this.coffee.getDescription() + '，加奶'
     }
 }
 
@@ -940,7 +939,7 @@ class WhipCoffee {
     }
 
     getDescription() {
-        return this.coffee.getDescription() + ', whip'
+        return this.coffee.getDescription() + '，加鲜奶油'
     }
 }
 
@@ -955,32 +954,31 @@ class VanillaCoffee {
     }
 
     getDescription() {
-        return this.coffee.getDescription() + ', vanilla'
+        return this.coffee.getDescription() + '，加香草'
     }
 }
-
 ```
 
-Lets make a coffee now
+现在，来一杯咖啡吧
 
 ```js
 let someCoffee
 
 someCoffee = new SimpleCoffee()
-console.log(someCoffee.getCost())// 10
-console.log(someCoffee.getDescription())// Simple Coffee
+console.log(someCoffee.getCost()) // 10
+console.log(someCoffee.getDescription()) // 普通咖啡
 
 someCoffee = new MilkCoffee(someCoffee)
-console.log(someCoffee.getCost())// 12
-console.log(someCoffee.getDescription())// Simple Coffee, milk
+console.log(someCoffee.getCost()) // 12
+console.log(someCoffee.getDescription()) // 普通咖啡，加奶
 
 someCoffee = new WhipCoffee(someCoffee)
-console.log(someCoffee.getCost())// 17
-console.log(someCoffee.getDescription())// Simple Coffee, milk, whip
+console.log(someCoffee.getCost()) // 17
+console.log(someCoffee.getDescription()) // 普通咖啡，加奶，加鲜奶油
 
 someCoffee = new VanillaCoffee(someCoffee)
-console.log(someCoffee.getCost())// 20
-console.log(someCoffee.getDescription())// Simple Coffee, milk, whip, vanilla
+console.log(someCoffee.getCost()) // 20
+console.log(someCoffee.getDescription()) // 普通咖啡，加奶，加鲜奶油，加香草
 ```
 
 ### 📦 门面模式 / Facade
@@ -989,18 +987,19 @@ console.log(someCoffee.getDescription())// Simple Coffee, milk, whip, vanilla
 
 现实生活中的例子
 
-> How do you turn on the computer? "Hit the power button" you say! That is what you believe because you are using a simple interface that computer provides on the outside, internally it has to do a lot of stuff to make it happen. This simple interface to the complex subsystem is a facade.
+> 您是如何启动电脑的？“按下电源按钮！”您说。这是您所相信的，因为您正在使用电脑为外部提供的简单接口，而在电脑内部，它必须做很多事情来实现启动事件。这个复杂子系统的简单接口，就是门面。
 
 简单来说
 
-> Facade pattern provides a simplified interface to a complex subsystem.
+> 门面模式为复杂的子系统提供了一个简化的接口。
 
 维基百科这样描述
 
-> A facade is an object that provides a simplified interface to a larger body of code, such as a class library.
+> 门面是一个对象，它为更大的代码主体提供了简化的接口，例如一个类库。
 
 **编程示例**
-Taking our computer example from above. Here we have the computer class
+
+拿上面启动电脑的例子来说。首先我们编写了电脑类
 
 ```js
 class Computer {
@@ -1035,11 +1034,11 @@ class Computer {
 }
 ```
 
-Here we have the facade
+接着我们编写了它的门面
 
 ```js
-class ComputerFacade
-{
+class ComputerFacade {
+
     constructor(computer) {
         this.computer = computer
     }
@@ -1059,7 +1058,7 @@ class ComputerFacade
 }
 ```
 
-Now to use the facade
+最后就可以使用电脑的门面了
 
 ```js
 const computer = new ComputerFacade(new Computer())
@@ -1071,27 +1070,27 @@ computer.turnOff() // Bup bup buzzz! Haah! Zzzzz
 
 现实生活中的例子
 
-> Did you ever have fresh tea from some stall? They often make more than one cup that you demanded and save the rest for any other customer so to save the resources e.g. gas etc. Flyweight pattern is all about that i.e. sharing.
+> 您喝过摊位上新鲜的茶吗？他们通常会沏不止一杯您点的茶，然后将剩下的茶留待给其他消费者，达到节省资源的目的，例如燃气等。享元模式即是关于这个，共享。
 
 简单来说
 
-> It is used to minimize memory usage or computational expenses by sharing as much as possible with similar objects.
+> 享元模式通过在相似对象间共享尽可能多的数据，来减少内存使用或计算开销。
 
 维基百科这样描述
 
-> In computer programming, flyweight is a software design pattern. A flyweight is an object that minimizes memory use by sharing as much data as possible with other similar objects it is a way to use objects in large numbers when a simple repeated representation would use an unacceptable amount of memory.
+> 在计算机编程中，享元模式是一个软件设计模式。享元是一个对象，它与其它相似的对象共享尽可能多的数据，来减少内存开销。当简单的重复行为将占用不可接受数值的内存时，可以使用享元模式来表示大量级的对象。
 
 **编程示例**
 
-Translating our tea example from above. First of all we have tea types and tea maker
+翻译前边我们关于茶的例子。首先我们编写了茶的类型和茶的制作类
 
 ```js
-// Anything that will be cached is flyweight. 
-// Types of tea here will be flyweights.
+// 所有将被缓存的数据即是享元
+// 这里茶的类型将成为享元
 class KarakTea {
 }
 
-// Acts as a factory and saves the tea
+// 充当工厂，保存沏好的茶
 class TeaMaker {
     constructor(){
         this.availableTea = {}
@@ -1104,7 +1103,7 @@ class TeaMaker {
 }
 ```
 
-Then we have the `TeaShop` which takes orders and serves them
+接着我们编写了 `TeaShop`（茶店）类，它将处理点单和上茶事件
 
 ```js
 class TeaShop {
@@ -1119,66 +1118,66 @@ class TeaShop {
 
     serve() {
         this.orders.forEach((order, index) => {
-            console.log('Serving tea to table#' + index)
+            console.log('上茶给桌号 #' + index)
         })
     }
 }
 ```
 
-And it can be used as below
+最后我们可以像下面一样使用它
 
 ```js
 const teaMaker = new TeaMaker()
 const shop = new TeaShop(teaMaker)
 
-shop.takeOrder('less sugar', 1)
-shop.takeOrder('more milk', 2)
-shop.takeOrder('without sugar', 5)
+shop.takeOrder('少糖', 1)
+shop.takeOrder('多奶', 2)
+shop.takeOrder('无糖', 5)
 
 shop.serve()
-// Serving tea to table# 1
-// Serving tea to table# 2
-// Serving tea to table# 5
+// 上茶给桌号 #1
+// 上茶给桌号 #2
+// 上茶给桌号 #5
 ```
 
 ### 🎱 代理模式 / Proxy
 
 现实生活中的例子
 
-> Have you ever used an access card to go through a door? There are multiple options to open that door i.e. it can be opened either using access card or by pressing a button that bypasses the security. The door's main functionality is to open but there is a proxy added on top of it to add some functionality. Let me better explain it using the code example below.
+> 您曾刷卡来通过门禁吗？有很多种方法可以打开门禁，例如刷门禁卡或是按下绕过安保的按钮。打开门是门的主要功能，但这里有一层代理添加到了打开门上，增添了一些功能。让我通过下面的代码示例更好地解释它。
 
 简单来说
 
-> Using the proxy pattern, a class represents the functionality of another class.
+> 使用代理模式，类代表行驶另一个类的功能。
 
 维基百科这样描述
 
-> A proxy, in its most general form, is a class functioning as an interface to something else. A proxy is a wrapper or agent object that is being called by the client to access the real serving object behind the scenes. Use of the proxy can simply be forwarding to the real object, or can provide additional logic. In the proxy extra functionality can be provided, for example caching when operations on the real object are resource intensive, or checking preconditions before operations on the real object are invoked.
+> 在其最一般的形式，代理是一个类，作为其它东西的接口发挥功能。代理是被客户端调用的封装或中介对象，用于访问系统背后真正提供服务的对象。使用代理可以直接地指向真正的对象，或者可以提供额外的逻辑。在代理模式下，可以添加附加的功能，例如，当对真正对象的操作会消耗大量资源时进行缓存，或是在调用真正对象的操作之前检查前置条件。
 
 **编程示例**
 
-Taking our security door example from above. Firstly we have the door interface and an implementation of door
+以上面我们的防盗门为例。首先，我们编写了门的接口和它的实现
 
 ```js
-/*
-Door interface :
-
-open()
-close()
-*/
+/**
+ * Door interface :
+ *
+ * open()
+ * close()
+ */
 
 class LabDoor {
     open() {
-        console.log('Opening lab door')
+        console.log('打开实验室门')
     }
 
     close() {
-        console.log('Closing the lab door')
+        console.log('关闭实验室门')
     }
 }
 ```
 
-Then we have a proxy to secure any doors that we want
+接着我们编写了代理，它可以确保我们想要的任何门的安全
 
 ```js
 class Security {
@@ -1190,7 +1189,7 @@ class Security {
         if (this.authenticate(password)) {
             this.door.open()
         } else {
-            console.log('Big no! It ain\'t possible.')
+            console.log('大大的不！密码错误。')
         }
     }
 
@@ -1204,14 +1203,14 @@ class Security {
 }
 ```
 
-And here is how it can be used
+最后这是使用它的方法
 
 ```js
 const door = new Security(new LabDoor())
-door.open('invalid') // Big no! It ain't possible.
+door.open('invalid') // 大大的不！密码错误。
 
-door.open('ecr@t') // Opening lab door
-door.close() // Closing lab door
+door.open('ecr@t') // 打开实验室门
+door.close() // 关闭实验室门
 ```
 
 ## 🤹 行为型设计模式 / Behavioral Design Patterns
