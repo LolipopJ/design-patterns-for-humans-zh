@@ -275,7 +275,7 @@ class Carpenter {
 }
 ```
 
-现在我们有了抽象工厂，它允许我们创建一系列相关联的对象。比如，木门工厂能够制造木门和提供木门安装师傅，铁门工厂能够制造铁门和提供铁门安装师傅。
+现在我们有了抽象工厂，它允许我们创建一系列相关联的对象，即木门工厂能够制造木门和提供木门安装师傅，而铁门工厂能够制造铁门和提供铁门安装师傅。
 
 ```js
 /**
@@ -754,7 +754,7 @@ console.log(careers.getContent()) // "Careers page in Dark Black"
 
 现实生活中的例子
 
-> 每个组织都由雇员组成。每个雇员都有相同的特点，例如有薪水酬劳，有任务职责，可能会向某人报告，可能会有下属等等。
+> 每个组织都由雇员组成。每个雇员都有一些相同的特点，如有一定的薪水酬劳，担负某些任务职责，可能需要向某人报告，可能拥有下属等等。
 
 简单来说
 
@@ -1070,7 +1070,7 @@ computer.turnOff() // Bup bup buzzz! Haah! Zzzzz
 
 现实生活中的例子
 
-> 您喝过摊位上新鲜的茶吗？他们通常会沏不止一杯您点的茶，然后将剩下的茶留待给其他消费者，达到节省资源的目的，例如燃气等。享元模式即是关于这个，共享。
+> 您喝过摊位上新鲜的茶吗？他们通常会沏不止一杯您点的茶，然后将剩下的茶留待给其他消费者，达到节省资源的目的，例如燃气等。享元模式就是关于这件事——共享。
 
 简单来说
 
@@ -1144,7 +1144,7 @@ shop.serve()
 
 现实生活中的例子
 
-> 您曾刷卡来通过门禁吗？有很多种方法可以打开门禁，例如刷门禁卡或是按下绕过安保的按钮。打开门是门的主要功能，但这里有一层代理添加到了打开门上，增添了一些功能。让我通过下面的代码示例更好地解释它。
+> 您曾刷卡来通过门禁吗？有很多种方法可以打开门禁，刷门禁卡或是按下绕过安保的按钮。打开门是门的主要功能，但这里有一层代理添加到了打开门上，增添了一些功能。让我通过下面的代码示例更好地解释它。
 
 简单来说
 
@@ -1217,11 +1217,11 @@ door.close() // 关闭实验室门
 
 简单来说
 
-> It is concerned with assignment of responsibilities between the objects. What makes them different from structural patterns is they don't just specify the structure but also outline the patterns for message passing/communication between them. Or in other words, they assist in answering "How to run a behavior in software component?"
+> 行为型设计模式主要关注对象之间责任的分配。与结构型设计模式不同的是，它们不仅指定了对象的结构，还概述了对象之间消息传递（通信）的模式。换句话说，它们有助于回答了“如何在软件组件中执行行为？”这个问题。
 
 维基百科这样描述
 
-> In software engineering, behavioral design patterns are design patterns that identify common communication patterns between objects and realize these patterns. By doing so, these patterns increase flexibility in carrying out this communication.
+> 在软件工程领域，行为型设计模式是识别并实现对象之间的常见通信模式的设计模式。如此一来，这些模式使得通信变得更加灵活。
 
 - [责任链模式](#-责任链模式--chain-of-responsibility)
 - [命令模式](#-命令模式--command)
@@ -1238,19 +1238,19 @@ door.close() // 关闭实验室门
 
 现实生活中的例子
 
-> For example, you have three payment methods (`A`, `B` and `C`) setup in your account each having a different amount in it. `A` has 100 USD, `B` has 300 USD and `C` having 1000 USD and the preference for payments is chosen as `A` then `B` then `C`. You try to purchase something that is worth 210 USD. Using Chain of Responsibility, first of all account `A` will be checked if it can make the purchase, if yes purchase will be made and the chain will be broken. If not, request will move forward to account `B` checking for amount if yes chain will be broken otherwise the request will keep forwarding till it finds the suitable handler. Here `A`, `B` and `C` are links of the chain and the whole phenomenon is Chain of Responsibility.
+> 举个例子，在您的账户中，您设置了三种支付方式（`A`, `B` 和 `C`），其中存放了不同数量的钱。`A` 账户中有 100 美元，`B` 中有 300 美元，而 `C` 中有 1000 美元，按照 `A`，`B` 最后是 `C` 的顺序偏好进行支付操作。您尝试购买某个价值 210 美元的东西。使用责任链模式，首先，检查 `A` 账户是否能购买，如果可以，将进行支付操作然后将链中止。如果不足以购买，请求将传递给 `B` 账户，检查是否能购买，同样如果可以，将链中止；如果不可以，请求将继续传递直到它找到合适的处理者。在这里，`A`，`B` 和 `C` 是链上的不同环节，而这整个模式就是责任链。
 
 简单来说
 
-> It helps building a chain of objects. Request enters from one end and keeps going from object to object till it finds the suitable handler.
+> 责任链模式有助于构建一条对象链。请求从链的一端进入，从对象到另一个对象依次传递，直到它找到合适的处理者。
 
 维基百科这样描述
 
-> In object-oriented design, the chain-of-responsibility pattern is a design pattern consisting of a source of command objects and a series of processing objects. Each processing object contains logic that defines the types of command objects that it can handle the rest are passed to the next processing object in the chain.
+> 在面向对象设计中，责任链模式是由一些命令对象和一系列处理对象组成的设计模式。每个处理对象都包含了它可以处理的命令对象类型的逻辑，其余的将传递给链中的下一个处理对象。
 
 **编程示例**
 
-Translating our account example above. First of all we have a base account having the logic for chaining the accounts together and some accounts
+翻译一下刚刚我们账户的例子。首先，我们编写了基础账户类，它包括将账户链接起来的逻辑。基于基础账户类，我们还编写了一些具体账户类
 
 ```js
 class Account {
@@ -1258,18 +1258,18 @@ class Account {
     setNext(account) {
         this.successor = account
     }
-    
+
     pay(amountToPay) {
         if (this.canPay(amountToPay)) {
-            console.log(`Paid ${amountToPay} using ${this.name}`)
+            console.log(`使用 ${this.name} 支付 ${amountToPay}！`)
         } else if (this.successor) {
-            console.log(`Cannot pay using ${this.name}. Proceeding...`)
+            console.log(`无法使用 ${this.name} 支付。继续中...`)
             this.successor.pay(amountToPay)
         } else {
-            console.log('None of the accounts have enough balance')
+            console.log('没有账户额度足够')
         }
     }
-    
+
     canPay(amount) {
         return this.balance >= amount
     }
@@ -1278,112 +1278,112 @@ class Account {
 class Bank extends Account {
     constructor(balance) {
         super()
-        this.name = 'bank'
+        this.name = '银行'
         this.balance = balance
     }
 }
 
 class Paypal extends Account {
     constructor(balance) {
-        super()        
-        this.name = 'Paypal'
+        super()
+        this.name = '贝宝'
         this.balance = balance
     }
 }
 
 class Bitcoin extends Account {
     constructor(balance) {
-        super()        
-        this.name = 'bitcoin'
+        super()
+        this.name = '比特币'
         this.balance = balance
     }
 }
 ```
 
-Now let's prepare the chain using the links defined above (i.e. Bank, Paypal, Bitcoin)
+现在，让我们使用上面定义的具体账户类（即银行，贝宝，比特币），构成我们的责任链
 
 ```js
-// Let's prepare a chain like below
-//      bank.paypal.bitcoin
+// 让我们像下面这样构成责任链
+//      银行.贝宝.比特币
 //
-// First priority bank
-//      If bank can't pay then paypal
-//      If paypal can't pay then bit coin
+// 银行优先支付
+//      如果银行不足以支付，则使用贝宝
+//      如果贝宝不足以支付，则使用比特币
 
-const bank = new Bank(100)          // Bank with balance 100
-const paypal = new Paypal(200)      // Paypal with balance 200
-const bitcoin = new Bitcoin(300)    // Bitcoin with balance 300
+const bank = new Bank(100)          // 银行额度为 100
+const paypal = new Paypal(200)      // 贝宝额度为 200
+const bitcoin = new Bitcoin(300)    // 比特币额度为 300
 
 bank.setNext(paypal)
 paypal.setNext(bitcoin)
 
-// Let's try to pay using the first priority i.e. bank
+// 让我们尝试使用银行优先支付
 bank.pay(259)
 
-// Output will be
+// 输出如下
 // ==============
-// Cannot pay using bank. Proceeding ..
-// Cannot pay using paypal. Proceeding ..: 
-// Paid 259 using Bitcoin!
+// 无法使用 银行 支付。继续中...
+// 无法使用 贝宝 支付。继续中...
+// 使用 比特币 支付 259！
 ```
 
 ### 👮 命令模式 / Command
 
 现实生活中的例子
 
-> A generic example would be you ordering a food at restaurant. You (i.e. `Client`) ask the waiter (i.e. `Invoker`) to bring some food (i.e. `Command`) and waiter simply forwards the request to Chef (i.e. `Receiver`) who has the knowledge of what and how to cook.
-> Another example would be you (i.e. `Client`) switching on (i.e. `Command`) the television (i.e. `Receiver`) using a remote control (`Invoker`).
+> 举一个常见的例子，您在餐厅点单。您（即 `Client` 客户端）告诉服务员（即 `Invoker` 调用者）您想要这些菜肴（即 `Command` 命令），于是服务员简单地将这些需求转发给厨师（即 `Receiver` 接收者），他们知道这些菜肴是什么以及该如何烹制。
+> 另一个例子是您（即 `Client` 客户端）使用遥控器（即 `Invoker` 调用者），切换（即 `Command` 命令）电视（即 `Receiver` 接收者）正在播放的频道。
 
 简单来说
 
-> Allows you to encapsulate actions in objects. The key idea behind this pattern is to provide the means to decouple client from receiver.
+> 命令模式允许您将操作封装到对象中。命令模式背后的核心思想是，提供将客户端与接收者解耦的方法。
 
 维基百科这样描述
 
-> In object-oriented programming, the command pattern is a behavioral design pattern in which an object is used to encapsulate all information needed to perform an action or trigger an event at a later time. This information includes the method name, the object that owns the method and values for the method parameters.
+> 在面向对象编程中，命令模式是一种行为型设计模式，它将执行操作或稍后触发事件所需的全部信息封装到一个对象中。信息包括方法名，拥有此方法的对象和此方法参数的值。
 
 **编程示例**
 
-First of all we have the receiver that has the implementation of every action that could be performed
+首先，我们定义了接收者，它拥有可能会执行的每个方法的实现。
 
 ```js
 // Receiver
 class Bulb {
     turnOn() {
-        console.log('Bulb has been lit')
+        console.log('点亮了灯泡！')
     }
-    
+
     turnOff() {
-        console.log('Darkness!')
+        console.log('黑暗！')
     }
 }
 ```
 
-then we have an interface that each of the commands are going to implement and then we have a set of commands
+我们已经有了每个命令都需要实现的接口，基于这个接口，我们定义了一组命令
 
 ```js
-/*
-Command interface :
-
-    execute()
-    undo()
-    redo()
-*/
+/**
+ * Command interface
+ *
+ * execute()
+ * undo()
+ * redo()
+ */
 
 // Command
 class TurnOnCommand {
     constructor(bulb) {
         this.bulb = bulb
     }
-    
+
     execute() {
         this.bulb.turnOn()
     }
-    
+
     undo() {
         this.bulb.turnOff()
     }
-    
+
     redo() {
         this.execute()
     }
@@ -1393,22 +1393,22 @@ class TurnOffCommand {
     constructor(bulb) {
         this.bulb = bulb
     }
-    
+
     execute() {
         this.bulb.turnOff()
     }
-    
+
     undo() {
         this.bulb.turnOn()
     }
-    
+
     redo() {
         this.execute()
     }
 }
 ```
 
-Then we have an `Invoker` with whom the client will interact to process any commands
+之后，我们定义了 `Invoker`（调用者），由它来处理客户端的交互命令
 
 ```js
 // Invoker
@@ -1419,7 +1419,7 @@ class RemoteControl {
 }
 ```
 
-Finally let's see how we can use it in our client
+最后，让我们来看看该如何通过客户端调用它
 
 ```js
 const bulb = new Bulb()
@@ -1428,11 +1428,11 @@ const turnOn = new TurnOnCommand(bulb)
 const turnOff = new TurnOffCommand(bulb)
 
 const remote = new RemoteControl()
-remote.submit(turnOn) // Bulb has been lit!
-remote.submit(turnOff) // Darkness!
+remote.submit(turnOn) // 点亮了灯泡！
+remote.submit(turnOff) // 黑暗！
 ```
 
-Command pattern can also be used to implement a transaction based system. Where you keep maintaining the history of commands as soon as you execute them. If the final command is successfully executed, all good otherwise just iterate through the history and keep executing the `undo` on all the executed commands.
+命令模式也可以用来实现基于事务的系统。您执行的命令将保存在历史记录中。如果成功执行了最后的命令，一切都好；如果没有，则可以根据历史记录不断回滚，对所有已执行的命令进行 `undo`（撤销）操作。
 
 ### ➿ 迭代器模式 / Iterator
 
