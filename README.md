@@ -1438,33 +1438,34 @@ remote.submit(turnOff) // 黑暗！
 
 现实生活中的例子
 
-> An old radio set will be a good example of iterator, where user could start at some channel and then use next or previous buttons to go through the respective channels. Or take an example of MP3 player or a TV set where you could press the next and previous buttons to go through the consecutive channels or in other words they all provide an interface to iterate through the respective channels, songs or radio stations.  
+> An old radio set will be a good example of iterator, where user could start at some channel and then use next or previous buttons to go through the respective channels. Or take an example of MP3 player or a TV set where you could press the next and previous buttons to go through the consecutive channels or in other words they all provide an interface to iterate through the respective channels, songs or radio station.
+> 旧式收音机将是迭代器模式的好例子，用户可以从某个广播频道开始，使用向后或向前的按钮来收听各个广播频道。或者以 MP3 音乐播放器或电视为例，您可以按下向后或向前的按钮来浏览连续的频道，换句话说，它们都提供了使用迭代器遍历各个频道，音乐或广播的接口。
 
 简单来说
 
-> It presents a way to access the elements of an object without exposing the underlying presentation.
+> 迭代器模式提供了访问对象的所有元素的方法，而不必暴露对象的底层表现形式（译者注：列表、栈和树等）。
 
 维基百科这样描述
 
-> In object-oriented programming, the iterator pattern is a design pattern in which an iterator is used to traverse a container and access the container's elements. The iterator pattern decouples algorithms from containers in some cases, algorithms are necessarily container-specific and thus cannot be decoupled.
+> 在面向对象编程中，迭代器模式是一种使用迭代器遍历容器并访问其所有元素的设计模式。迭代器模式可以将算法与容器解耦；但在某些情况下，算法是必然特定于容器的，因而无法解耦。
 
 **编程示例**
 
-Translating our radio stations example from above. First of all we have `RadioStation`
+翻译一下我们上面广播电台的例子。首先我们定义了 `RadioStation`（广播电台）类。
 
 ```js
 class RadioStation {
     constructor(frequency) {
-        this.frequency = frequency    
+        this.frequency = frequency
     }
-    
+
     getFrequency() {
         return this.frequency
     }
 }
 ```
 
-Then we have our iterator
+接着我们定义了迭代器
 
 ```js
 class StationList {
@@ -1475,7 +1476,7 @@ class StationList {
     addStation(station) {
         this.stations.push(station)
     }
-    
+
     removeStation(toRemove) {
         const toRemoveFrequency = toRemove.getFrequency()
         this.stations = this.stations.filter(station => {
@@ -1485,7 +1486,7 @@ class StationList {
 }
 ```
 
-And then it can be used as
+现在我们可以这样使用它
 
 ```js
 const stationList = new StationList()
@@ -1497,28 +1498,28 @@ stationList.addStation(new RadioStation(103.2))
 
 stationList.stations.forEach(station => console.log(station.getFrequency()))
 
-stationList.removeStation(new RadioStation(89)) // Will remove station 89
+stationList.removeStation(new RadioStation(89)) // 将移除 89 频道的广播电台
 ```
 
 ### 👽 中介者模式 / Mediator
 
 现实生活中的例子
 
-> A general example would be when you talk to someone on your mobile phone, there is a network provider sitting between you and them and your conversation goes through it instead of being directly sent. In this case network provider is mediator.
+> 一个常见的例子是，您正使用您的手机跟其他人聊天，在您和他们之间存在一个网络提供商，您发出的消息将通过这个网络提供商送达，而非直接发送。在这种情况下，网络提供商充当了中介者的身份。
 
 简单来说
 
-> Mediator pattern adds a third party object (called mediator) to control the interaction between two objects (called colleagues). It helps reduce the coupling between the classes communicating with each other. Because now they don't need to have the knowledge of each other's implementation.
+> 中介者模式在两个对象（称作“同事类”）之间添加了一个第三方对象（称作“中介者”），进而控制这两个对象之间的交互。中介者模式有助于降低类之间通信交流的耦合度。因为现在，它们不再需要了解对方的实现细节。
 
 维基百科这样描述
 
-> In software engineering, the mediator pattern defines an object that encapsulates how a set of objects interact. This pattern is considered to be a behavioral pattern due to the way it can alter the program's running behavior.
+> 在软件工程领域，中介者模式定义了一个对象，该对象封装了一组对象之间交互的方式。中介者模式被认为是一种行为型设计模式，因为它可以改变程序运行时的行为。
 
 **编程示例**
 
-Here is the simplest example of a chat room (i.e. mediator) with users (i.e. colleagues) sending messages to each other.
+下面是聊天室（即中介者）的最简单示例，其中有若干互相发送消息的用户（即同事类）
 
-First of all, we have the mediator i.e. the chat room
+首先我们定义了中介者，即聊天室
 
 ```js
 // Mediator
@@ -1532,7 +1533,7 @@ class ChatRoom {
 }
 ```
 
-Then we have our users i.e. colleagues
+接着我们定义了用户，即同事类
 
 ```js
 class User {
@@ -1540,18 +1541,18 @@ class User {
         this.name = name
         this.chatMediator = chatMediator
     }
-    
+
     getName() {
         return this.name
     }
-    
+
     send(message) {
         this.chatMediator.showMessage(this, message)
     }
 }
 ```
 
-And the usage
+就可以像这样使用了
 
 ```js
 const mediator = new ChatRoom()
@@ -1559,117 +1560,117 @@ const mediator = new ChatRoom()
 const john = new User('John Doe', mediator)
 const jane = new User('Jane Doe', mediator)
 
-john.send('Hi there!')
-jane.send('Hey!')
+john.send('你好！')
+jane.send('你好哇！')
 
-// Output will be
-// Feb 14, 10:58 [John]: Hi there!
-// Feb 14, 10:58 [Jane]: Hey!
+// 输出如下
+// Feb 14, 10:58 [John]: 你好！
+// Feb 14, 10:58 [Jane]: 你好哇！
 ```
 
 ### 💾 备忘录模式 / Memento
 
 现实生活中的例子
 
-> Take the example of calculator (i.e. originator), where whenever you perform some calculation the last calculation is saved in memory (i.e. memento) so that you can get back to it and maybe get it restored using some action buttons (i.e. caretaker).
+> 以计算器（即“原发器”）为例，每当您执行了某些计算操作时，最后一次计算的结果都会被保存到内存（即“备忘录”）中，这样您就可以通过按下某些操作按钮（即“负责人”）来查看，或者如果可能的话，恢复它。
 
 简单来说
 
-> Memento pattern is about capturing and storing the current state of an object in a manner that it can be restored later on in a smooth manner.
+> 备忘录模式通过某种方式捕获并保存对象的当前状态，以便在之后可以使用轻松的方式恢复。
 
 维基百科这样描述
 
-> The memento pattern is a software design pattern that provides the ability to restore an object to its previous state (undo via rollback).
+> 备忘录模式是一种提供了恢复对象到以前状态（通过回滚来撤销）的能力的软件设计模式。
 
-Usually useful when you need to provide some sort of undo functionality.
+通常在您需要提供某种撤销功能时十分有用。
 
 **编程示例**
 
-Lets take an example of text editor which keeps saving the state from time to time and that you can restore if you want.
+以本文编辑器为例，它不时地保存当前的状态，当您想要时则可以恢复
 
-First of all we have our memento object that will be able to hold the editor state
+首先我们定义了备忘录对象，它能够保存编辑器的状态
 
 ```js
 class EditorMemento {
     constructor(content) {
         this._content = content
     }
-    
+
     getContent() {
         return this._content
     }
 }
 ```
 
-Then we have our editor i.e. originator that is going to use memento object
+接着我们定义了编辑器对象，即原发器，它将会使用到备忘录对象
 
 ```js
 class Editor {
     constructor(){
         this._content = ''
     }
-    
+
     type(words) {
-        this._content = this._content + ' ' + words
+        this._content = this._content + words
     }
-    
+
     getContent() {
         return this._content
     }
-    
+
     save() {
         return new EditorMemento(this._content)
     }
-    
+
     restore(memento) {
         this._content = memento.getContent()
     }
 }
 ```
 
-And then it can be used as
+最后可以这样使用它
 
 ```js
 const editor = new Editor()
 
-// Type some stuff
-editor.type('This is the first sentence.')
-editor.type('This is second.')
+// 输入一些文本
+editor.type('日月忽其不淹兮，')
+editor.type('春与秋其代序。')
 
-// Save the state to restore to : This is the first sentence. This is second.
+// 保存当前用于恢复的状态：日月忽其不淹兮，春与秋其代序。
 const saved = editor.save()
 
-// Type some more
-editor.type('And this is third.')
+// 再输入一些文本
+editor.type('惟草木之零落兮，恐美人之迟暮。')
 
-// Output: Content before Saving
-console.log(editor.getContent())// This is the first sentence. This is second. And this is third.
+// 不保存，输出当前内容
+console.log(editor.getContent())// 日月忽其不淹兮，春与秋其代序。惟草木之零落兮，恐美人之迟暮。
 
-// Restoring to last saved state
+// 恢复到上次保存的状态
 editor.restore(saved)
 
-console.log(editor.getContent()) // This is the first sentence. This is second.
+console.log(editor.getContent()) // 日月忽其不淹兮，春与秋其代序。
 ```
 
 ### 😎 观察者模式 / Observer
 
-(Otherwise known as _"pub-sub"_)
+（也被称为 _“发布-订阅模式”_ ）
 
 现实生活中的例子
 
-> A good example would be the job seekers where they subscribe to some job posting site and they are notified whenever there is a matching job opportunity.
+> 求职者就是很好的例子，他们会订阅一些职位发布网站，当有匹配的工作机会时通知他们。
 
 简单来说
 
-> Defines a dependency between objects so that whenever an object changes its state, all its dependents are notified.
+> 观察者模式定义了对象之间的依赖关系，每当一个对象改变它的状态时，它的所有依赖对象将会得到通知。
 
 维基百科这样描述
 
-> The observer pattern is a software design pattern in which an object, called the subject, maintains a list of its dependents, called observers, and notifies them automatically of any state changes, usually by calling one of their methods.
+> 观察者模式是一种软件设计模式，一个目标对象管理所有依赖于它的观察者对象，并在它状态发生改变时主动通知观察者对象，这通常是通过调用观察者对象的某个方法来实现的。
 
 **编程示例**
 
-Translating our example from above. First of all we have job seekers that need to be notified for a job posting
+翻译前面我们的例子。首先，我们定义了求职者类，当有新的职位发布时，他们将得到通知
 
 ```js
 const JobPost = title => ({
@@ -1682,12 +1683,12 @@ class JobSeeker {
     }
 
     notify(jobPost) {
-        console.log(this._name, 'has been notified of a new posting :', jobPost.title)
+        console.log(this._name, ' 接收了一个新职位的通知：', jobPost.title)
     }
 }
 ```
 
-Then we have our job postings to which the job seekers will subscribe
+接着，我们定义了职位发布公告栏，供求职者订阅
 
 ```js
 class JobBoard {
@@ -1707,25 +1708,25 @@ class JobBoard {
 }
 ```
 
-Then it can be used as
+现在，可以这样使用它
 
 ```js
-// Create subscribers
+// 创建订阅者
 const jonDoe = new JobSeeker('John Doe')
 const janeDoe = new JobSeeker('Jane Doe')
 const kaneDoe = new JobSeeker('Kane Doe')
 
-// Create publisher and attach subscribers
+// 创建发布者，并绑定订阅者
 const jobBoard = new JobBoard()
 jobBoard.subscribe(jonDoe)
 jobBoard.subscribe(janeDoe)
 
-// Add a new job and see if subscribers get notified
-jobBoard.addJob(JobPost('Software Engineer'))
+// 添加一份新的职位，看看订阅者是否收到通知
+jobBoard.addJob(JobPost('软件工程师'))
 
-// Output
-// John Doe has been notified of a new posting : Software Engineer
-// Jane Doe has been notified of a new posting : Software Engineer
+// 输出如下
+// John Doe 接收了一个新职位的通知：软件工程师
+// Jane Doe 接收了一个新职位的通知：软件工程师
 ```
 
 ### 🏃 访问者模式 / Visitor
