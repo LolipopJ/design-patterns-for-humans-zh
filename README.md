@@ -21,10 +21,6 @@
 
 # 献给中文读者的设计模式教程 / Design Patterns for Humans ZH
 
-## 🔖 目录 / Catalogue
-
-[toc]
-
 ## 🚀 介绍 / Introduction
 
 设计模式是为**解决某些普遍存在的问题**提出的**方案与指导原则**。它们不是类，程序包或库文件，没法直接放到您的应用程序里然后等待神奇的事情发生。确切地说，它们是一种指导原则，旨在告诉您可以选用某种方法，来解决某些问题。
@@ -90,7 +86,8 @@
 
 ```js
 /**
- * Door
+ * Door interface
+ * 
  * getWidth()
  * getHeight()
  */
@@ -140,7 +137,7 @@ const door = DoorFactory.makeDoor(50, 100)
 
 现实生活中的例子
 
-> 以招聘经理为例。一个人不可能对每一个职位都进行面试。根据职位空缺情况，她必须决定面试的步骤，并将其委派给不同的人。
+> 以招聘经理为例。一个人不可能面试所有的职位。根据职位空缺情况，她必须决定面试的步骤，并将面试委派给其他面试官。
 
 简单来说
 
@@ -452,7 +449,7 @@ const burger = new Burger(14, true, false, true, true)
 
 现实生活中的例子
 
-> 还记得多莉吗？那只被克隆的羊！让我们聊聊克隆这件事儿，当然，不谈细节，只谈它的关键点所在。
+> 还记得那只被克隆的羊——多莉吗？让我们聊聊克隆这件事儿，当然，不谈细节，只谈它的核心思想。
 
 简单来说
 
@@ -1013,11 +1010,11 @@ class Computer {
     }
 
     showLoadingScreen() {
-        console.log('Loading..')
+        console.log('加载中..')
     }
 
     bam() {
-        console.log('Ready to be used!')
+        console.log('准备就绪！')
     }
 
     closeEverything() {
@@ -1062,7 +1059,7 @@ class ComputerFacade {
 
 ```js
 const computer = new ComputerFacade(new Computer())
-computer.turnOn() // Ouch! Beep beep! Loading.. Ready to be used!
+computer.turnOn() // Ouch! Beep beep! 加载中.. 准备就绪！
 computer.turnOff() // Bup bup buzzz! Haah! Zzzzz
 ```
 
@@ -1189,7 +1186,7 @@ class Security {
         if (this.authenticate(password)) {
             this.door.open()
         } else {
-            console.log('大大的不！密码错误。')
+            console.log('奥不！密码错误。')
         }
     }
 
@@ -1207,7 +1204,7 @@ class Security {
 
 ```js
 const door = new Security(new LabDoor())
-door.open('invalid') // 大大的不！密码错误。
+door.open('invalid') // 奥不！密码错误。
 
 door.open('ecr@t') // 打开实验室门
 door.close() // 关闭实验室门
@@ -1438,7 +1435,6 @@ remote.submit(turnOff) // 黑暗！
 
 现实生活中的例子
 
-> An old radio set will be a good example of iterator, where user could start at some channel and then use next or previous buttons to go through the respective channels. Or take an example of MP3 player or a TV set where you could press the next and previous buttons to go through the consecutive channels or in other words they all provide an interface to iterate through the respective channels, songs or radio station.
 > 旧式收音机将是迭代器模式的好例子，用户可以从某个广播频道开始，使用向后或向前的按钮来收听各个广播频道。或者以 MP3 音乐播放器或电视为例，您可以按下向后或向前的按钮来浏览连续的频道，换句话说，它们都提供了使用迭代器遍历各个频道，音乐或广播的接口。
 
 简单来说
@@ -1712,13 +1708,13 @@ class JobBoard {
 
 ```js
 // 创建订阅者
-const jonDoe = new JobSeeker('John Doe')
+const johnDoe = new JobSeeker('John Doe')
 const janeDoe = new JobSeeker('Jane Doe')
 const kaneDoe = new JobSeeker('Kane Doe')
 
 // 创建发布者，并绑定订阅者
 const jobBoard = new JobBoard()
-jobBoard.subscribe(jonDoe)
+jobBoard.subscribe(johnDoe)
 jobBoard.subscribe(janeDoe)
 
 // 添加一份新的职位，看看订阅者是否收到通知
