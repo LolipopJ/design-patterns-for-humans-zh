@@ -1729,21 +1729,21 @@ jobBoard.addJob(JobPost('软件工程师'))
 
 现实生活中的例子
 
-> Consider someone visiting Dubai. They just need a way (i.e. visa) to enter Dubai. After arrival, they can come and visit any place in Dubai on their own without having to ask for permission or to do some leg work in order to visit any place here just let them know of a place and they can visit it. Visitor pattern let's you do just that, it helps you add places to visit so that they can visit as much as they can without having to do any legwork.
+> 有人去杜拜旅游。他们只需要通过一种方式（即签证）便可进入杜拜。抵达之后，他们可以自行参观杜拜的所有地方，而不必征得许可或是为访问某地而跑腿。只需要让他们知道地点，他们就可以访问参观了。访问者模式允许您像这样做，帮助您添加一些可以访问的地点，他们就可以自由访问而无需做额外的跑腿工作。
 
 简单来说
 
-> Visitor pattern let's you add further operations to objects without having to modify them.
+> 访问者模式允许您为对象添加进一步的操作，而无需修改它们。
 
 维基百科这样描述
 
-> In object-oriented programming and software engineering, the visitor design pattern is a way of separating an algorithm from an object structure on which it operates. A practical result of this separation is the ability to add new operations to existing object structures without modifying those structures. It is one way to follow the open/closed principle.
+> 在面向对象编程和软件工程领域，访问者模式是一种将算法，从执行它的对象的结构中分离出来的方式模式。这种分离带来的实际效果是，提供了向已存在对象的结构中添加新的操作方法，而无需修改这些对象的结构的能力。它是一种遵循开闭原则（Open–closed principle）的方法。
 
 **编程示例**
 
-Let's take an example of a zoo simulation where we have several different kinds of animals and we have to make them Sound. Let's translate this using visitor pattern
+让我们模拟一个动物园作为例子，这里有几种不同的动物，它们会发出不同的叫声。现在使用访问者模式翻译为代码语言
 
-We have our implementations for the animals
+我们已经实现了动物类
 
 ```js
 class Monkey {
@@ -1760,7 +1760,7 @@ class Lion {
     roar() {
         console.log('Roaaar!')
     }
-    
+
     accept(operation) {
         operation.visitLion(this)
     }
@@ -1770,14 +1770,14 @@ class Dolphin {
     speak() {
         console.log('Tuut tuttu tuutt!')
     }
-    
+
     accept(operation) {
         operation.visitDolphin(this)
     }
 }
 ```
 
-Let's implement our visitor
+接着，实现我们的访问者
 
 ```js
 const speak = {
@@ -1793,82 +1793,82 @@ const speak = {
 }
 ```
 
-And then it can be used as
+它可以这样使用
 
 ```js
 const monkey = new Monkey()
 const lion = new Lion()
 const dolphin = new Dolphin()
 
-monkey.accept(speak)    // Ooh oo aa aa!    
+monkey.accept(speak)    // Ooh oo aa aa!
 lion.accept(speak)      // Roaaar!
 dolphin.accept(speak)   // Tuut tutt tuutt!
 ```
 
-We could have done this simply by having a inheritance hierarchy for the animals but then we would have to modify the animals whenever we would have to add new actions to animals. But now we will not have to change them. For example, let's say we are asked to add the jump behavior to the animals, we can simply add that by creating a new visitor i.e.
+我们可以简单地为动物类添加可继承的层次结构来让动物发出叫声，但接下来当我们需要为动物添加新的行为时，不得不去修改动物类本身。但现在，我们不再需要修改动物类。举个例子，如果我们需要为动物添加跳跃行为，我们可以简单地创建一个新的访问者来实现，如下所示
 
 ```js
 const jump = {
     visitMonkey(monkey) {
-        console.log('Jumped 20 feet high! on to the tree!')
+        console.log('跳了 20 英尺高！跳到了树上去！')
     },
     visitLion(lion) {
-        console.log('Jumped 7 feet! Back on the ground!')
+        console.log('跳了 7 英尺高！回到了地上！')
     },
     visitDolphin(dolphin) {
-        console.log('Walked on water a little and disappeared')
+        console.log('探出了水面一点随后消失了')
     }
 }
 ```
 
-And for the usage
+像这样使用它
 
 ```js
 monkey.accept(speak)   // Ooh oo aa aa!
-monkey.accept(jump)    // Jumped 20 feet high! on to the tree!
+monkey.accept(jump)    // 跳了 20 英尺高！跳到了树上去！
 
 lion.accept(speak)     // Roaaar!
-lion.accept(jump)      // Jumped 7 feet! Back on the ground! 
+lion.accept(jump)      // 跳了 7 英尺高！回到了地上！
 
-dolphin.accept(speak)  // Tuut tutt tuutt! 
-dolphin.accept(jump)   // Walked on water a little and disappeared
+dolphin.accept(speak)  // Tuut tutt tuutt!
+dolphin.accept(jump)   // 探出了水面一点随后消失了
 ```
 
 ### 💡 策略模式 / Strategy
 
 现实生活中的例子
 
-> Consider the example of sorting, we implemented bubble sort but the data started to grow and bubble sort started getting very slow. In order to tackle this we implemented Quick sort. But now although the quick sort algorithm was doing better for large datasets, it was very slow for smaller datasets. In order to handle this we implemented a strategy where for small datasets, bubble sort will be used and for larger, quick sort.
+> 考虑排序的例子，我们实现了冒泡排序，但随着数据量的增长，冒泡排序变得非常慢。为了解决这个问题，我们又实现了快速排序。但现在，尽管快速排序算法在处理较大数据集时表现得很好，但它在处理较小数据集时会变得非常慢。为此，我们定义了一种策略，当处理较小数据集时，采用冒泡排序算法；处理较大数据集时，采用快速排序算法。
 
 简单来说
 
-> Strategy pattern allows you to switch the algorithm or strategy based upon the situation.
+> 策略模式允许您根据实际情况切换使用的算法或策略。
 
 维基百科这样描述
 
-> In computer programming, the strategy pattern (also known as the policy pattern) is a behavioural software design pattern that enables an algorithm's behavior to be selected at runtime.
+> 在计算机编程中，策略模式（Strategy pattern，也被称为 Policy pattern）是一种允许在运行时选择算法行为的行为型设计模式。
 
 **编程示例**
 
-Translating our example from above, we can easily implement this strategy in javascript using its feature of first class functions.
+翻译上面我们的例子，通过 JavaScript 的类函数，我们可以轻松实现这两种策略
 
 ```js
 const bubbleSort = dataset => {
-    console.log('Sorting with bubble sort')
+    console.log('使用冒泡排序')
     // ...
     // ...
     return dataset
 }
 
 const quickSort = dataset => {
-    console.log('Sorting with quick sort')
+    console.log('使用快速排序')
     // ...
     // ...
     return dataset
 }
 ```
 
-And then we have our client that is going to use any strategy
+接着我们定义了客户端，它将决定使用何种策略
 
 ```js
 const sorter = dataset => {
@@ -1880,7 +1880,7 @@ const sorter = dataset => {
 }
 ```
 
-And it can be used as
+最后，可以这样使用它
 
 ```js
 const longDataSet = [1, 5, 4, 3, 2, 8]
@@ -1889,30 +1889,30 @@ const shortDataSet = [1, 5, 4]
 const sorter1 = sorter(longDataSet)
 const sorter2 = sorter(shortDataSet)
 
-sorter1(longDataSet) // Output : Sorting with quick sort
-sorter2(shortDataSet) // Output : Sorting with bubble sort
+sorter1(longDataSet) // Output : 使用快速排序
+sorter2(shortDataSet) // Output : 使用冒泡排序
 ```
 
 ### 💢 状态模式 / State
 
 现实生活中的例子
 
-> Imagine you are using some drawing application, you choose the paint brush to draw. Now the brush changes it's behavior based on the selected color i.e. if you have chosen red color it will draw in red, if blue then it will be in blue etc.  
+> 想象您正在使用某种绘画应用，您选择了一种画笔来画图。现在，画笔将根据您选择的颜色改变它的行为，即如果您选择了红色，那么将以红色画图，如果选择了蓝色则以蓝色画图。
 
 简单来说
 
-> It lets you change the behavior of a class when the state changes.
+> 状态模式允许您在状态变化时，改变类的行为。
 
 维基百科这样描述
 
-> The state pattern is a behavioral software design pattern that implements a state machine in an object-oriented way. With the state pattern, a state machine is implemented by implementing each individual state as a derived class of the state pattern interface, and implementing state transitions by invoking methods defined by the pattern's superclass.
-> The state pattern can be interpreted as a strategy pattern which is able to switch the current strategy through invocations of methods defined in the pattern's interface
+> 状态模式是一种以面向对象的形式，实现状态机的行为型设计模式。在状态模式中，通过将每个单独的状态实现为状态模式接口的派生类，并通过调用此模式超类定义的方法实现状态转换，最终实现了状态机。
+> 状态模式可以看作能够通过调用此模式的接口所定义的方法，来改变当前策略的策略模式。
 
 **编程示例**
 
-Let's take an example of text editor, it let's you change the state of text that is typed i.e. if you have selected bold, it starts writing in bold, if italic then in italics etc.
+以文本编辑器为例，它允许您改变输入文本的状态，即如果您选择了加粗，就开始输入加粗的文本，如果选择了斜体则输入斜体的文本等等。
 
-First of all we have our transformation functions
+首先我们编写了改变输入文本状态的函数
 
 ```js
 const upperCase = inputString => inputString.toUpperCase()
@@ -1920,25 +1920,25 @@ const lowerCase = inputString => inputString.toLowerCase()
 const defaultTransform = inputString => inputString
 ```
 
-Then we have our editor
+接着我们编写了文本编辑器类
 
 ```js
 class TextEditor {
     constructor(transform) {
         this._transform = transform
     }
-    
+
     setTransform(transform) {
         this._transform = transform
     }
-    
+
     type(words) {
         console.log(this._transform(words))
     }
 }
 ```
 
-And then it can be used as
+最后可以像这样使用它
 
 ```js
 const editor = new TextEditor(defaultTransform)
@@ -1955,7 +1955,7 @@ editor.setTransform(lowerCase)
 editor.type('Fourth line')
 editor.type('Fifth line')
 
-// Output:
+// 输出：
 // First line
 // SECOND LINE
 // THIRD LINE
@@ -1967,32 +1967,32 @@ editor.type('Fifth line')
 
 现实生活中的例子
 
-> Suppose we are getting some house built. The steps for building might look like
+> 假设我们打算盖一些房子。建房子的步骤可能像这样
 >
-> - Prepare the base of house
-> - Build the walls
-> - Add roof
-> - Add other floors
+> - 打地基
+> - 筑墙壁
+> - 盖屋顶
+> - 加楼层
 >
-> The order of these steps could never be changed i.e. you can't build the roof before building the walls etc but each of the steps could be modified for example walls can be made of wood or polyester or stone.
+> 上述步骤的顺序不能被改变，即在筑好墙壁之前您没法盖上屋顶。但每一个步骤都可以被修改，例如可以使用木头、聚酯纤维或石头来筑建墙壁。
   
 简单来说
 
-> Template method defines the skeleton of how certain algorithm could be performed but defers the implementation of those steps to the children classes.
+> 模板方法模式定义了如何执行某些算法的框架，但将这些步骤的具体实现推迟到了子类。
 
 维基百科这样描述
 
-> In software engineering, the template method pattern is a behavioral design pattern that defines the program skeleton of an algorithm in an operation, deferring some steps to subclasses. It lets one redefine certain steps of an algorithm without changing the algorithm's structure.
+> 在软件工程领域，模板方法模式是一种行为型设计模式。模板方法是超类中的方法，通常是抽象超类，它根据大量的高级步骤来定义操作的框架。这些步骤本身由与模板方法中相同的类中附加的帮助类方法实现。
 
 **编程示例**
 
-Imagine we have a build tool that helps us test, lint, build, generate build reports (i.e. code coverage reports, linting report etc) and deploy our app on the test server.
+想象我们在编写一个工具，它能帮助我们测试代码，检查代码格式，构建应用，生成构建报告（即代码覆盖率，代码格式检查结果等）以及将我们的应用部署到测试服务器上。
 
-First of all we have our base class that specifies the skeleton for the build algorithm
+首先我们编写了基类，它指定了构建算法的框架
 
 ```js
 class Builder {
-    // Template method 
+    // 模板方法
     build() {
         this.test()
         this.lint()
@@ -2002,66 +2002,66 @@ class Builder {
 }
 ```
 
-Then we can have our implementations
+现在我们编写了它的具体实现
 
 ```js
 class AndroidBuilder extends Builder {
     test() {
-        console.log('Running android tests')
+        console.log('执行安卓代码测试')
     }
-    
+
     lint() {
-        console.log('Linting the android code')
+        console.log('检查安卓代码格式')
     }
-    
+
     assemble() {
-        console.log('Assembling the android build')
+        console.log('启动安卓应用构建')
     }
-    
+
     deploy() {
-        console.log('Deploying android build to server')
+        console.log('部署安卓应用到服务器')
     }
 }
 
 class IosBuilder extends Builder {
     test() {
-        console.log('Running ios tests')
+        console.log('执行 IOS 代码测试')
     }
-    
+
     lint() {
-        console.log('Linting the ios code')
+        console.log('检查 IOS 代码格式')
     }
-    
+
     assemble() {
-        console.log('Assembling the ios build')
+        console.log('启动 IOS 应用构建')
     }
-    
+
     deploy() {
-        console.log('Deploying ios build to server')
+        console.log('部署 IOS 应用到服务器')
     }
 }
 ```
 
-And then it can be used as
+最后可以这样使用它
 
 ```js
 const androidBuilder = new AndroidBuilder()
 androidBuilder.build()
 
-// Output:
-// Running android tests
-// Linting the android code
-// Assembling the android build
-// Deploying android build to server
+// 输出：
+// 执行安卓代码测试
+// 检查安卓代码格式
+// 启动安卓应用构建
+// 部署安卓应用到服务器
 
 const iosBuilder = new IosBuilder()
 iosBuilder.build()
 
-// Output:
-// Running ios tests
-// Linting the ios code
-// Assembling the ios build
-// Deploying ios build to server
+// 输出：
+// 执行 IOS 代码测试
+// 检查 IOS 代码格式
+// 启动 IOS 应用构建
+// 部署 IOS 应用到服务器
 ```
 
 ## 🚦 尾声 / Wrap Up Folks
