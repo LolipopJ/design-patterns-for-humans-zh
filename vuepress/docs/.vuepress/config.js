@@ -20,6 +20,7 @@ module.exports = {
   ],
   base: '/design-patterns-for-humans-zh/',
   themeConfig: {
+    logo: '/favicon.png',
     nav: [
       {
         text: '选择编程语言',
