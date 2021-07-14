@@ -16,6 +16,7 @@
 本项目基于 <a href="https://github.com/kamranahmedse/design-patterns-for-humans">Design Patterns for Humans</a>，案例的 JavaScript 代码来自 <a href="https://github.com/sohamkamani/javascript-design-patterns-for-humans">JavaScript Design Patterns for Humans</a>。
 </p>
 </div>
+
 ***
 
 译者在学习的过程中，想要使用自己的语言风格来翻译这篇“给人类写的”设计模式教程。奈何才疏学浅，如有谬误，敬请斧正。
@@ -648,7 +649,7 @@ hunter.hunt(wildDogAdapter)
 
 > 想象您有一个包括很多页面的网站，现在您计划让用户修改网站的主题。您会怎么做？为每个页面的每个主题创建一份副本，或是创建单独的主题并根据用户的偏好加载它们？桥接模式允许您实现后者，如下图所示。
 
-![With and without the bridge pattern](static/With-and-without-the-bridge-pattern.png)
+<img :src="$withBase('/With-and-without-the-bridge-pattern.png')" alt="不使用和使用桥接模式的区别" />
 
 简单来说
 
