@@ -1,17 +1,19 @@
 {
-  "name": "design-patterns-for-humans-zh",
-  "version": "1.0.0",
-  "description": "献给中文读者的设计模式教程 / An ultra-simplified explanation of design patterns, yet another Chinese translation.",
-  "main": "index.js",
-  "repository": "https://github.com/LolipopJ/design-patterns-for-humans-zh",
-  "author": "LolipopJ",
-  "license": "MIT",
-  "private": true,
-  "scripts": {
-    "dev": "vuepress dev docs --cache .cache",
-    "build": "vuepress build docs"
-  },
-  "devDependencies": {
-    "vuepress": "^1.8.2"
-  }
+    "name": "design-patterns-for-humans-zh",
+    "version": "1.0.0",
+    "description": "献给中文读者的设计模式教程 / An ultra-simplified explanation of design patterns, yet another Chinese translation.",
+    "main": "index.js",
+    "repository": "https://github.com/LolipopJ/design-patterns-for-humans-zh",
+    "author": "LolipopJ",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+        "dev": "vuepress dev docs",
+        "build": "vuepress build docs",
+        "prettier": "prettier --ignore-path .gitignore --write **/* --ignore-unknown"
+    },
+    "devDependencies": {
+        "prettier": "^2.3.2",
+        "vuepress": "^1.8.2"
+    }
 }

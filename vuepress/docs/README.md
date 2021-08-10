@@ -4,7 +4,8 @@
 
 <img :src="$withBase('/cover.png')" alt="献给中文读者的设计模式教程 / Design Patterns for Humans ZH" />
 
-***
+---
+
 <div align="center">
 <p>
 🎉 对设计模式的超简单解读！ 🎉
@@ -17,7 +18,7 @@
 </p>
 </div>
 
-***
+---
 
 译者在学习的过程中，想要使用自己的语言风格来翻译这篇“给人类写的”设计模式教程。奈何才疏学浅，如有谬误，敬请斧正。
 
@@ -37,15 +38,15 @@
 
 ### ⚠️ 请注意 / Be Careful
 
-- 设计模式并不是解决您所有问题的万全之策。
-- 不要强迫去使用它们；否则很可能发生不好的事情。
-- 请记住，设计模式是一种指导方案，用来**解决**问题，而不是**找到**问题；所以不要想太多。
-- 如果在正确的地方以正确的方式使用设计模式，它们或许能成为您的得力帮手；否则可能导致您的代码混乱不堪。
+-   设计模式并不是解决您所有问题的万全之策。
+-   不要强迫去使用它们；否则很可能发生不好的事情。
+-   请记住，设计模式是一种指导方案，用来**解决**问题，而不是**找到**问题；所以不要想太多。
+-   如果在正确的地方以正确的方式使用设计模式，它们或许能成为您的得力帮手；否则可能导致您的代码混乱不堪。
 
 ### 🐢 在开始之前 / Before you start
 
-- 所有的设计模式示例都基于 JavaScript 的 [ES6](https://github.com/lukehoban/es6features) 规范实现。
-- 由于 JavaScript 中不存在实现接口的说法，因此我们在代码示例中使用了隐式接口，这意味着只有一个类具有一个接口应当有的属性和方法，这个类就被认为实现了这个接口。为了让您更容易分辨当前正在使用的接口，我们在每个示例中都添加了注释信息。
+-   所有的设计模式示例都基于 JavaScript 的 [ES6](https://github.com/lukehoban/es6features) 规范实现。
+-   由于 JavaScript 中不存在实现接口的说法，因此我们在代码示例中使用了隐式接口，这意味着只有一个类具有一个接口应当有的属性和方法，这个类就被认为实现了这个接口。为了让您更容易分辨当前正在使用的接口，我们在每个示例中都添加了注释信息。
 
 ## 🏗️ 创建型设计模式 / Creational Design Patterns
 
@@ -75,50 +76,15 @@
 
 首先，我们定义了门的接口和并实现了它
 
-```js
-/**
- * Door interface
- * 
- * getWidth()
- * getHeight()
- */
-
-class WoodenDoor {
-  constructor(width, height){
-    this.width = width
-    this.height = height
-  }
-
-  getWidth(){
-    return this.width
-  }
-
-  getHeight(){
-    return this.height
-  }
-}
-```
+<<< @/fragments/javascript/simpleFactory.js#WoodenDoor
 
 接下来，我们创建了制造并返回门的工厂
 
-```js
-const DoorFactory = {
-  makeDoor : (width, height) => new WoodenDoor(width, height)
-}
-```
+<<< @/fragments/javascript/simpleFactory.js#DoorFactory
 
 最后，可以这样使用工厂
 
-```js
-// 制造一个 100x200 的门给我
-const door = DoorFactory.makeDoor(100, 200)
-
-console.log('Width:', door.getWidth())
-console.log('Height:', door.getHeight())
-
-// 制造一个 50x100 的门给我
-const door = DoorFactory.makeDoor(50, 100)
-```
+<<< @/fragments/javascript/simpleFactory.js#makeDoor
 
 **什么时候使用？**
 
@@ -142,62 +108,19 @@ const door = DoorFactory.makeDoor(50, 100)
 
 以上面的招聘经理为例。首先我们定义一个面试官接口和它的一些实现
 
-```js
-/**
- * Interviewer interface
- *
- * askQuestions()
- */
-
-class Developer {
-  askQuestions() {
-    console.log('提出设计模式问题！')
-  }
-}
-
-class CommunityExecutive {
-  askQuestions() {
-    console.log('提出社区建设问题！')
-  }
-}
-```
+<<< @/fragments/javascript/factoryMethod.js#Interviewer
 
 现在让我们编写我们的 `HiringManager`（招聘经理）
 
-```js
-class HiringManager {
-    takeInterview() {
-        const interviewer = this.makeInterviewer()
-        interviewer.askQuestions()
-    }
-}
-```
+<<< @/fragments/javascript/factoryMethod.js#HiringManager
 
 现在所有的子类都可以继承它并提供需要的面试官
 
-```js
-class DevelopmentManager extends HiringManager {
-    makeInterviewer() {
-        return new Developer()
-    }
-}
-
-class MarketingManager extends HiringManager {
-    makeInterviewer() {
-        return new CommunityExecutive()
-    }
-}
-```
+<<< @/fragments/javascript/factoryMethod.js#extendHiringManager
 
 最后，我们可以这样使用它
 
-```js
-const devManager = new DevelopmentManager()
-devManager.takeInterview() // 输出：提出设计模式问题！
-
-const marketingManager = new MarketingManager()
-marketingManager.takeInterview() // 输出：提出社区建设问题！
-```
+<<< @/fragments/javascript/factoryMethod.js#takeInterview
 
 **什么时候使用？**
 
@@ -221,101 +144,19 @@ marketingManager.takeInterview() // 输出：提出社区建设问题！
 
 根据上面门的例子。首先，我们定义了 `Door`（门）接口和它的一些实现
 
-```js
-/**
- * Door interface :
- *
- * getDescription()
- */
-
-class WoodenDoor {
-    getDescription() {
-        console.log('我是一个木门')
-    }
-}
-
-class IronDoor {
-    getDescription() {
-        console.log('我是一个铁门')
-    }
-}
-```
+<<< @/fragments/javascript/abstractFactory.js#Door
 
 接着我们为每一种类型的门定义了安装师傅
 
-```js
-/**
- * DoorFittingExpert interface :
- *
- * getDescription()
- */
-
-class Welder {
-    getDescription() {
-        console.log('我只能安装木门')
-    }
-}
-
-class Carpenter {
-    getDescription() {
-        console.log('我只能安装铁门')
-    }
-}
-```
+<<< @/fragments/javascript/abstractFactory.js#DoorFittingExpert
 
 现在我们有了抽象工厂，它允许我们创建一系列相关联的对象，即木门工厂能够制造木门和提供木门安装师傅，而铁门工厂能够制造铁门和提供铁门安装师傅。
 
-```js
-/**
- * DoorFactory interface :
- *
- * makeDoor()
- * makeFittingExpert()
- */
-
-// 返回木匠和木门的木门工厂
-class WoodenDoorFactory {
-    makeDoor(){
-        return new WoodenDoor()
-    }
-
-    makeFittingExpert() {
-        return new Carpenter()
-    }
-}
-
-// 获得铁门和相应安装师傅的铁门工厂
-class IronDoorFactory {
-    makeDoor(){
-        return new IronDoor()
-    }
-
-    makeFittingExpert() {
-        return new Welder()
-    }
-}
-```
+<<< @/fragments/javascript/abstractFactory.js#DoorFactory
 
 最后我们可以这样使用它
 
-```js
-woodenFactory = new WoodenDoorFactory()
-
-door = woodenFactory.makeDoor()
-expert = woodenFactory.makeFittingExpert()
-
-door.getDescription()  // 输出：我是一个木门
-expert.getDescription() // 输出：我只能安装木门
-
-// 铁门工厂和上面一样
-ironFactory = new IronDoorFactory()
-
-door = ironFactory.makeDoor()
-expert = ironFactory.makeFittingExpert()
-
-door.getDescription()  // 输出：我是一个铁门
-expert.getDescription() // 输出：我只能安装铁门
-```
+<<< @/fragments/javascript/abstractFactory.js#makeDoor
 
 正如您看到的，木门工厂已经封装了 `carpenter`（木匠）和 `wooden door`（木门），铁门工厂已经封装了 `iron door`（铁门）和 `welder`（焊工）。因此，它确保了对于每一个制造出来的门，我们都能得到正确的安装师傅。
 
@@ -329,7 +170,7 @@ expert.getDescription() // 输出：我只能安装铁门
 
 现实生活中的例子
 
-> 想象您在哈帝斯汉堡店里，点了一份“大哈迪汉堡”，接着店员就把汉堡递给你，*毫无疑问* 这是一个简单工厂的例子。但是在一些情况下汉堡的制作可能会包括更多的步骤逻辑。举个例子，您想要一份定制的汉堡，关于汉堡的制作您有很多选项：想要什么面包？喜欢哪款酱汁？想吃哪种奶酪？诸如此类。在这种情况下，就需要用到生成器模式了。
+> 想象您在哈帝斯汉堡店里，点了一份“大哈迪汉堡”，接着店员就把汉堡递给你，_毫无疑问_ 这是一个简单工厂的例子。但是在一些情况下汉堡的制作可能会包括更多的步骤逻辑。举个例子，您想要一份定制的汉堡，关于汉堡的制作您有很多选项：想要什么面包？喜欢哪款酱汁？想吃哪种奶酪？诸如此类。在这种情况下，就需要用到生成器模式了。
 
 简单来说
 
@@ -341,11 +182,7 @@ expert.getDescription() // 输出：我只能安装铁门
 
 既然已经提到，那么请允许我补充一下什么是重叠构造函数反面模式。在某一时刻我们都看到了这样一个构造函数：
 
-```js
-constructor(size, cheese = true, pepperoni = true, tomato = false, lettuce = true) {
-    // ... 
-}
-```
+<<< @/fragments/javascript/builder.js#TelescopicConstructor
 
 正如您所看见的，构造函数的参数数量很快就会失控，理解参数的含义也可能因此变得困难。此外，如果在以后您还想添加更多的构造选项，它的参数列表还会继续增长。这就被称作重叠构造函数反面模式。
 
@@ -353,61 +190,15 @@ constructor(size, cheese = true, pepperoni = true, tomato = false, lettuce = tru
 
 明智的选择是使用生成器模式。首先我们定义我们想要制作的汉堡
 
-```js
-class Burger {
-    constructor(builder) {
-        this.size = builder.size
-        this.cheeze = builder.cheeze || false
-        this.pepperoni = builder.pepperoni || false
-        this.lettuce = builder.lettuce || false
-        this.tomato = builder.tomato || false
-    }
-}
-```
+<<< @/fragments/javascript/builder.js#Burger
 
 接着我们编写了生成器
 
-```js
-class BurgerBuilder {
-    constructor(size) {
-        this.size = size
-    }
-
-    addPepperoni() {
-        this.pepperoni = true
-        return this
-    }
-
-    addLettuce() {
-        this.lettuce = true
-        return this
-    }
-
-    addCheeze() {
-        this.cheeze = true
-        return this
-    }
-
-    addTomato() {
-        this.tomato = true
-        return this
-    }
-
-    build() {
-        return new Burger(this)
-    }
-}
-```
+<<< @/fragments/javascript/builder.js#BurgerBuilder
 
 最后可以这样使用它
 
-```js
-const burger = (new BurgerBuilder(14))
-    .addPepperoni()
-    .addLettuce()
-    .addTomato()
-    .build()
-```
+<<< @/fragments/javascript/builder.js#newBurger
 
 **JavaScript 版本特别提示**：当您发现一个函数或方法的参数太多（一般超过 2 个参数都被认为是太多）时，应当使用一个对象参数，来取代多个参数。理由有二：
 
@@ -416,21 +207,11 @@ const burger = (new BurgerBuilder(14))
 
 举个例子，应当使用：
 
-```js
-const burger = new Burger({
-    size : 14,
-    pepperoni : true,
-    cheeze : false,
-    lettuce : true,
-    tomato : true
-})
-```
+<<< @/fragments/javascript/builder.js#goodBurger
 
 来取代：
 
-```js
-const burger = new Burger(14, true, false, true, true)
-```
+<<< @/fragments/javascript/builder.js#badBurger
 
 **什么时候使用？**
 
@@ -456,53 +237,15 @@ const burger = new Burger(14, true, false, true, true)
 
 首先我们定义了我们想要克隆的羊
 
-```js
-class Sheep {
-    constructor(name, category = "山羊") {
-        this.name = name;
-        this.category = category;
-    }
-    setName(name) {
-        this.name = name;
-    }
-    getName() {
-        console.log(this.name);
-    }
-    setCategory(category) {
-        this.category = category;
-    }
-    getCategory() {
-        console.log(this.category);
-    }
-}
-```
+<<< @/fragments/javascript/prototype.js#Sheep
 
 现在我们有了一个羊原型（SheepPrototype）的类，它将克隆给定了原型的对象。它的构造函数接受类型为羊的原型
 
-```js
-class SheepPrototype {
-    constructor(proto) {
-        this.proto = proto;
-    }
-    clone() {
-        return new Sheep(this.proto.name, this.proto.category);
-    }
-}
-```
+<<< @/fragments/javascript/prototype.js#SheepPrototype
 
 最后我们可以这样使用它
 
-```js
-const originalSheep = new Sheep("Jolly");
-originalSheep.getName(); // Jolly
-originalSheep.getCategory(); // 山羊
-// 克隆并根据需要修改
-const prototype = new SheepPrototype(originalSheep);
-const clonedSheep = prototype.clone();
-clonedSheep.setName("Dolly");
-clonedSheep.getName(); // Dolly
-clonedSheep.getCategory(); // 山羊
-```
+<<< @/fragments/javascript/prototype.js#cloneSheep
 
 **JavaScript 版本特别提示**：此编程示例是原型模式的经典实现，但是 JavaScript 能够使用[内建原型工具](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Object_prototypes)更有效地实现原型模式。
 
@@ -530,27 +273,11 @@ clonedSheep.getCategory(); // 山羊
 
 在 JavaScript 中，单例可以使用模块模式实现。私有变量和方法隐藏在函数闭包中，而公有方法选择地暴露出去。
 
-```js
-const president = (function(){
-    const presidentsPrivateInformation = 'Super private'
-
-    const name = 'Turd Sandwich'
-
-    const getName = () => name
-
-    return {
-        getName
-    }
-}())
-```
+<<< @/fragments/javascript/singleton.js#president
 
 在这里，`presidentsPrivateInformation` 和 `name` 为私有变量。但是，`name` 可以通过对外暴露的 `president.getName` 方法访问到。
 
-```js
-president.getName() // 输出：'Turd Sandwich'
-president.name // 输出：undefined
-president.presidentsPrivateInformation // 输出：undefined
-```
+<<< @/fragments/javascript/singleton.js#getPresidentName
 
 ## 🔩 结构型设计模式 / Structural Design Patterns
 
@@ -584,64 +311,19 @@ president.presidentsPrivateInformation // 输出：undefined
 
 首先我们定义了 `Lion`（狮子）接口，所有类型的狮子都需要实现这个接口
 
-```js
-/**
- * Lion interface :
- *
- * roar()
- */
-
-class AfricanLion  {
-    roar() {}
-}
-
-class AsianLion  {
-    roar() {}
-}
-```
+<<< @/fragments/javascript/adapter.js#Lion
 
 而猎人需要 `Lion` 的任意实现来狩猎。
 
-```js
-class Hunter {
-    hunt(lion) {
-        // ... 前面的一些代码
-        lion.roar()
-        // ... 后面的一些代码
-    }
-}
-```
+<<< @/fragments/javascript/adapter.js#Hunter
 
 现在假设我们在我们的游戏里添加了一只 `WildDog`（野狗），猎人也可以狩猎它。但是我们无法直接添加野狗，因为它有着不同的接口。为了让它与我们的猎人兼容，我们必须创建一个兼容的适配器
 
-```js
-// 需要添加到游戏中
-class WildDog {
-    bark() {}
-}
-
-// 与野狗相关的适配器，让它与我们的游戏兼容
-class WildDogAdapter {
-
-    constructor(dog) {
-        this.dog = dog;
-    }
-    
-    roar() {
-        this.dog.bark();
-    }
-}
-```
+<<< @/fragments/javascript/adapter.js#WildDog
 
 于是，通过 `WildDogAdapter`，在我们的游戏中就可以使用 `WildDog` 了。
 
-```js
-wildDog = new WildDog()
-wildDogAdapter = new WildDogAdapter(wildDog)
-
-hunter = new Hunter()
-hunter.hunt(wildDogAdapter)
-```
+<<< @/fragments/javascript/adapter.js#newWildDog
 
 ### 🚡 桥接模式 / Bridge
 
@@ -663,72 +345,15 @@ hunter.hunt(wildDogAdapter)
 
 翻译一下刚刚关于我们网站的例子。现在我们定义了 `WebPage`（网站）模组层次
 
-```js
-/**
- * Webpage interface :
- *
- * constructor(theme)
- * getContent()
- */
-
-class About{
-    constructor(theme) {
-        this.theme = theme
-    }
-
-    getContent() {
-        return "About page in " + this.theme.getColor()
-    }
-}
-
-class Careers{
-   constructor(theme) {
-       this.theme = theme
-   }
-
-   getContent() {
-       return "Careers page in " + this.theme.getColor()
-   }
-}
-```
+<<< @/fragments/javascript/bridge.js#Webpage
 
 以及单独的主题模组层次
 
-```js
-/**
- * Theme interface :
- *
- * getColor()
- */
-
-class DarkTheme{
-    getColor() {
-        return 'Dark Black'
-    }
-}
-class LightTheme{
-    getColor() {
-        return 'Off white'
-    }
-}
-class AquaTheme{
-    getColor() {
-        return 'Light blue'
-    }
-}
-```
+<<< @/fragments/javascript/bridge.js#Theme
 
 最后，结合两个模组层次使用
 
-```js
-const darkTheme = new DarkTheme()
-
-const about = new About(darkTheme)
-const careers = new Careers(darkTheme)
-
-console.log(about.getContent()) // "About page in Dark Black"
-console.log(careers.getContent()) // "Careers page in Dark Black"
-```
+<<< @/fragments/javascript/bridge.js#useTheme
 
 ### 🌿 组合模式 / Composite
 
@@ -748,110 +373,15 @@ console.log(careers.getContent()) // "Careers page in Dark Black"
 
 以前面我们雇员的例子为例。现在我们有几种不同的雇员类型
 
-```js
-/**
- * Employee interface :
- *
- * constructor(name, salary)
- * getName()
- * setSalary()
- * getSalary()
- * getRoles()
- */
-
-class Developer {
-    constructor(name, salary) {
-        this.name = name
-        this.salary = salary
-    }
-
-    getName() {
-        return this.name
-    }
-
-    setSalary(salary) {
-        this.salary = salary
-    }
-
-    getSalary() {
-        return this.salary
-    }
-
-    getRoles() {
-        return this.roles
-    }
-
-    develop() {
-        /* */
-    }
-}
-
-class Designer {
-    constructor(name, salary) {
-        this.name = name
-        this.salary = salary
-    }
-
-    getName() {
-        return this.name
-    }
-
-    setSalary(salary) {
-        this.salary = salary
-    }
-
-    getSalary() {
-        return this.salary
-    }
-
-    getRoles() {
-        return this.roles
-    }
-
-    design() {
-        /* */
-    }
-}
-```
+<<< @/fragments/javascript/composite.js#Employee
 
 接着我们定义了一个组织类，它包括了这几种不同类型的雇员
 
-```js
-class Organization {
-    constructor(){
-        this.employees = []
-    }
-
-    addEmployee(employee) {
-        this.employees.push(employee)
-    }
-
-    getNetSalaries() {
-        let netSalary = 0
-
-        this.employees.forEach(employee => {
-            netSalary += employee.getSalary()
-        })
-
-        return netSalary
-    }
-}
-```
+<<< @/fragments/javascript/composite.js#Organization
 
 最后我们可以这样使用它
 
-```js
-// 定义新的雇员
-const john = new Developer('John Doe', 12000)
-const jane = new Designer('Jane', 10000)
-
-// 添加雇员到组织中
-const organization = new Organization()
-organization.addEmployee(john)
-organization.addEmployee(jane)
-
-console.log("薪金净额：" , organization.getNetSalaries()) // 薪金净额：22000
-```
+<<< @/fragments/javascript/composite.js#getNetSalaries
 
 ### ☕ 装饰器模式 / Decorator
 
@@ -871,95 +401,15 @@ console.log("薪金净额：" , organization.getNetSalaries()) // 薪金净额�
 
 不妨以咖啡为例。首先，我们编写一个普通咖啡的类来实现咖啡接口
 
-```js
-/**
- * Coffee interface:
- * getCost()
- * getDescription()
- */
-
-class SimpleCoffee {
-
-    getCost() {
-        return 10
-    }
-
-    getDescription() {
-        return '普通咖啡'
-    }
-}
-```
+<<< @/fragments/javascript/decorator.js#Coffee
 
 我们想要让代码具有可扩展性，当需要的时候可以有选项去修改它。让我们来编写一些额外选项（装饰器）
 
-```js
-class MilkCoffee {
-
-    constructor(coffee) {
-        this.coffee = coffee
-    }
-
-    getCost() {
-        return this.coffee.getCost() + 2
-    }
-
-    getDescription() {
-        return this.coffee.getDescription() + '，加奶'
-    }
-}
-
-class WhipCoffee {
-
-    constructor(coffee) {
-        this.coffee = coffee
-    }
-
-    getCost() {
-        return this.coffee.getCost() + 5
-    }
-
-    getDescription() {
-        return this.coffee.getDescription() + '，加鲜奶油'
-    }
-}
-
-class VanillaCoffee {
-
-    constructor(coffee) {
-        this.coffee = coffee
-    }
-
-    getCost() {
-        return this.coffee.getCost() + 3
-    }
-
-    getDescription() {
-        return this.coffee.getDescription() + '，加香草'
-    }
-}
-```
+<<< @/fragments/javascript/decorator.js#ExtraCoffee
 
 现在，来一杯咖啡吧
 
-```js
-let someCoffee
-
-someCoffee = new SimpleCoffee()
-console.log(someCoffee.getCost()) // 10
-console.log(someCoffee.getDescription()) // 普通咖啡
-
-someCoffee = new MilkCoffee(someCoffee)
-console.log(someCoffee.getCost()) // 12
-console.log(someCoffee.getDescription()) // 普通咖啡，加奶
-
-someCoffee = new WhipCoffee(someCoffee)
-console.log(someCoffee.getCost()) // 17
-console.log(someCoffee.getDescription()) // 普通咖啡，加奶，加鲜奶油
-
-someCoffee = new VanillaCoffee(someCoffee)
-console.log(someCoffee.getCost()) // 20
-console.log(someCoffee.getDescription()) // 普通咖啡，加奶，加鲜奶油，加香草
-```
+<<< @/fragments/javascript/decorator.js#getCoffee
 
 ### 📦 门面模式 / Facade
 
@@ -981,70 +431,15 @@ console.log(someCoffee.getDescription()) // 普通咖啡，加奶，加鲜奶油
 
 拿上面启动电脑的例子来说。首先我们编写了电脑类
 
-```js
-class Computer {
-
-    getElectricShock() {
-        console.log('Ouch!')
-    }
-
-    makeSound() {
-        console.log('Beep beep!')
-    }
-
-    showLoadingScreen() {
-        console.log('加载中..')
-    }
-
-    bam() {
-        console.log('准备就绪！')
-    }
-
-    closeEverything() {
-        console.log('Bup bup bup buzzzz!')
-    }
-
-    sooth() {
-        console.log('Zzzzz')
-    }
-
-    pullCurrent() {
-        console.log('Haaah!')
-    }
-}
-```
+<<< @/fragments/javascript/facade.js#Computer
 
 接着我们编写了它的门面
 
-```js
-class ComputerFacade {
-
-    constructor(computer) {
-        this.computer = computer
-    }
-
-    turnOn() {
-        this.computer.getElectricShock()
-        this.computer.makeSound()
-        this.computer.showLoadingScreen()
-        this.computer.bam()
-    }
-
-    turnOff() {
-        this.computer.closeEverything()
-        this.computer.pullCurrent()
-        this.computer.sooth()
-    }
-}
-```
+<<< @/fragments/javascript/facade.js#ComputerFacade
 
 最后就可以使用电脑的门面了
 
-```js
-const computer = new ComputerFacade(new Computer())
-computer.turnOn() // Ouch! Beep beep! 加载中.. 准备就绪！
-computer.turnOff() // Bup bup buzzz! Haah! Zzzzz
-```
+<<< @/fragments/javascript/facade.js#useComputerFacade
 
 ### 🍃 享元模式 / Flyweight
 
@@ -1064,61 +459,15 @@ computer.turnOff() // Bup bup buzzz! Haah! Zzzzz
 
 翻译前边我们关于茶的例子。首先我们编写了茶的类型和茶的制作类
 
-```js
-// 所有将被缓存的数据即是享元
-// 这里茶的类型将成为享元
-class KarakTea {
-}
-
-// 充当工厂，保存沏好的茶
-class TeaMaker {
-    constructor(){
-        this.availableTea = {}
-    }
-
-    make(preference) {
-        this.availableTea[preference] = this.availableTea[preference] || (new KarakTea())
-        return this.availableTea[preference]
-    }
-}
-```
+<<< @/fragments/javascript/flyweight.js#TeaMaker
 
 接着我们编写了 `TeaShop`（茶店）类，它将处理点单和上茶事件
 
-```js
-class TeaShop {
-    constructor(teaMaker) {
-        this.teaMaker = teaMaker
-        this.orders = []
-    }
-
-    takeOrder(teaType, table) {
-        this.orders[table] = this.teaMaker.make(teaType)
-    }
-
-    serve() {
-        this.orders.forEach((order, index) => {
-            console.log('上茶给桌号 #' + index)
-        })
-    }
-}
-```
+<<< @/fragments/javascript/flyweight.js#TeaShop
 
 最后我们可以像下面一样使用它
 
-```js
-const teaMaker = new TeaMaker()
-const shop = new TeaShop(teaMaker)
-
-shop.takeOrder('少糖', 1)
-shop.takeOrder('多奶', 2)
-shop.takeOrder('无糖', 5)
-
-shop.serve()
-// 上茶给桌号 #1
-// 上茶给桌号 #2
-// 上茶给桌号 #5
-```
+<<< @/fragments/javascript/flyweight.js#serveTea
 
 ### 🎱 代理模式 / Proxy
 
@@ -1138,60 +487,15 @@ shop.serve()
 
 以上面我们的防盗门为例。首先，我们编写了门的接口和它的实现
 
-```js
-/**
- * Door interface :
- *
- * open()
- * close()
- */
-
-class LabDoor {
-    open() {
-        console.log('打开实验室门')
-    }
-
-    close() {
-        console.log('关闭实验室门')
-    }
-}
-```
+<<< @/fragments/javascript/proxy.js#Door
 
 接着我们编写了代理，它可以确保我们想要的任何门的安全
 
-```js
-class Security {
-    constructor(door) {
-        this.door = door
-    }
-
-    open(password) {
-        if (this.authenticate(password)) {
-            this.door.open()
-        } else {
-            console.log('奥不！密码错误。')
-        }
-    }
-
-    authenticate(password) {
-        return password === 'ecr@t'
-    }
-
-    close() {
-        this.door.close()
-    }
-}
-```
+<<< @/fragments/javascript/proxy.js#Security
 
 最后这是使用它的方法
 
-```js
-const door = new Security(new LabDoor())
-door.open('invalid') // 奥不！密码错误。
-
-door.open('ecr@t') // 打开实验室门
-door.close() // 关闭实验室门
-```
+<<< @/fragments/javascript/proxy.js#openCloseSecurityDoor
 
 ## 🤹 行为型设计模式 / Behavioral Design Patterns
 
@@ -1221,80 +525,11 @@ door.close() // 关闭实验室门
 
 翻译一下刚刚我们账户的例子。首先，我们编写了基础账户类，它包括将账户链接起来的逻辑。基于基础账户类，我们还编写了一些具体账户类
 
-```js
-class Account {
-
-    setNext(account) {
-        this.successor = account
-    }
-
-    pay(amountToPay) {
-        if (this.canPay(amountToPay)) {
-            console.log(`使用 ${this.name} 支付 ${amountToPay}！`)
-        } else if (this.successor) {
-            console.log(`无法使用 ${this.name} 支付。继续中...`)
-            this.successor.pay(amountToPay)
-        } else {
-            console.log('没有账户额度足够')
-        }
-    }
-
-    canPay(amount) {
-        return this.balance >= amount
-    }
-}
-
-class Bank extends Account {
-    constructor(balance) {
-        super()
-        this.name = '银行'
-        this.balance = balance
-    }
-}
-
-class Paypal extends Account {
-    constructor(balance) {
-        super()
-        this.name = '贝宝'
-        this.balance = balance
-    }
-}
-
-class Bitcoin extends Account {
-    constructor(balance) {
-        super()
-        this.name = '比特币'
-        this.balance = balance
-    }
-}
-```
+<<< @/fragments/javascript/chainOfResponsibility.js#Account
 
 现在，让我们使用上面定义的具体账户类（即银行，贝宝，比特币），构成我们的责任链
 
-```js
-// 让我们像下面这样构成责任链
-//      银行.贝宝.比特币
-//
-// 银行优先支付
-//      如果银行不足以支付，则使用贝宝
-//      如果贝宝不足以支付，则使用比特币
-
-const bank = new Bank(100)          // 银行额度为 100
-const paypal = new Paypal(200)      // 贝宝额度为 200
-const bitcoin = new Bitcoin(300)    // 比特币额度为 300
-
-bank.setNext(paypal)
-paypal.setNext(bitcoin)
-
-// 让我们尝试使用银行优先支付
-bank.pay(259)
-
-// 输出如下
-// ==============
-// 无法使用 银行 支付。继续中...
-// 无法使用 贝宝 支付。继续中...
-// 使用 比特币 支付 259！
-```
+<<< @/fragments/javascript/chainOfResponsibility.js#useAccount
 
 ### 👮 命令模式 / Command
 
@@ -1315,91 +550,19 @@ bank.pay(259)
 
 首先，我们定义了接收者，它拥有可能会执行的每个方法的实现。
 
-```js
-// Receiver
-class Bulb {
-    turnOn() {
-        console.log('点亮了灯泡！')
-    }
-
-    turnOff() {
-        console.log('黑暗！')
-    }
-}
-```
+<<< @/fragments/javascript/command.js#Bulb
 
 我们已经有了每个命令都需要实现的接口，基于这个接口，我们定义了一组命令
 
-```js
-/**
- * Command interface
- *
- * execute()
- * undo()
- * redo()
- */
-
-// Command
-class TurnOnCommand {
-    constructor(bulb) {
-        this.bulb = bulb
-    }
-
-    execute() {
-        this.bulb.turnOn()
-    }
-
-    undo() {
-        this.bulb.turnOff()
-    }
-
-    redo() {
-        this.execute()
-    }
-}
-
-class TurnOffCommand {
-    constructor(bulb) {
-        this.bulb = bulb
-    }
-
-    execute() {
-        this.bulb.turnOff()
-    }
-
-    undo() {
-        this.bulb.turnOn()
-    }
-
-    redo() {
-        this.execute()
-    }
-}
-```
+<<< @/fragments/javascript/command.js#Command
 
 之后，我们定义了 `Invoker`（调用者），由它来处理客户端的交互命令
 
-```js
-// Invoker
-class RemoteControl {
-    submit(command) {
-        command.execute()
-    }
-}
-```
+<<< @/fragments/javascript/command.js#RemoteControl
 
 最后，让我们来看看该如何通过客户端调用它
 
-```js
-const bulb = new Bulb()
-
-const turnOn = new TurnOnCommand(bulb)
-const turnOff = new TurnOffCommand(bulb)
-
-const remote = new RemoteControl()
-remote.submit(turnOn) // 点亮了灯泡！
-remote.submit(turnOff) // 黑暗！
-```
+<<< @/fragments/javascript/command.js#useRemoteControl
 
 命令模式也可以用来实现基于事务的系统。您执行的命令将保存在历史记录中。如果成功执行了最后的命令，一切都好；如果没有，则可以根据历史记录不断回滚，对所有已执行的命令进行 `undo`（撤销）操作。
 
@@ -1421,53 +584,15 @@ remote.submit(turnOff) // 黑暗！
 
 翻译一下我们上面广播电台的例子。首先我们定义了 `RadioStation`（广播电台）类。
 
-```js
-class RadioStation {
-    constructor(frequency) {
-        this.frequency = frequency
-    }
-
-    getFrequency() {
-        return this.frequency
-    }
-}
-```
+<<< @/fragments/javascript/iterator.js#RadioStation
 
 接着我们定义了迭代器
 
-```js
-class StationList {
-    constructor(){
-        this.stations = []
-    }
-
-    addStation(station) {
-        this.stations.push(station)
-    }
-
-    removeStation(toRemove) {
-        const toRemoveFrequency = toRemove.getFrequency()
-        this.stations = this.stations.filter(station => {
-            return station.getFrequency() !== toRemoveFrequency
-        })
-    }
-}
-```
+<<< @/fragments/javascript/iterator.js#StationList
 
 现在我们可以这样使用它
 
-```js
-const stationList = new StationList()
-
-stationList.addStation(new RadioStation(89))
-stationList.addStation(new RadioStation(101))
-stationList.addStation(new RadioStation(102))
-stationList.addStation(new RadioStation(103.2))
-
-stationList.stations.forEach(station => console.log(station.getFrequency()))
-
-stationList.removeStation(new RadioStation(89)) // 将移除 89 频道的广播电台
-```
+<<< @/fragments/javascript/iterator.js#useStationList
 
 ### 👽 中介者模式 / Mediator
 
@@ -1489,52 +614,15 @@ stationList.removeStation(new RadioStation(89)) // 将移除 89 频道的广播�
 
 首先我们定义了中介者，即聊天室
 
-```js
-// Mediator
-class ChatRoom {
-    showMessage(user, message) {
-        const time = new Date()
-        const sender = user.getName()
-
-        console.log(time + '[' + sender + ']:' + message)
-    }
-}
-```
+<<< @/fragments/javascript/mediator.js#ChatRoom
 
 接着我们定义了用户，即同事类
 
-```js
-class User {
-    constructor(name, chatMediator) {
-        this.name = name
-        this.chatMediator = chatMediator
-    }
-
-    getName() {
-        return this.name
-    }
-
-    send(message) {
-        this.chatMediator.showMessage(this, message)
-    }
-}
-```
+<<< @/fragments/javascript/mediator.js#User
 
 就可以像这样使用了
 
-```js
-const mediator = new ChatRoom()
-
-const john = new User('John Doe', mediator)
-const jane = new User('Jane Doe', mediator)
-
-john.send('你好！')
-jane.send('你好哇！')
-
-// 输出如下
-// Feb 14, 10:58 [John]: 你好！
-// Feb 14, 10:58 [Jane]: 你好哇！
-```
+<<< @/fragments/javascript/mediator.js#useChatRoom
 
 ### 💾 备忘录模式 / Memento
 
@@ -1558,67 +646,15 @@ jane.send('你好哇！')
 
 首先我们定义了备忘录对象，它能够保存编辑器的状态
 
-```js
-class EditorMemento {
-    constructor(content) {
-        this._content = content
-    }
-
-    getContent() {
-        return this._content
-    }
-}
-```
+<<< @/fragments/javascript/memento.js#EditorMemento
 
 接着我们定义了编辑器对象，即原发器，它将会使用到备忘录对象
 
-```js
-class Editor {
-    constructor(){
-        this._content = ''
-    }
-
-    type(words) {
-        this._content = this._content + words
-    }
-
-    getContent() {
-        return this._content
-    }
-
-    save() {
-        return new EditorMemento(this._content)
-    }
-
-    restore(memento) {
-        this._content = memento.getContent()
-    }
-}
-```
+<<< @/fragments/javascript/memento.js#Editor
 
 最后可以这样使用它
 
-```js
-const editor = new Editor()
-
-// 输入一些文本
-editor.type('日月忽其不淹兮，')
-editor.type('春与秋其代序。')
-
-// 保存当前用于恢复的状态：日月忽其不淹兮，春与秋其代序。
-const saved = editor.save()
-
-// 再输入一些文本
-editor.type('惟草木之零落兮，恐美人之迟暮。')
-
-// 不保存，输出当前内容
-console.log(editor.getContent())// 日月忽其不淹兮，春与秋其代序。惟草木之零落兮，恐美人之迟暮。
-
-// 恢复到上次保存的状态
-editor.restore(saved)
-
-console.log(editor.getContent()) // 日月忽其不淹兮，春与秋其代序。
-```
+<<< @/fragments/javascript/memento.js#useEditor
 
 ### 😎 观察者模式 / Observer
 
@@ -1640,62 +676,15 @@ console.log(editor.getContent()) // 日月忽其不淹兮，春与秋其代序�
 
 翻译前面我们的例子。首先，我们定义了求职者类，当有新的职位发布时，他们将得到通知
 
-```js
-const JobPost = title => ({
-    title: title
-})
-
-class JobSeeker {
-    constructor(name) {
-        this._name = name
-    }
-
-    notify(jobPost) {
-        console.log(this._name, ' 接收了一个新职位的通知：', jobPost.title)
-    }
-}
-```
+<<< @/fragments/javascript/observer.js#JobSeeker
 
 接着，我们定义了职位发布公告栏，供求职者订阅
 
-```js
-class JobBoard {
-    constructor() {
-        this._subscribers = []
-    }
-
-    subscribe(jobSeeker) {
-        this._subscribers.push(jobSeeker)
-    }
-
-    addJob(jobPosting) {
-        this._subscribers.forEach(subscriber => {
-            subscriber.notify(jobPosting)
-        })
-    }
-}
-```
+<<< @/fragments/javascript/observer.js#JobBoard
 
 现在，可以这样使用它
 
-```js
-// 创建订阅者
-const johnDoe = new JobSeeker('John Doe')
-const janeDoe = new JobSeeker('Jane Doe')
-const kaneDoe = new JobSeeker('Kane Doe')
-
-// 创建发布者，并绑定订阅者
-const jobBoard = new JobBoard()
-jobBoard.subscribe(johnDoe)
-jobBoard.subscribe(janeDoe)
-
-// 添加一份新的职位，看看订阅者是否收到通知
-jobBoard.addJob(JobPost('软件工程师'))
-
-// 输出如下
-// John Doe 接收了一个新职位的通知：软件工程师
-// Jane Doe 接收了一个新职位的通知：软件工程师
-```
+<<< @/fragments/javascript/observer.js#useJobBoard
 
 ### 🏃 访问者模式 / Visitor
 
@@ -1717,94 +706,23 @@ jobBoard.addJob(JobPost('软件工程师'))
 
 我们已经实现了动物类
 
-```js
-class Monkey {
-    shout() {
-        console.log('Ooh oo aa aa!')
-    }
-
-    accept(operation) {
-        operation.visitMonkey(this)
-    }
-}
-
-class Lion {
-    roar() {
-        console.log('Roaaar!')
-    }
-
-    accept(operation) {
-        operation.visitLion(this)
-    }
-}
-
-class Dolphin {
-    speak() {
-        console.log('Tuut tuttu tuutt!')
-    }
-
-    accept(operation) {
-        operation.visitDolphin(this)
-    }
-}
-```
+<<< @/fragments/javascript/visitor.js#Animal
 
 接着，实现我们的访问者
 
-```js
-const speak = {
-    visitMonkey(monkey){
-        monkey.shout()
-    },
-    visitLion(lion){
-        lion.roar()
-    },
-    visitDolphin(dolphin){
-        dolphin.speak()
-    }
-}
-```
+<<< @/fragments/javascript/visitor.js#speak
 
 它可以这样使用
 
-```js
-const monkey = new Monkey()
-const lion = new Lion()
-const dolphin = new Dolphin()
-
-monkey.accept(speak)    // Ooh oo aa aa!
-lion.accept(speak)      // Roaaar!
-dolphin.accept(speak)   // Tuut tutt tuutt!
-```
+<<< @/fragments/javascript/visitor.js#AnimalSpeak
 
 我们可以简单地为动物类添加可继承的层次结构来让动物发出叫声，但接下来当我们需要为动物添加新的行为时，不得不去修改动物类本身。但现在，我们不再需要修改动物类。举个例子，如果我们需要为动物添加跳跃行为，我们可以简单地创建一个新的访问者来实现，如下所示
 
-```js
-const jump = {
-    visitMonkey(monkey) {
-        console.log('跳了 20 英尺高！跳到了树上去！')
-    },
-    visitLion(lion) {
-        console.log('跳了 7 英尺高！回到了地上！')
-    },
-    visitDolphin(dolphin) {
-        console.log('探出了水面一点随后消失了')
-    }
-}
-```
+<<< @/fragments/javascript/visitor.js#jump
 
 像这样使用它
 
-```js
-monkey.accept(speak)   // Ooh oo aa aa!
-monkey.accept(jump)    // 跳了 20 英尺高！跳到了树上去！
-
-lion.accept(speak)     // Roaaar!
-lion.accept(jump)      // 跳了 7 英尺高！回到了地上！
-
-dolphin.accept(speak)  // Tuut tutt tuutt!
-dolphin.accept(jump)   // 探出了水面一点随后消失了
-```
+<<< @/fragments/javascript/visitor.js#AnimalJump
 
 ### 💡 策略模式 / Strategy
 
@@ -1824,46 +742,15 @@ dolphin.accept(jump)   // 探出了水面一点随后消失了
 
 翻译上面我们的例子，通过 JavaScript 的类函数，我们可以轻松实现这两种策略
 
-```js
-const bubbleSort = dataset => {
-    console.log('使用冒泡排序')
-    // ...
-    // ...
-    return dataset
-}
-
-const quickSort = dataset => {
-    console.log('使用快速排序')
-    // ...
-    // ...
-    return dataset
-}
-```
+<<< @/fragments/javascript/strategy.js#Sort
 
 接着我们定义了客户端，它将决定使用何种策略
 
-```js
-const sorter = dataset => {
-    if(dataset.length > 5){
-        return quickSort
-    } else {
-        return bubbleSort
-    }
-}
-```
+<<< @/fragments/javascript/strategy.js#sorter
 
 最后，可以这样使用它
 
-```js
-const longDataSet = [1, 5, 4, 3, 2, 8]
-const shortDataSet = [1, 5, 4]
-
-const sorter1 = sorter(longDataSet)
-const sorter2 = sorter(shortDataSet)
-
-sorter1(longDataSet) // Output : 使用快速排序
-sorter2(shortDataSet) // Output : 使用冒泡排序
-```
+<<< @/fragments/javascript/strategy.js#useSorter
 
 ### 💢 状态模式 / State
 
@@ -1886,54 +773,15 @@ sorter2(shortDataSet) // Output : 使用冒泡排序
 
 首先我们编写了改变输入文本状态的函数
 
-```js
-const upperCase = inputString => inputString.toUpperCase()
-const lowerCase = inputString => inputString.toLowerCase()
-const defaultTransform = inputString => inputString
-```
+<<< @/fragments/javascript/state.js#inputCase
 
 接着我们编写了文本编辑器类
 
-```js
-class TextEditor {
-    constructor(transform) {
-        this._transform = transform
-    }
-
-    setTransform(transform) {
-        this._transform = transform
-    }
-
-    type(words) {
-        console.log(this._transform(words))
-    }
-}
-```
+<<< @/fragments/javascript/state.js#TextEditor
 
 最后可以像这样使用它
 
-```js
-const editor = new TextEditor(defaultTransform)
-
-editor.type('First line')
-
-editor.setTransform(upperCase)
-
-editor.type('Second line')
-editor.type('Third line')
-
-editor.setTransform(lowerCase)
-
-editor.type('Fourth line')
-editor.type('Fifth line')
-
-// 输出：
-// First line
-// SECOND LINE
-// THIRD LINE
-// fourth line
-// fifth line
-```
+<<< @/fragments/javascript/state.js#useTextEditor
 
 ### 📒 模板方法模式 / Template Method
 
@@ -1941,13 +789,13 @@ editor.type('Fifth line')
 
 > 假设我们打算盖一些房子。建房子的步骤可能像这样
 >
-> - 打地基
-> - 筑墙壁
-> - 盖屋顶
-> - 加楼层
+> -   打地基
+> -   筑墙壁
+> -   盖屋顶
+> -   加楼层
 >
 > 上述步骤的顺序不能被改变，即在筑好墙壁之前您没法盖上屋顶。但每一个步骤都可以被修改，例如可以使用木头、聚酯纤维或石头来筑建墙壁。
-  
+
 简单来说
 
 > 模板方法模式定义了如何执行某些算法的框架，但将这些步骤的具体实现推迟到了子类。
@@ -1962,79 +810,15 @@ editor.type('Fifth line')
 
 首先我们编写了基类，它指定了构建算法的框架
 
-```js
-class Builder {
-    // 模板方法
-    build() {
-        this.test()
-        this.lint()
-        this.assemble()
-        this.deploy()
-    }
-}
-```
+<<< @/fragments/javascript/templateMethod.js#Builder
 
 现在我们编写了它的具体实现
 
-```js
-class AndroidBuilder extends Builder {
-    test() {
-        console.log('执行安卓代码测试')
-    }
-
-    lint() {
-        console.log('检查安卓代码格式')
-    }
-
-    assemble() {
-        console.log('启动安卓应用构建')
-    }
-
-    deploy() {
-        console.log('部署安卓应用到服务器')
-    }
-}
-
-class IosBuilder extends Builder {
-    test() {
-        console.log('执行 IOS 代码测试')
-    }
-
-    lint() {
-        console.log('检查 IOS 代码格式')
-    }
-
-    assemble() {
-        console.log('启动 IOS 应用构建')
-    }
-
-    deploy() {
-        console.log('部署 IOS 应用到服务器')
-    }
-}
-```
+<<< @/fragments/javascript/templateMethod.js#extendBuilder
 
 最后可以这样使用它
 
-```js
-const androidBuilder = new AndroidBuilder()
-androidBuilder.build()
-
-// 输出：
-// 执行安卓代码测试
-// 检查安卓代码格式
-// 启动安卓应用构建
-// 部署安卓应用到服务器
-
-const iosBuilder = new IosBuilder()
-iosBuilder.build()
-
-// 输出：
-// 执行 IOS 代码测试
-// 检查 IOS 代码格式
-// 启动 IOS 应用构建
-// 部署 IOS 应用到服务器
-```
+<<< @/fragments/javascript/templateMethod.js#useExtendedBuilder
 
 ## 🚦 尾声 / Wrap Up Folks
 
@@ -2042,9 +826,9 @@ iosBuilder.build()
 
 ## 👬 参与贡献 / Contribution
 
-- 反馈问题 / Report issues
-- 拉取请求，改进文档 / Open pull request with improvements
-- 分享此仓库 / Spread the word
+-   反馈问题 / Report issues
+-   拉取请求，改进文档 / Open pull request with improvements
+-   分享此仓库 / Spread the word
 
 ## 🔑 项目许可 / License
 

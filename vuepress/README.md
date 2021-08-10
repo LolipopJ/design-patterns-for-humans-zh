@@ -32,9 +32,17 @@ yarn build
 
 默认存放路径为 `./docs/.vuepress/dist`。
 
+## 格式化代码
+
+提交代码前使用 Prettier 修复代码格式。
+
+```bash
+yarn prettier
+```
+
 ## 待完成清单
 
-- [ ] 添加多编程语言支持。
-  - [ ] PHP
-  - [ ] Python
-  - [ ] ...
+-   [ ] 添加多编程语言支持。
+    -   [ ] PHP
+    -   [ ] Python
+    -   [ ] ...
