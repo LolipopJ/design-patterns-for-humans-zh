@@ -11,7 +11,7 @@ class SimpleCoffee {
     }
 
     getDescription() {
-        return '普通咖啡';
+        return '一杯咖啡';
     }
 }
 // #endregion Coffee
@@ -65,17 +65,17 @@ let someCoffee;
 
 someCoffee = new SimpleCoffee();
 console.log(someCoffee.getCost()); // 10
-console.log(someCoffee.getDescription()); // 普通咖啡
+console.log(someCoffee.getDescription()); // 一杯咖啡
 
 someCoffee = new MilkCoffee(someCoffee);
 console.log(someCoffee.getCost()); // 12
-console.log(someCoffee.getDescription()); // 普通咖啡，加奶
+console.log(someCoffee.getDescription()); // 一杯咖啡，加奶
 
 someCoffee = new WhipCoffee(someCoffee);
 console.log(someCoffee.getCost()); // 17
-console.log(someCoffee.getDescription()); // 普通咖啡，加奶，加鲜奶油
+console.log(someCoffee.getDescription()); // 一杯咖啡，加奶，加鲜奶油
 
 someCoffee = new VanillaCoffee(someCoffee);
 console.log(someCoffee.getCost()); // 20
-console.log(someCoffee.getDescription()); // 普通咖啡，加奶，加鲜奶油，加香草
+console.log(someCoffee.getDescription()); // 一杯咖啡，加奶，加鲜奶油，加香草
 // #endregion getCoffee

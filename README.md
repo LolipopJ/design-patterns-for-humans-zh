@@ -20,9 +20,9 @@
 
 如果您喜欢这篇教程，不妨看看项目的原作者的[博客](http://sohamkamani.com)，或是在 [Twitter](https://twitter.com/sohamkamani) 上跟他打声招呼。
 
-# 献给中文读者的设计模式教程 / Design Patterns for Humans ZH
+# 献给中文读者的设计模式教程
 
-## 🚀 介绍 / Introduction
+## 🚀 介绍
 
 设计模式是为**解决某些普遍存在的问题**提出的**方案与指导原则**。它们不是类，程序包或库文件，没法直接放到您的应用程序里然后等待神奇的事情发生。确切地说，它们是一种指导原则，旨在告诉您可以选用某种方法，来解决一类问题。
 
@@ -32,23 +32,23 @@
 
 > 在软件工程领域，软件设计模式是为软件设计过程中，对给定上下文普遍存在的问题，所提出的通用、可重用的解决方案。它不是完整的设计实现，无法直接转译为源代码或机器码。正相反，它是面向如何解决问题的描述或模板，并可以在很多不同的情况下使用。
 
-### ⚠️ 请注意 / Be Careful
+### ⚠️ 请注意
 
--   设计模式并不是解决您所有问题的万全之策。
--   不要强迫去使用它们；否则很可能发生不好的事情。
--   请记住，设计模式是一种指导方案，用来**解决**问题，而不是**找到**问题；所以不要想太多。
--   如果在正确的地方以正确的方式使用设计模式，它们或许能成为您的得力帮手；否则可能导致您的代码混乱不堪。
+- 设计模式并不是解决您所有问题的万全之策。
+- 不要强迫去使用它们；否则很可能发生不好的事情。
+- 请记住，设计模式是一种指导方案，用来**解决**问题，而不是**找到**问题；所以不要想太多。
+- 如果在正确的地方以正确的方式使用设计模式，它们或许能成为您的得力帮手；否则可能导致您的代码混乱不堪。
 
-### 🐢 在开始之前 / Before you start
+### 🐢 在开始之前
 
--   所有的设计模式示例都基于 JavaScript 的 [ES6](https://github.com/lukehoban/es6features) 规范实现。
--   由于 JavaScript 中不存在实现接口的说法，因此我们在代码示例中使用了隐式接口，这意味着只有一个类具有一个接口应当有的属性和方法，这个类就被认为实现了这个接口。为了让您更容易分辨当前正在使用的接口，我们在每个示例中都添加了注释信息。
+- 所有的设计模式示例都基于 JavaScript 的 [ES6](https://github.com/lukehoban/es6features) 规范实现。
+- 由于 JavaScript 中不存在实现接口的说法，因此我们在代码示例中使用了隐式接口，这意味着只有一个类具有一个接口应当有的属性和方法，这个类就被认为实现了这个接口。为了让您更容易分辨当前正在使用的接口，我们在每个示例中都添加了注释信息。
 
-### 🛎️ 设计模式的类型 / Types of Design Patterns
+### 🛎️ 设计模式的类型
 
--   [创建型](#%EF%B8%8F-创建型设计模式--creational-design-patterns)
--   [结构型](#-结构型设计模式--structural-design-patterns)
--   [行为型](#-行为型设计模式--behavioral-design-patterns)
+- [创建型](#%EF%B8%8F-创建型设计模式--creational-design-patterns)
+- [结构型](#-结构型设计模式--structural-design-patterns)
+- [行为型](#-行为型设计模式--behavioral-design-patterns)
 
 ## 🏗️ 创建型设计模式 / Creational Design Patterns
 
@@ -60,12 +60,12 @@
 
 > 在软件工程领域，创建型设计模式是处理对象创建机制的设计模式，试图以符合要求的方式来创建对象。创建对象的基础方式可能导致设计问题或增加设计复杂度。创建型设计模式通过以某种方式控制对象创建的过程，来解决这个问题。
 
--   [简单工厂模式](#-简单工厂模式--simple-factory)
--   [工厂方法模式](#-工厂方法模式--factory-method)
--   [抽象工厂模式](#-抽象工厂模式--abstract-factory)
--   [生成器模式](#-生成器模式--builder)
--   [原型模式](#-原型模式--prototype)
--   [单例模式](#-单例模式--singleton)
+- [简单工厂模式](#-简单工厂模式--simple-factory)
+- [工厂方法模式](#-工厂方法模式--factory-method)
+- [抽象工厂模式](#-抽象工厂模式--abstract-factory)
+- [生成器模式](#-生成器模式--builder)
+- [原型模式](#-原型模式--prototype)
+- [单例模式](#-单例模式--singleton)
 
 ### 🏠 简单工厂模式 / Simple Factory
 
@@ -123,8 +123,8 @@ const DoorFactory = {
 // 制造一个 100x200 的门给我
 const door = DoorFactory.makeDoor(100, 200);
 
-console.log('Width:', door.getWidth());
-console.log('Height:', door.getHeight());
+console.log("Width:", door.getWidth());
+console.log("Height:", door.getHeight());
 
 // 制造一个 50x100 的门给我
 const door = DoorFactory.makeDoor(50, 100);
@@ -161,13 +161,13 @@ const door = DoorFactory.makeDoor(50, 100);
 
 class Developer {
     askQuestions() {
-        console.log('提出设计模式问题！');
+        console.log("提出设计模式问题！");
     }
 }
 
 class CommunityExecutive {
     askQuestions() {
-        console.log('提出社区建设问题！');
+        console.log("提出社区建设问题！");
     }
 }
 ```
@@ -240,13 +240,13 @@ marketingManager.takeInterview(); // 输出：提出社区建设问题！
 
 class WoodenDoor {
     getDescription() {
-        console.log('我是一个木门');
+        console.log("我是一个木门");
     }
 }
 
 class IronDoor {
     getDescription() {
-        console.log('我是一个铁门');
+        console.log("我是一个铁门");
     }
 }
 ```
@@ -262,13 +262,13 @@ class IronDoor {
 
 class Welder {
     getDescription() {
-        console.log('我只能安装木门');
+        console.log("我只能安装木门");
     }
 }
 
 class Carpenter {
     getDescription() {
-        console.log('我只能安装铁门');
+        console.log("我只能安装铁门");
     }
 }
 ```
@@ -468,7 +468,7 @@ const burger = new Burger(14, true, false, true, true);
 
 ```js
 class Sheep {
-    constructor(name, category = '山羊') {
+    constructor(name, category = "山羊") {
         this.name = name;
         this.category = category;
     }
@@ -503,13 +503,13 @@ class SheepPrototype {
 让我们来克隆电子 Dolly 羊
 
 ```js
-const originalSheep = new Sheep('Jolly');
+const originalSheep = new Sheep("Jolly");
 originalSheep.getName(); // Jolly
 originalSheep.getCategory(); // 山羊
 // 克隆并根据需要修改
 const prototype = new SheepPrototype(originalSheep);
 const clonedSheep = prototype.clone();
-clonedSheep.setName('Dolly');
+clonedSheep.setName("Dolly");
 clonedSheep.getName(); // Dolly
 clonedSheep.getCategory(); // 山羊
 ```
@@ -542,9 +542,9 @@ clonedSheep.getCategory(); // 山羊
 
 ```js
 const president = (function () {
-    const presidentsPrivateInformation = 'Super private';
+    const presidentsPrivateInformation = "Super private";
 
-    const name = 'Turd Sandwich';
+    const name = "Turd Sandwich";
 
     const getName = () => name;
 
@@ -572,13 +572,13 @@ president.presidentsPrivateInformation; // 输出：undefined
 
 > 在软件工程领域，结构型设计模式是通过识别一个简单的方法，这个方法实现了实体之间的关系，来简化设计的设计模式。
 
--   [适配器模式](#-适配器模式--adapter)
--   [桥接模式](#-桥接模式--bridge)
--   [组合模式](#-组合模式--composite)
--   [装饰器模式](#-装饰器模式--decorator)
--   [门面模式](#-门面模式--facade)
--   [享元模式](#-享元模式--flyweight)
--   [代理模式](#-代理模式--proxy)
+- [适配器模式](#-适配器模式--adapter)
+- [桥接模式](#-桥接模式--bridge)
+- [组合模式](#-组合模式--composite)
+- [装饰器模式](#-装饰器模式--decorator)
+- [门面模式](#-门面模式--facade)
+- [享元模式](#-享元模式--flyweight)
+- [代理模式](#-代理模式--proxy)
 
 ### 🔌 适配器模式 / Adapter
 
@@ -694,7 +694,7 @@ class About {
     }
 
     getContent() {
-        return 'About page in ' + this.theme.getColor();
+        return "About page in " + this.theme.getColor();
     }
 }
 
@@ -704,7 +704,7 @@ class Careers {
     }
 
     getContent() {
-        return 'Careers page in ' + this.theme.getColor();
+        return "Careers page in " + this.theme.getColor();
     }
 }
 ```
@@ -720,17 +720,17 @@ class Careers {
 
 class DarkTheme {
     getColor() {
-        return 'Dark Black';
+        return "Dark Black";
     }
 }
 class LightTheme {
     getColor() {
-        return 'Off White';
+        return "Off White";
     }
 }
 class AquaTheme {
     getColor() {
-        return 'Light Blue';
+        return "Light Blue";
     }
 }
 ```
@@ -860,15 +860,15 @@ class Organization {
 
 ```js
 // 定义新的雇员
-const john = new Developer('John Doe', 12000);
-const flank = new Designer('Flank', 10000);
+const john = new Developer("John Doe", 12000);
+const flank = new Designer("Flank", 10000);
 
 // 添加雇员到组织中
 const organization = new Organization();
 organization.addEmployee(john);
 organization.addEmployee(flank);
 
-console.log('薪金净额：', organization.getNetSalaries()); // 薪金净额：22000
+console.log("薪金净额：", organization.getNetSalaries()); // 薪金净额：22000
 ```
 
 ### ☕ 装饰器模式 / Decorator
@@ -902,7 +902,7 @@ class SimpleCoffee {
     }
 
     getDescription() {
-        return '普通咖啡';
+        return "一杯咖啡";
     }
 }
 ```
@@ -920,7 +920,7 @@ class MilkCoffee {
     }
 
     getDescription() {
-        return this.coffee.getDescription() + '，加奶';
+        return this.coffee.getDescription() + "，加奶";
     }
 }
 
@@ -934,7 +934,7 @@ class WhipCoffee {
     }
 
     getDescription() {
-        return this.coffee.getDescription() + '，加鲜奶油';
+        return this.coffee.getDescription() + "，加鲜奶油";
     }
 }
 
@@ -948,31 +948,31 @@ class VanillaCoffee {
     }
 
     getDescription() {
-        return this.coffee.getDescription() + '，加香草';
+        return this.coffee.getDescription() + "，加香草";
     }
 }
 ```
 
-现在，来一杯咖啡吧
+现在，来杯咖啡吧
 
 ```js
 let someCoffee;
 
 someCoffee = new SimpleCoffee();
 console.log(someCoffee.getCost()); // 10
-console.log(someCoffee.getDescription()); // 普通咖啡
+console.log(someCoffee.getDescription()); // 一杯咖啡
 
 someCoffee = new MilkCoffee(someCoffee);
 console.log(someCoffee.getCost()); // 12
-console.log(someCoffee.getDescription()); // 普通咖啡，加奶
+console.log(someCoffee.getDescription()); // 一杯咖啡，加奶
 
 someCoffee = new WhipCoffee(someCoffee);
 console.log(someCoffee.getCost()); // 17
-console.log(someCoffee.getDescription()); // 普通咖啡，加奶，加鲜奶油
+console.log(someCoffee.getDescription()); // 一杯咖啡，加奶，加鲜奶油
 
 someCoffee = new VanillaCoffee(someCoffee);
 console.log(someCoffee.getCost()); // 20
-console.log(someCoffee.getDescription()); // 普通咖啡，加奶，加鲜奶油，加香草
+console.log(someCoffee.getDescription()); // 一杯咖啡，加奶，加鲜奶油，加香草
 ```
 
 ### 📦 门面模式 / Facade
@@ -998,31 +998,31 @@ console.log(someCoffee.getDescription()); // 普通咖啡，加奶，加鲜奶�
 ```js
 class Computer {
     getElectricShock() {
-        console.log('Ouch!');
+        console.log("Ouch!");
     }
 
     makeSound() {
-        console.log('Beep beep!');
+        console.log("Beep beep!");
     }
 
     showLoadingScreen() {
-        console.log('加载中..');
+        console.log("加载中..");
     }
 
     bam() {
-        console.log('准备就绪！');
+        console.log("准备就绪！");
     }
 
     closeEverything() {
-        console.log('Bup bup bup buzzzz!');
+        console.log("Bup bup bup buzzzz!");
     }
 
     sooth() {
-        console.log('Zzzzz');
+        console.log("Zzzzz");
     }
 
     pullCurrent() {
-        console.log('Haaah!');
+        console.log("Haaah!");
     }
 }
 ```
@@ -1110,7 +1110,7 @@ class TeaShop {
 
     serve() {
         this.orders.forEach((order, index) => {
-            console.log('上茶给桌号 #' + index);
+            console.log("上茶给桌号 #" + index);
         });
     }
 }
@@ -1122,9 +1122,9 @@ class TeaShop {
 const teaMaker = new TeaMaker();
 const shop = new TeaShop(teaMaker);
 
-shop.takeOrder('少糖', 1);
-shop.takeOrder('多奶', 2);
-shop.takeOrder('无糖', 5);
+shop.takeOrder("少糖", 1);
+shop.takeOrder("多奶", 2);
+shop.takeOrder("无糖", 5);
 
 shop.serve();
 // 上茶给桌号 #1
@@ -1160,11 +1160,11 @@ shop.serve();
 
 class LabDoor {
     open() {
-        console.log('打开实验室门');
+        console.log("打开实验室门");
     }
 
     close() {
-        console.log('关闭实验室门');
+        console.log("关闭实验室门");
     }
 }
 ```
@@ -1181,12 +1181,12 @@ class Security {
         if (this.authenticate(password)) {
             this.door.open();
         } else {
-            console.log('奥不！密码错误。');
+            console.log("奥不！密码错误。");
         }
     }
 
     authenticate(password) {
-        return password === 'ecr@t';
+        return password === "ecr@t";
     }
 
     close() {
@@ -1199,9 +1199,9 @@ class Security {
 
 ```js
 const door = new Security(new LabDoor());
-door.open('invalid'); // 奥不！密码错误。
+door.open("invalid"); // 奥不！密码错误。
 
-door.open('ecr@t'); // 打开实验室门
+door.open("ecr@t"); // 打开实验室门
 door.close(); // 关闭实验室门
 ```
 
@@ -1215,16 +1215,16 @@ door.close(); // 关闭实验室门
 
 > 在软件工程领域，行为型设计模式是识别并实现对象之间的常见通信模式的设计模式。如此一来，这些模式使得通信变得更加灵活。
 
--   [责任链模式](#-责任链模式--chain-of-responsibility)
--   [命令模式](#-命令模式--command)
--   [迭代器模式](#-迭代器模式--iterator)
--   [中介者模式](#-中介者模式--mediator)
--   [备忘录模式](#-备忘录模式--memento)
--   [观察者模式](#-观察者模式--observer)
--   [访问者模式](#-访问者模式--visitor)
--   [策略模式](#-策略模式--strategy)
--   [状态模式](#-状态模式--state)
--   [模板方法模式](#-模板方法模式--template-method)
+- [责任链模式](#-责任链模式--chain-of-responsibility)
+- [命令模式](#-命令模式--command)
+- [迭代器模式](#-迭代器模式--iterator)
+- [中介者模式](#-中介者模式--mediator)
+- [备忘录模式](#-备忘录模式--memento)
+- [观察者模式](#-观察者模式--observer)
+- [访问者模式](#-访问者模式--visitor)
+- [策略模式](#-策略模式--strategy)
+- [状态模式](#-状态模式--state)
+- [模板方法模式](#-模板方法模式--template-method)
 
 ### 🔗 责任链模式 / Chain of Responsibility
 
@@ -1258,7 +1258,7 @@ class Account {
             console.log(`无法使用 ${this.name} 支付。继续中...`);
             this.successor.pay(amountToPay);
         } else {
-            console.log('没有账户额度足够');
+            console.log("没有账户额度足够");
         }
     }
 
@@ -1270,7 +1270,7 @@ class Account {
 class Bank extends Account {
     constructor(balance) {
         super();
-        this.name = '银行';
+        this.name = "银行";
         this.balance = balance;
     }
 }
@@ -1278,7 +1278,7 @@ class Bank extends Account {
 class Paypal extends Account {
     constructor(balance) {
         super();
-        this.name = '贝宝';
+        this.name = "贝宝";
         this.balance = balance;
     }
 }
@@ -1286,7 +1286,7 @@ class Paypal extends Account {
 class Bitcoin extends Account {
     constructor(balance) {
         super();
-        this.name = '比特币';
+        this.name = "比特币";
         this.balance = balance;
     }
 }
@@ -1342,11 +1342,11 @@ bank.pay(259);
 // Receiver
 class Bulb {
     turnOn() {
-        console.log('点亮了灯泡！');
+        console.log("点亮了灯泡！");
     }
 
     turnOff() {
-        console.log('黑暗！');
+        console.log("黑暗！");
     }
 }
 ```
@@ -1521,7 +1521,7 @@ class ChatRoom {
         const time = new Date();
         const sender = user.getName();
 
-        console.log(time + '[' + sender + ']:' + message);
+        console.log(time + "[" + sender + "]:" + message);
     }
 }
 ```
@@ -1550,11 +1550,11 @@ class User {
 ```js
 const mediator = new ChatRoom();
 
-const john = new User('John Doe', mediator);
-const flank = new User('Flank Loi', mediator);
+const john = new User("John Doe", mediator);
+const flank = new User("Flank Loi", mediator);
 
-john.send('你好！');
-flank.send('你好哇！');
+john.send("你好！");
+flank.send("你好哇！");
 
 // 输出如下
 // Feb 14, 10:58 [John]: 你好！
@@ -1600,7 +1600,7 @@ class EditorMemento {
 ```js
 class Editor {
     constructor() {
-        this._content = '';
+        this._content = "";
     }
 
     type(words) {
@@ -1627,14 +1627,14 @@ class Editor {
 const editor = new Editor();
 
 // 输入一些文本
-editor.type('日月忽其不淹兮，');
-editor.type('春与秋其代序。');
+editor.type("日月忽其不淹兮，");
+editor.type("春与秋其代序。");
 
 // 保存当前用于恢复的状态：日月忽其不淹兮，春与秋其代序。
 const saved = editor.save();
 
 // 再输入一些文本
-editor.type('惟草木之零落兮，恐美人之迟暮。');
+editor.type("惟草木之零落兮，恐美人之迟暮。");
 
 // 不保存，输出当前内容
 console.log(editor.getContent()); // 日月忽其不淹兮，春与秋其代序。惟草木之零落兮，恐美人之迟暮。
@@ -1651,7 +1651,7 @@ console.log(editor.getContent()); // 日月忽其不淹兮，春与秋其代序�
 
 现实生活中的例子
 
-> 求职者就是很好的例子，他们会订阅一些职位发布网站，当存在匹配的工作机会时网站会通知他们。
+> 求职者就是很好的例子，他们常常会订阅一些招聘网站。当出现合适的工作机会时，这些网站便会通知他们。
 
 简单来说
 
@@ -1663,7 +1663,7 @@ console.log(editor.getContent()); // 日月忽其不淹兮，春与秋其代序�
 
 **编程示例**
 
-实现求职者的例子。首先，我们定义了求职者类，当有新的职位发布时，他们将得到通知
+实现求职者的例子。首先，我们定义了求职者类，当有新的招聘信息发布时，他们将得到通知
 
 ```js
 const JobPost = (title) => ({
@@ -1676,7 +1676,7 @@ class JobSeeker {
     }
 
     notify(jobPost) {
-        console.log(this._name, ' 接收了一个新职位的通知：', jobPost.title);
+        console.log(this._name, " 接收了一条新的招聘信息：", jobPost.title);
     }
 }
 ```
@@ -1705,9 +1705,9 @@ class JobBoard {
 
 ```js
 // 创建订阅者
-const johnDoe = new JobSeeker('John Doe');
-const flankDoe = new JobSeeker('Flank Doe');
-const kaneDoe = new JobSeeker('Kane Doe');
+const johnDoe = new JobSeeker("John Doe");
+const flankDoe = new JobSeeker("Flank Doe");
+const kaneDoe = new JobSeeker("Kane Doe");
 
 // 创建发布者，并绑定订阅者
 const jobBoard = new JobBoard();
@@ -1715,11 +1715,11 @@ jobBoard.subscribe(johnDoe);
 jobBoard.subscribe(flankDoe);
 
 // 添加一份新的职位，看看订阅者是否收到通知
-jobBoard.addJob(JobPost('软件工程师'));
+jobBoard.addJob(JobPost("软件工程师"));
 
 // 输出如下
-// John Doe 接收了一个新职位的通知：软件工程师
-// Flank Doe 接收了一个新职位的通知：软件工程师
+// John Doe 接收了一条新的招聘信息：软件工程师
+// Flank Doe 接收了一条新的招聘信息：软件工程师
 ```
 
 ### 🏃 访问者模式 / Visitor
@@ -1745,7 +1745,7 @@ jobBoard.addJob(JobPost('软件工程师'));
 ```js
 class Monkey {
     shout() {
-        console.log('Ooh oo aa aa!');
+        console.log("Ooh oo aa aa!");
     }
 
     accept(operation) {
@@ -1755,7 +1755,7 @@ class Monkey {
 
 class Lion {
     roar() {
-        console.log('Roaaar!');
+        console.log("Roaaar!");
     }
 
     accept(operation) {
@@ -1765,7 +1765,7 @@ class Lion {
 
 class Dolphin {
     speak() {
-        console.log('Tuut tuttu tuutt!');
+        console.log("Tuut tuttu tuutt!");
     }
 
     accept(operation) {
@@ -1807,13 +1807,13 @@ dolphin.accept(speak); // Tuut tutt tuutt!
 ```js
 const jump = {
     visitMonkey(monkey) {
-        console.log('跳了 20 英尺高！跳到了树上去！');
+        console.log("跳了 20 英尺高！跳到了树上去！");
     },
     visitLion(lion) {
-        console.log('跳了 7 英尺高！回到了地上！');
+        console.log("跳了 7 英尺高！回到了地上！");
     },
     visitDolphin(dolphin) {
-        console.log('探出了水面一点随后消失了');
+        console.log("探出了水面一点随后消失了");
     },
 };
 ```
@@ -1851,14 +1851,14 @@ dolphin.accept(jump); // 探出了水面一点随后消失了
 
 ```js
 const bubbleSort = (dataset) => {
-    console.log('使用冒泡排序');
+    console.log("使用冒泡排序");
     // ...
     // ...
     return dataset;
 };
 
 const quickSort = (dataset) => {
-    console.log('使用快速排序');
+    console.log("使用快速排序");
     // ...
     // ...
     return dataset;
@@ -1940,17 +1940,17 @@ class TextEditor {
 ```js
 const editor = new TextEditor(defaultTransform);
 
-editor.type('First line');
+editor.type("First line");
 
 editor.setTransform(upperCase);
 
-editor.type('Second line');
-editor.type('Third line');
+editor.type("Second line");
+editor.type("Third line");
 
 editor.setTransform(lowerCase);
 
-editor.type('Fourth line');
-editor.type('Fifth line');
+editor.type("Fourth line");
+editor.type("Fifth line");
 
 // 输出：
 // First line
@@ -1966,10 +1966,10 @@ editor.type('Fifth line');
 
 > 假设我们打算亲自建一栋房子。建房子的步骤可能像这样
 >
-> -   打地基
-> -   筑墙壁
-> -   盖屋顶
-> -   加楼层
+> - 打地基
+> - 筑墙壁
+> - 盖屋顶
+> - 加楼层
 >
 > 上述步骤的先后顺序不能被改变：在筑好墙壁之前您没法盖屋顶。但您可以任意修改步骤内部的实现细节，例如可以使用木头、聚酯纤维或石头来筑建墙壁。
 
@@ -2004,37 +2004,37 @@ class Builder {
 ```js
 class AndroidBuilder extends Builder {
     test() {
-        console.log('执行安卓代码测试');
+        console.log("执行安卓代码测试");
     }
 
     lint() {
-        console.log('检查安卓代码格式');
+        console.log("检查安卓代码格式");
     }
 
     assemble() {
-        console.log('启动安卓应用构建');
+        console.log("启动安卓应用构建");
     }
 
     deploy() {
-        console.log('部署安卓应用到服务器');
+        console.log("部署安卓应用到服务器");
     }
 }
 
 class IosBuilder extends Builder {
     test() {
-        console.log('执行 IOS 代码测试');
+        console.log("执行 IOS 代码测试");
     }
 
     lint() {
-        console.log('检查 IOS 代码格式');
+        console.log("检查 IOS 代码格式");
     }
 
     assemble() {
-        console.log('启动 IOS 应用构建');
+        console.log("启动 IOS 应用构建");
     }
 
     deploy() {
-        console.log('部署 IOS 应用到服务器');
+        console.log("部署 IOS 应用到服务器");
     }
 }
 ```
@@ -2061,17 +2061,17 @@ iosBuilder.build();
 // 部署 IOS 应用到服务器
 ```
 
-## 🚦 尾声 / Wrap Up Folks
+## 🚦 尾声
 
 到这里教程的正文内容就结束了。我会持续改进这篇教程，也许您以后想要重新访问这个仓库来查看最新的内容，不妨点一个关注以及星标。对了，我计划撰写同样风格的软件体系架构教程，希望您继续关注。
 
-## 👬 参与贡献 / Contribution
+## 👬 参与贡献
 
--   反馈问题
--   拉取请求，改进文档
--   分享此仓库
+- 反馈问题
+- 拉取请求，改进文档
+- 分享此仓库
 
-## 🔑 项目许可 / License
+## 🔑 项目许可
 
 MIT © [LolipopJ](https://github.com/LolipopJ)
 

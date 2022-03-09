@@ -1,15 +1,13 @@
 # Design Patterns for Humans ZH - VuePress
 
-通过 VuePress 部署本项目。
+通过 `VuePress` 部署本教程。
 
 ## 安装依赖
 
 您需要首先安装 [Node.js](https://nodejs.org/en/) >= 8.6 版本。
 
 ```bash
-# 推荐使用 yarn 管理包
-# 您可以使用 npm install -g yarn 安装它
-yarn install
+yarn
 ```
 
 ## 开始开发
@@ -42,7 +40,7 @@ yarn prettier
 
 ## 待完成清单
 
--   [ ] 添加多编程语言支持。
-    -   [ ] PHP
-    -   [ ] Python
-    -   [ ] ...
+- [ ] 添加多编程语言支持。
+  - [ ] PHP
+  - [ ] Python
+  - [ ] ...
