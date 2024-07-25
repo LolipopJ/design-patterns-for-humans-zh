@@ -23,17 +23,17 @@ class TextEditor {
 // #region useTextEditor
 const editor = new TextEditor(defaultTransform);
 
-editor.type('First line');
+editor.type("First line");
 
 editor.setTransform(upperCase);
 
-editor.type('Second line');
-editor.type('Third line');
+editor.type("Second line");
+editor.type("Third line");
 
 editor.setTransform(lowerCase);
 
-editor.type('Fourth line');
-editor.type('Fifth line');
+editor.type("Fourth line");
+editor.type("Fifth line");
 
 // 输出：
 // First line

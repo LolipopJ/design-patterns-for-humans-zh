@@ -11,7 +11,7 @@ class SimpleCoffee {
     }
 
     getDescription() {
-        return '一杯咖啡';
+        return "一杯咖啡";
     }
 }
 // #endregion Coffee
@@ -27,7 +27,7 @@ class MilkCoffee {
     }
 
     getDescription() {
-        return this.coffee.getDescription() + '，加奶';
+        return this.coffee.getDescription() + "，加奶";
     }
 }
 
@@ -41,7 +41,7 @@ class WhipCoffee {
     }
 
     getDescription() {
-        return this.coffee.getDescription() + '，加鲜奶油';
+        return this.coffee.getDescription() + "，加鲜奶油";
     }
 }
 
@@ -55,7 +55,7 @@ class VanillaCoffee {
     }
 
     getDescription() {
-        return this.coffee.getDescription() + '，加香草';
+        return this.coffee.getDescription() + "，加香草";
     }
 }
 // #endregion ExtraCoffee

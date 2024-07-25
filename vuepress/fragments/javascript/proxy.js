@@ -8,11 +8,11 @@
 
 class LabDoor {
     open() {
-        console.log('打开实验室门');
+        console.log("打开实验室门");
     }
 
     close() {
-        console.log('关闭实验室门');
+        console.log("关闭实验室门");
     }
 }
 // #endregion Door
@@ -27,12 +27,12 @@ class Security {
         if (this.authenticate(password)) {
             this.door.open();
         } else {
-            console.log('奥不！密码错误。');
+            console.log("奥不！密码错误。");
         }
     }
 
     authenticate(password) {
-        return password === 'ecr@t';
+        return password === "ecr@t";
     }
 
     close() {
@@ -43,8 +43,8 @@ class Security {
 
 // #region openCloseSecurityDoor
 const door = new Security(new LabDoor());
-door.open('invalid'); // 奥不！密码错误。
+door.open("invalid"); // 奥不！密码错误。
 
-door.open('ecr@t'); // 打开实验室门
+door.open("ecr@t"); // 打开实验室门
 door.close(); // 关闭实验室门
 // #endregion openCloseSecurityDoor

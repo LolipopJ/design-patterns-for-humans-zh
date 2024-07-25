@@ -5,7 +5,7 @@ class ChatRoom {
         const time = new Date();
         const sender = user.getName();
 
-        console.log(time + '[' + sender + ']:' + message);
+        console.log(time + "[" + sender + "]:" + message);
     }
 }
 // #endregion ChatRoom
@@ -30,11 +30,11 @@ class User {
 // #region useChatRoom
 const mediator = new ChatRoom();
 
-const john = new User('John Doe', mediator);
-const jane = new User('Jane Doe', mediator);
+const john = new User("John Doe", mediator);
+const jane = new User("Jane Doe", mediator);
 
-john.send('你好！');
-jane.send('你好哇！');
+john.send("你好！");
+jane.send("你好哇！");
 
 // 输出如下
 // Feb 14, 10:58 [John]: 你好！

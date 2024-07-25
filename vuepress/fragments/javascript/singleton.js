@@ -1,8 +1,8 @@
 // #region president
 const president = (function () {
-    const presidentsPrivateInformation = 'Super private';
+    const presidentsPrivateInformation = "Super private";
 
-    const name = 'Turd Sandwich';
+    const name = "Turd Sandwich";
 
     const getName = () => name;
 

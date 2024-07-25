@@ -9,7 +9,7 @@ class JobSeeker {
     }
 
     notify(jobPost) {
-        console.log(this._name, ' 接收了一个新职位的通知：', jobPost.title);
+        console.log(this._name, " 接收了一个新职位的通知：", jobPost.title);
     }
 }
 // #endregion JobSeeker

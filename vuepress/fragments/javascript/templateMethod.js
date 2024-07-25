@@ -13,37 +13,37 @@ class Builder {
 // #region extendBuilder
 class AndroidBuilder extends Builder {
     test() {
-        console.log('执行安卓代码测试');
+        console.log("执行安卓代码测试");
     }
 
     lint() {
-        console.log('检查安卓代码格式');
+        console.log("检查安卓代码格式");
     }
 
     assemble() {
-        console.log('启动安卓应用构建');
+        console.log("启动安卓应用构建");
     }
 
     deploy() {
-        console.log('部署安卓应用到服务器');
+        console.log("部署安卓应用到服务器");
     }
 }
 
 class IosBuilder extends Builder {
     test() {
-        console.log('执行 IOS 代码测试');
+        console.log("执行 IOS 代码测试");
     }
 
     lint() {
-        console.log('检查 IOS 代码格式');
+        console.log("检查 IOS 代码格式");
     }
 
     assemble() {
-        console.log('启动 IOS 应用构建');
+        console.log("启动 IOS 应用构建");
     }
 
     deploy() {
-        console.log('部署 IOS 应用到服务器');
+        console.log("部署 IOS 应用到服务器");
     }
 }
 // #endregion extendBuilder

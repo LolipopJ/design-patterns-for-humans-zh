@@ -1,6 +1,6 @@
 // #region Sheep
 class Sheep {
-    constructor(name, category = '山羊') {
+    constructor(name, category = "山羊") {
         this.name = name;
         this.category = category;
     }
@@ -31,13 +31,13 @@ class SheepPrototype {
 // #endregion SheepPrototype
 
 // #region cloneSheep
-const originalSheep = new Sheep('Jolly');
+const originalSheep = new Sheep("Jolly");
 originalSheep.getName(); // Jolly
 originalSheep.getCategory(); // 山羊
 // 克隆并根据需要修改
 const prototype = new SheepPrototype(originalSheep);
 const clonedSheep = prototype.clone();
-clonedSheep.setName('Dolly');
+clonedSheep.setName("Dolly");
 clonedSheep.getName(); // Dolly
 clonedSheep.getCategory(); // 山羊
 // #endregion cloneSheep

@@ -30,7 +30,7 @@ class TeaShop {
 
     serve() {
         this.orders.forEach((order, index) => {
-            console.log('上茶给桌号 #' + index);
+            console.log("上茶给桌号 #" + index);
         });
     }
 }
@@ -40,9 +40,9 @@ class TeaShop {
 const teaMaker = new TeaMaker();
 const shop = new TeaShop(teaMaker);
 
-shop.takeOrder('少糖', 1);
-shop.takeOrder('多奶', 2);
-shop.takeOrder('无糖', 5);
+shop.takeOrder("少糖", 1);
+shop.takeOrder("多奶", 2);
+shop.takeOrder("无糖", 5);
 
 shop.serve();
 // 上茶给桌号 #1

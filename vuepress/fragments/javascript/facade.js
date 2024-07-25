@@ -1,31 +1,31 @@
 // #region Computer
 class Computer {
     getElectricShock() {
-        console.log('Ouch!');
+        console.log("Ouch!");
     }
 
     makeSound() {
-        console.log('Beep beep!');
+        console.log("Beep beep!");
     }
 
     showLoadingScreen() {
-        console.log('加载中..');
+        console.log("加载中..");
     }
 
     bam() {
-        console.log('准备就绪！');
+        console.log("准备就绪！");
     }
 
     closeEverything() {
-        console.log('Bup bup bup buzzzz!');
+        console.log("Bup bup bup buzzzz!");
     }
 
     sooth() {
-        console.log('Zzzzz');
+        console.log("Zzzzz");
     }
 
     pullCurrent() {
-        console.log('Haaah!');
+        console.log("Haaah!");
     }
 }
 // #endregion Computer

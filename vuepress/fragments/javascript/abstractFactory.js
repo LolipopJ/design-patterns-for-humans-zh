@@ -7,13 +7,13 @@
 
 class WoodenDoor {
     getDescription() {
-        console.log('我是一个木门');
+        console.log("我是一个木门");
     }
 }
 
 class IronDoor {
     getDescription() {
-        console.log('我是一个铁门');
+        console.log("我是一个铁门");
     }
 }
 // #endregion Door

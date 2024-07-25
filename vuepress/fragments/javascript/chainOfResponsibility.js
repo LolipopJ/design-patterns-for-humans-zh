@@ -11,7 +11,7 @@ class Account {
             console.log(`无法使用 ${this.name} 支付。继续中...`);
             this.successor.pay(amountToPay);
         } else {
-            console.log('没有账户额度足够');
+            console.log("没有账户额度足够");
         }
     }
 
@@ -23,7 +23,7 @@ class Account {
 class Bank extends Account {
     constructor(balance) {
         super();
-        this.name = '银行';
+        this.name = "银行";
         this.balance = balance;
     }
 }
@@ -31,7 +31,7 @@ class Bank extends Account {
 class Paypal extends Account {
     constructor(balance) {
         super();
-        this.name = '贝宝';
+        this.name = "贝宝";
         this.balance = balance;
     }
 }
@@ -39,7 +39,7 @@ class Paypal extends Account {
 class Bitcoin extends Account {
     constructor(balance) {
         super();
-        this.name = '比特币';
+        this.name = "比特币";
         this.balance = balance;
     }
 }

@@ -12,7 +12,7 @@ class About {
     }
 
     getContent() {
-        return 'About page in ' + this.theme.getColor();
+        return "About page in " + this.theme.getColor();
     }
 }
 
@@ -22,7 +22,7 @@ class Careers {
     }
 
     getContent() {
-        return 'Careers page in ' + this.theme.getColor();
+        return "Careers page in " + this.theme.getColor();
     }
 }
 // #endregion Webpage
@@ -36,17 +36,17 @@ class Careers {
 
 class DarkTheme {
     getColor() {
-        return 'Dark Black';
+        return "Dark Black";
     }
 }
 class LightTheme {
     getColor() {
-        return 'Off white';
+        return "Off white";
     }
 }
 class AquaTheme {
     getColor() {
-        return 'Light blue';
+        return "Light blue";
     }
 }
 // #endregion Theme

@@ -2,11 +2,11 @@
 // Receiver
 class Bulb {
     turnOn() {
-        console.log('点亮了灯泡！');
+        console.log("点亮了灯泡！");
     }
 
     turnOff() {
-        console.log('黑暗！');
+        console.log("黑暗！");
     }
 }
 // #endregion Bulb

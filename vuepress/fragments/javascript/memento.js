@@ -13,7 +13,7 @@ class EditorMemento {
 // #region Editor
 class Editor {
     constructor() {
-        this._content = '';
+        this._content = "";
     }
 
     type(words) {
@@ -38,14 +38,14 @@ class Editor {
 const editor = new Editor();
 
 // 输入一些文本
-editor.type('日月忽其不淹兮，');
-editor.type('春与秋其代序。');
+editor.type("日月忽其不淹兮，");
+editor.type("春与秋其代序。");
 
 // 保存当前用于恢复的状态：日月忽其不淹兮，春与秋其代序。
 const saved = editor.save();
 
 // 再输入一些文本
-editor.type('惟草木之零落兮，恐美人之迟暮。');
+editor.type("惟草木之零落兮，恐美人之迟暮。");
 
 // 不保存，输出当前内容
 console.log(editor.getContent()); // 日月忽其不淹兮，春与秋其代序。惟草木之零落兮，恐美人之迟暮。

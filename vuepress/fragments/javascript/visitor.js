@@ -1,7 +1,7 @@
 // #region Animal
 class Monkey {
     shout() {
-        console.log('Ooh oo aa aa!');
+        console.log("Ooh oo aa aa!");
     }
 
     accept(operation) {
@@ -11,7 +11,7 @@ class Monkey {
 
 class Lion {
     roar() {
-        console.log('Roaaar!');
+        console.log("Roaaar!");
     }
 
     accept(operation) {
@@ -21,7 +21,7 @@ class Lion {
 
 class Dolphin {
     speak() {
-        console.log('Tuut tuttu tuutt!');
+        console.log("Tuut tuttu tuutt!");
     }
 
     accept(operation) {
@@ -57,13 +57,13 @@ dolphin.accept(speak); // Tuut tutt tuutt!
 // #region jump
 const jump = {
     visitMonkey(monkey) {
-        console.log('跳了 20 英尺高！跳到了树上去！');
+        console.log("跳了 20 英尺高！跳到了树上去！");
     },
     visitLion(lion) {
-        console.log('跳了 7 英尺高！回到了地上！');
+        console.log("跳了 7 英尺高！回到了地上！");
     },
     visitDolphin(dolphin) {
-        console.log('探出了水面一点随后消失了');
+        console.log("探出了水面一点随后消失了");
     },
 };
 // #endregion jump

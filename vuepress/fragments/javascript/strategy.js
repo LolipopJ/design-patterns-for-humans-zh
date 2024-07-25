@@ -1,13 +1,13 @@
 // #region Sort
 const bubbleSort = (dataset) => {
-    console.log('使用冒泡排序');
+    console.log("使用冒泡排序");
     // ...
     // ...
     return dataset;
 };
 
 const quickSort = (dataset) => {
-    console.log('使用快速排序');
+    console.log("使用快速排序");
     // ...
     // ...
     return dataset;
