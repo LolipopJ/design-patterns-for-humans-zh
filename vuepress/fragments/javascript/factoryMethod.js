@@ -7,13 +7,13 @@
 
 class Developer {
     askQuestions() {
-        console.log('提出设计模式问题！');
+        console.log("询问设计模式问题！");
     }
 }
 
 class CommunityExecutive {
     askQuestions() {
-        console.log('提出社区建设问题！');
+        console.log("询问社区建设问题！");
     }
 }
 // #endregion Interviewer
@@ -43,8 +43,8 @@ class MarketingManager extends HiringManager {
 
 // #region takeInterview
 const devManager = new DevelopmentManager();
-devManager.takeInterview(); // 输出：提出设计模式问题！
+devManager.takeInterview(); // 输出：询问设计模式问题！
 
 const marketingManager = new MarketingManager();
-marketingManager.takeInterview(); // 输出：提出社区建设问题！
+marketingManager.takeInterview(); // 输出：询问社区建设问题！
 // #endregion takeInterview

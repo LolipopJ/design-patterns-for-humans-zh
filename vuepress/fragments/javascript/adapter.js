@@ -25,7 +25,7 @@ class Hunter {
 // #endregion Hunter
 
 // #region WildDog
-// 需要添加到游戏中
+// 需要追加到游戏中的野狗
 class WildDog {
     bark() {}
 }

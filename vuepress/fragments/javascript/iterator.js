@@ -39,5 +39,5 @@ stationList.addStation(new RadioStation(103.2));
 
 stationList.stations.forEach((station) => console.log(station.getFrequency()));
 
-stationList.removeStation(new RadioStation(89)); // 将移除 89 频道的广播电台
+stationList.removeStation(new RadioStation(89)); // 将移除 89 频道
 // #endregion useStationList

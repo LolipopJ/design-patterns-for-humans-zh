@@ -31,6 +31,6 @@ const shortDataSet = [1, 5, 4];
 const sorter1 = sorter(longDataSet);
 const sorter2 = sorter(shortDataSet);
 
-sorter1(longDataSet); // Output : 使用快速排序
-sorter2(shortDataSet); // Output : 使用冒泡排序
+sorter1(longDataSet); // 输出：使用快速排序
+sorter2(shortDataSet); // 输出：使用冒泡排序
 // #endregion useSorter

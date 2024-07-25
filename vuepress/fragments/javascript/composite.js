@@ -87,14 +87,14 @@ class Organization {
 // #endregion Organization
 
 // #region getNetSalaries
-// 定义新的雇员
-const john = new Developer('John Doe', 12000);
-const jane = new Designer('Jane', 10000);
+// 准备员工个体
+const john = new Developer("John Doe", 12000);
+const flank = new Designer("Flank", 10000);
 
-// 添加雇员到组织中
+// 把他们添加到公司中
 const organization = new Organization();
 organization.addEmployee(john);
-organization.addEmployee(jane);
+organization.addEmployee(flank);
 
-console.log('薪金净额：', organization.getNetSalaries()); // 薪金净额：22000
+console.log("净薪酬：", organization.getNetSalaries()); // 净薪酬：22000
 // #endregion getNetSalaries

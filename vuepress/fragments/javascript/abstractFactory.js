@@ -25,15 +25,15 @@ class IronDoor {
  * getDescription()
  */
 
-class Welder {
+class Carpenter {
     getDescription() {
-        console.log('我只能安装木门');
+        console.log("我只能安装木门");
     }
 }
 
-class Carpenter {
+class Welder {
     getDescription() {
-        console.log('我只能安装铁门');
+        console.log("我只能安装铁门");
     }
 }
 // #endregion DoorFittingExpert
