@@ -14,7 +14,7 @@
 
 ---
 
-<sub>如果您喜欢这篇教程，不妨看看教程原作者的[博客](http://sohamkamani.com)，或是在 [Twitter](https://twitter.com/sohamkamani) 上跟他打声招呼。</sub>
+<sub>如果您喜欢这篇教程，不妨看看教程原作者的[另一个项目](https://roadmap.sh/)，或是去 [X](https://x.com/kamrify) 上跟他打声招呼。</sub>
 
 <sub>本项目基于 <a href="https://github.com/kamranahmedse/design-patterns-for-humans">Design Patterns for Humans</a>，案例 JavaScript 代码来自 <a href="https://github.com/sohamkamani/javascript-design-patterns-for-humans">JavaScript Design Patterns for Humans</a>。译者在学习的过程中，想要使用自己的语言风格来翻译这篇“给人类写的”设计模式教程。奈何才疏学浅，如有谬误，敬请提交 PR 斧正。</sub>
 
@@ -2068,7 +2068,7 @@ iosBuilder.build();
 - 反馈问题
 - 拉取请求，改进文档
 - 分享此文档
-- 如有任何反馈，请联系 [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/kamranahmedse.svg?style=social&label=Follow%20%40kamranahmedse)](https://twitter.com/kamranahmedse)
+- 如有任何反馈，请联系 [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/kamrify.svg?style=social&label=Follow%20%40kamrify)](https://x.com/kamrify)
 
 ## 🔑 项目许可
 
