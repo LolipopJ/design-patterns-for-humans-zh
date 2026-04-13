@@ -9,26 +9,21 @@ jobs:
     pages:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
-            - name: Use Node.js 14.x
-              uses: actions/setup-node@v1
+            - uses: actions/checkout@v6
+            - name: Use Node.js 24.x
+              uses: actions/setup-node@v6
               with:
-                  node-version: "14.x"
-            - name: Cache NPM dependencies
-              uses: actions/cache@v2
-              with:
-                  path: node_modules
-                  key: ${{ runner.OS }}-npm-cache
-                  restore-keys: |
-                      ${{ runner.OS }}-npm-cache
+                  node-version: 24
+                  cache: 'yarn'
+                  cache-dependency-path: vuepress/yarn.lock
             - name: Install Dependencies
               run: |
                   cd vuepress
-                  npm install
+                  yarn
             - name: Build
               run: |
                   cd vuepress
-                  npm run build
+                  yarn build
             - name: Deploy
               uses: peaceiris/actions-gh-pages@v4
               with:
