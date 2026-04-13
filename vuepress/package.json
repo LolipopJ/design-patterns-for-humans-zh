@@ -1,6 +1,6 @@
 {
     "name": "design-patterns-for-humans-zh",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "献给中文读者的设计模式教程 / An ultra-simplified explanation of design patterns, yet another Chinese translation.",
     "main": "index.js",
     "repository": "https://github.com/LolipopJ/design-patterns-for-humans-zh",
