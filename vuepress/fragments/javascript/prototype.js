@@ -34,6 +34,7 @@ class SheepPrototype {
 const originalSheep = new Sheep("Jolly");
 originalSheep.getName(); // Jolly
 originalSheep.getCategory(); // 山羊
+
 // 克隆并根据需要修改
 const prototype = new SheepPrototype(originalSheep);
 const clonedSheep = prototype.clone();

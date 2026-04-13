@@ -1,6 +1,6 @@
 <br>
 <p align="center">
-    <img alt="献给中文读者的设计模式教程 / Design Patterns for Humans ZH" src="./cover/cover.png" />
+    <img alt="献给中文读者的设计模式教程 / Design Patterns for Humans ZH" src="vuepress/docs/.vuepress/public/cover.png" />
 </p>
 
 ---
@@ -350,8 +350,16 @@ expert.getDescription(); // 输出：我只能安装铁门
 既然已经提到，那么请允许我补充一下什么是重叠构造函数反模式。我们都曾看到过像这样的构造函数：
 
 ```js
-constructor(size, cheese = true, pepperoni = true, tomato = false, lettuce = true) {
-    // ...
+class Burger {
+    constructor(
+        size,
+        cheese = true,
+        pepperoni = true,
+        tomato = false,
+        lettuce = true,
+    ) {
+        // ...
+    }
 }
 ```
 
@@ -665,7 +673,7 @@ hunter.hunt(wildDogAdapter);
 
 > 您有一个包括很多页面的网站，现在您打算允许用户修改网站主题。您将会如何实现？为每个页面的每个主题创建一份副本，或是创建单独的主题并根据用户的偏好加载它们？桥接模式允许您实现后者。
 
-![With and without the bridge pattern](static/With-and-without-the-bridge-pattern.png)
+<img alt="不使用和使用桥接模式的区别" src="vuepress/docs/.vuepress/public/With-and-without-the-bridge-pattern.png" />
 
 简单来说
 

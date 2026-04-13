@@ -12,23 +12,27 @@ yarn
 
 ## 开始开发
 
-启动本地服务。
+启动本地服务，修改代码将自动触发热重载：
 
 ```bash
 yarn dev
 ```
 
-修改代码将自动触发热重载。
+## 构建项目
 
-## 构建代码
+生成 VuePress 静态资源文件，默认存放路径为 `./docs/.vuepress/dist`：
 
-生成静态代码文件。
-
-```baah
+```bash
 yarn build
 ```
 
-默认存放路径为 `./docs/.vuepress/dist`。
+## 构建 README.md
+
+替换 `./docs/README.md` 中的占位符与资源链接等，生成仓库根目录下的 `README.md` 文件。
+
+```bash
+yarn build:readme
+```
 
 ## 格式化代码
 
@@ -41,6 +45,6 @@ yarn prettier
 ## 待完成清单
 
 - [ ] 添加多编程语言支持。
-  - [ ] PHP
-  - [ ] Python
-  - [ ] ...
+    - [ ] PHP
+    - [ ] Python
+    - [ ] ...

@@ -10,10 +10,11 @@
     "scripts": {
         "dev": "vuepress dev docs",
         "build": "vuepress build docs",
+        "build:readme": "node scripts/build-readme.js",
         "prettier": "prettier --write fragments/**/* --ignore-unknown"
     },
     "devDependencies": {
-        "prettier": "^2.8.8",
+        "prettier": "^3.8.2",
         "vuepress": "^1.9.10"
     }
 }

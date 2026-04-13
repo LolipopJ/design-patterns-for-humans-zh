@@ -78,7 +78,7 @@ expert = woodenFactory.makeFittingExpert();
 door.getDescription(); // 输出：我是一个木门
 expert.getDescription(); // 输出：我只能安装木门
 
-// 铁门工厂和上面一样
+// 对铁门的处理与上面类似
 ironFactory = new IronDoorFactory();
 
 door = ironFactory.makeDoor();

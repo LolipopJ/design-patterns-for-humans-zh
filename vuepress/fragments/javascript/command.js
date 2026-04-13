@@ -59,7 +59,7 @@ class TurnOffCommand {
 // #endregion Command
 
 // #region RemoteControl
-// Invoker
+// 调用者
 class RemoteControl {
     submit(command) {
         command.execute();

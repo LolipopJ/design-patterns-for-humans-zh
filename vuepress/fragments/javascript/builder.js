@@ -5,7 +5,7 @@ class Burger {
         cheese = true,
         pepperoni = true,
         tomato = false,
-        lettuce = true
+        lettuce = true,
     ) {
         // ...
     }

@@ -31,12 +31,12 @@ class User {
 const mediator = new ChatRoom();
 
 const john = new User("John Doe", mediator);
-const jane = new User("Jane Doe", mediator);
+const flank = new User("Flank Loi", mediator);
 
 john.send("你好！");
-jane.send("你好哇！");
+flank.send("你好哇！");
 
 // 输出如下
 // Feb 14, 10:58 [John]: 你好！
-// Feb 14, 10:58 [Jane]: 你好哇！
+// Feb 14, 10:58 [Flank]: 你好哇！
 // #endregion useChatRoom

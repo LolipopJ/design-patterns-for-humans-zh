@@ -41,22 +41,23 @@ class DarkTheme {
 }
 class LightTheme {
     getColor() {
-        return "Off white";
+        return "Off White";
     }
 }
 class AquaTheme {
     getColor() {
-        return "Light blue";
+        return "Light Blue";
     }
 }
 // #endregion Theme
 
 // #region useTheme
 const darkTheme = new DarkTheme();
+const lightTheme = new LightTheme();
 
 const about = new About(darkTheme);
-const careers = new Careers(darkTheme);
+const careers = new Careers(lightTheme);
 
 console.log(about.getContent()); // "About page in Dark Black"
-console.log(careers.getContent()); // "Careers page in Dark Black"
+console.log(careers.getContent()); // "Careers page in Off White"
 // #endregion useTheme
